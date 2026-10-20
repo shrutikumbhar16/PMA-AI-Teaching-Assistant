@@ -1,0 +1,10 @@
+{
+  "id": "7.2.0",
+  "title": "Convergence of Random Variables",
+  "chapter": 7,
+  "topic": "Convergence",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter7/7_2_0_convergence_of_random_variables.php",
+  "text": "7.2.0 Convergence of Random Variables\nIn some situations, we would like to see if a sequence of random variables $X_1$, $X_2$, $X_3$, $\\cdots$ ''converges'' to a random variable $X$. That is, we would like to see if $X_n$ gets closer and closer to $X$ in some sense as $n$ increases. For example, suppose that we are interested in knowing the value of a random variable $X$, but we are not able to observe $X$ directly.\nInstead, you can do some measurements and come up with an estimate of $X$: call it $X_1$.\nYou then perform more measurements and update your estimate of $X$ and call it $X_2$.\nYou continue this process to obtain $X_1$, $X_2$, $X_3$, $\\cdots$.\nYour hope is that as $n$ increases, your estimate gets better and better.\nThat is, you hope that as $n$ increases, $X_n$ gets closer and closer to $X$. In other words, you hope that $X_n$ converges to $X$.\nIn fact, we have already seen the concept of convergence in Section\n7.1.0\nwhen we discussed limit theorems (the weak law of large numbers (WLLN) and the central limit theorem (CLT)). The WLLN states that the average of a large number of i.i.d. random variables converges in probability to the expected value. The CLT states that the normalized average of a sequence of i.i.d. random variables converges in distribution to a standard normal distribution. In this section, we will develop the theoretical background to study the convergence of a sequence of random variables in more detail. In particular, we will define different types of convergence. When we say that the sequence $X_n$ converges to $X$, it means that $X_n$'s are getting ''closer and closer'' to $X$. Different types of convergence refer to different ways of defining what ''closer'' means. We also discuss how different types of convergence are related.\n."
+}

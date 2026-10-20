@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 7 theorem	0 lemma 1 definition 0 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'5.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'5.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'5.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'5.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="5.1.4"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Linearity of Expectation | Functions of Two Random Variables</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter5/5_1_3_conditioning_independence.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter5/5_1_5_conditional_expectation.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter5/video5_5.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>5.1.4 Functions of Two Random Variables</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+
+Analysis of a function of two random variables is pretty much the same as for a function of a single random variable. Suppose that you have two discrete random variables $X$ and $Y$, and suppose that $Z=g(X,Y)$, where $g: \mathbb{R}^2 \mapsto \mathbb{R}$. Then, if we are interested in the PMF of $Z$, we can write
+\begin{align}%\label{}
+\nonumber P_{Z}(z) &=P(g(X,Y)=z)  \\
+\nonumber &=\sum_{(x_i,y_j) \in A_z} P_{XY}(x_i,y_j), \hspace{10pt} \textrm{ where } A_z=\{(x_i,y_j) \in R_{XY}:g(x_i,y_j)=z\}.
+\nonumber
+\end{align}
+
+Note that if we are only interested in $E[g(X,Y)]$, we can directly use LOTUS, without finding $P_Z(z)$:
+
+<div style="padding: 25px; margin: 30px 40px; border: 2px solid black;">
+<p style="text-align:center;">Law of the unconscious statistician (LOTUS) for two discrete random variables:</p>
+\begin{align}\label{eq:LOTUS-2D}
+  E[g(X,Y)]=\sum_{(x_i,y_j) \in R_{XY}} g(x_i,y_j)P_{XY}(x_i,y_j) \hspace{20pt} (5.5)
+\end{align}
+</div>
+
+<!-- Example -->
+<hr /><span class="example">Example </span><br />
+<b>Linearity of Expectation:</b> For two discrete random variables $X$ and $Y$, show that $E[X+Y]=EX+EY$.
+<div class="solvedprob">
+	<ul><li><a><b>Solution</b></a>
+		<ul><li>
+Let $g(X,Y)=X+Y$. Using LOTUS, we have
+\begin{align}
+  \nonumber E[X+Y]&=\sum_{(x_i,y_j) \in R_{XY}} (x_i+y_j)P_{XY}(x_i,y_j) \\
+  \nonumber &=\sum_{(x_i,y_j) \in R_{XY}} x_iP_{XY}(x_i,y_j)+\sum_{(x_i,y_j) \in R_{XY}} y_jP_{XY}(x_i,y_j) \\
+  \nonumber &=\sum_{x_i \in R_{X}} \sum_{y_j\in R_{Y}} x_iP_{XY}(x_i,y_j)+\sum_{x_i \in R_{X}} \sum_{y_j\in R_{Y}} y_jP_{XY}(x_i,y_j) \\
+  \nonumber &=\sum_{x_i \in R_{X}} x_i \sum_{y_j\in R_{Y}} P_{XY}(x_i,y_j)+ \sum_{y_j\in R_{Y}} y_j \sum_{x_i \in R_{X}} P_{XY}(x_i,y_j) \\
+  \nonumber &=\sum_{x_i \in R_{X}} x_i  P_{X}(x_i)+ \sum_{y_j\in R_{Y}} y_j P_{Y}(y_j)  \hspace{20pt} \textrm{(marginal PMF (Equation 5.1))} \\
+  \nonumber &=EX+EY.
+
+\end{align}
+		</li></ul>
+		</li></ul></div><br />
+<!-- /Example -->
+
+<!-- Example -->
+<hr /><span class="example">Example </span><br />
+Let $X$ and $Y$ be two independent $Geometric(p)$ random variables. Also let $Z=X-Y$. Find the PMF of $Z$.
+<div class="solvedprob">
+	<ul><li><a><b>Solution</b></a>
+		<ul><li>
+First note that since $R_X=R_Y=\mathbb{N}=\{1,2,3,...\}$, we have $R_Z=\mathbb{Z}=\{...,-3,-2,-1,0,1,2,3,...\}$. Since $X,Y \sim Geometric(p)$, we have
+\begin{align}%\label{}
+\nonumber P_X(k)=P_Y(k)=pq^{k-1}, \hspace{5pt} \textrm{ for }k=1,2,3,...,
+\end{align}
+where $q=1-p$. We can write for any $k \in \mathbb{Z}$
+\begin{align}%\label{}
+\nonumber P_Z(k)&=P(Z=k)  \\
+\nonumber &=P(X-Y=k) \\
+\nonumber &=P(X=Y+k)\\
+\nonumber &=\sum_{j=1}^{\infty}P(X=Y+k|Y=j)P(Y=j) &\textrm{(law of total probability)}\\
+\nonumber &=\sum_{j=1}^{\infty}P(X=j+k|Y=j)P(Y=j) \\
+\nonumber &=\sum_{j=1}^{\infty}P(X=j+k)P(Y=j)  &(\textrm{since }X,Y \textrm{are independent})\\
+\nonumber &=\sum_{j=1}^{\infty}P_X(j+k)P_Y(j).
+\end{align}
+Now, consider two cases: $k \geq 0$ and $k<0$.
+If $k \geq 0$, then
+\begin{align}%\label{}
+\nonumber P_Z(k)&=\sum_{j=1}^{\infty}P_X(j+k)P_Y(j)\\
+\nonumber &=\sum_{j=1}^{\infty}pq^{j+k-1} pq^{j-1}\\
+\nonumber &= p^2 q^k\sum_{j=1}^{\infty}q^{2(j-1)}\\
+\nonumber &= p^2 q^k \frac{1}{1-q^2} & \big(\textrm{geometric sum (Equation 1.4 )} \big)\\
+\nonumber &=\frac{p(1-p)^k}{2-p}.
+\end{align}
+For $k&lt;0$, we have
+\begin{align}%\label{}
+\nonumber P_Z(k)&=\sum_{j=1}^{\infty}P_X(j+k)P_Y(j)\\
+\nonumber &=\sum_{j=-k+1}^{\infty}pq^{j+k-1} pq^{j-1}  & (\textrm{since }P_X(j+k)=0 \textrm{ for } j&lt;-k+1)\\
+\nonumber &= p^2 \sum_{j=-k+1}^{\infty}q^{k+2(j-1)}\\
+\nonumber &= p^2  \big[q^{-k}+q^{-k+2}+q^{-k+4}+...\big]\\
+\nonumber &= p^2q^{-k}\big[1+q^{2}+q^{4}+...\big] \\
+\nonumber &=\frac{p}{(1-p)^k(2-p)} & \big(\textrm{geometric sum (Equation 1.4 )} \big).
+\end{align}
+	
+<br/>
+To summarize, we conclude
+
+\begin{equation}
+ \nonumber P_Z(k) = \left\{
+  \begin{array}{l l}
+    \frac{p(1-p)^{|k|}}{2-p}  &  \quad  k \in \mathbb{Z}\\
+
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+\end{equation}
+</li></ul>
+	</li></ul></div><br />
+
+<!-- /Example -->
+<!-- / Section Content -->
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter5/5_1_3_conditioning_independence.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter5/5_1_5_conditional_expectation.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176a3ca1f7258',t:'MTc5MjI2Mjc1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

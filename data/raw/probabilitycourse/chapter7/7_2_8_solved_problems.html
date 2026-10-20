@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 15 theorem	6 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.2.8"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Solved Problems</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_7_almost_sure_convergence.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_3_0_chapter_problem.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.2.8 Solved Problems</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+
+<span class=problem>Problem </span>
+ <p>Let $X_1$, $X_2$, $X_3$, $\cdots$ be a sequence of random variables such that</p>
+  \begin{align}%\label{eq:union-bound}
+    X_n \sim Geometric\left(\frac{\lambda}{n}\right),  \qquad \textrm{ for }n=1,2,3,\cdots,
+  \end{align}
+  where $\lambda>0$ is a constant. Define a new sequence $Y_n$ as
+  \begin{align}%\label{eq:union-bound}
+    Y_n = \frac{1}{n} X_n, \qquad \textrm{ for }n=1,2,3,\cdots.
+  \end{align}
+  Show that $Y_n$ converges in distribution to $Exponential(\lambda)$.
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ Note that if $W \sim Geometric(p)$, then for any positive integer $l$, we have
+  \begin{align}%\label{}
+   P(W \leq l)&=\sum_{k=1}^{l} (1-p)^{{\large k-1}}p \\
+   &= p \sum_{k=1}^{l} (1-p)^{{\large k-1}} \\
+   &=p \cdot \frac{1-(1-p)^l}{1-(1-p)}\\
+   &=1-(1-p)^l.
+  \end{align}
+  Now, since $Y_n = \frac{1}{n} X_n$, for any positive real number, we can write
+  \begin{align}%\label{}
+   P(Y_n \leq y)&=P(X_n \leq ny)\\
+    &=1-\left(1-\frac{\lambda}{n}\right)^ {{\large \lfloor ny \rfloor}},
+  \end{align}
+  where $\lfloor ny\rfloor$ is the largest integer less than or equal to $ny$. We then write
+  \begin{align}%\label{}
+    \nonumber \lim_{n \rightarrow \infty} F_{Y_n}(y)&=\lim_{n \rightarrow \infty} 1-\left(1-\frac{\lambda}{n}\right)^{{\large \lfloor ny\rfloor}}\\
+    \nonumber &=1-\lim_{n \rightarrow \infty} \left(1-\frac{\lambda}{n}\right)^{{\large \lfloor ny \rfloor}}\\
+    \nonumber &=1-e^{{\large -\lambda y}}.
+  \end{align}
+  The last equality holds because $ny-1 \leq \lfloor ny \rfloor \leq ny$, and
+  \begin{align}%\label{}
+    \nonumber \lim_{n \rightarrow \infty} \left(1-\frac{\lambda}{n}\right)^{{\large ny}}=e^{{\large -\lambda y}}.
+  \end{align}
+</li></ul>
+</li></ul>
+</div><hr /><br>
+
+
+
+
+<span class=problem>Problem </span>
+ <p>Let $X_1$, $X_2$, $X_3$, $\cdots$ be a sequence of i.i.d. $Uniform(0,1)$ random variables. Define the sequence $Y_n$ as</p>
+  \begin{align}%\label{}
+    Y_n= \min (X_1,X_2, \cdots, X_n).
+  \end{align}
+  Prove the following convergence results independently (i.e, do not conclude the weaker convergence modes from the stronger ones).
+  <ol type=a>
+    <li> $Y_n \ \xrightarrow{d}\ 0$.</li>
+    <li> $Y_n \ \xrightarrow{p}\ 0$.</li>
+    <li> $Y_n \ \xrightarrow{L^r}\ 0$, for all $r \geq 1$.</li>
+    <li> $Y_n \ \xrightarrow{a.s}\ 0$.</li>
+  </ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+    <ol type=a>
+    <li> $Y_n \ \xrightarrow{d}\ 0$: Note that
+    \begin{equation}
+       \nonumber F_{X_n}(x) = \left\{
+    \begin{array}{l l}
+    0  &  \quad  x<0 \\
+    x  &  \quad  0 \leq x \leq 1 \\
+    1 &  \quad   x>1
+    \end{array} \right.
+    \end{equation}
+    Also, note that $R_{Y_{\large{n}}}=[0,1]$. For $0 \leq y \leq 1$, we can write
+    \begin{align}%\label{}
+      F_{Y_n}(y)&=P(Y_n \leq y)\\
+      &=1-P(Y_n > y)\\
+      &=1-P(X_1>y, X_2>y, \cdots, X_n>y)\\
+      &=1-P(X_1>y) P(X_2>y) \cdots P(X_n>y) \qquad \textrm{(since $X_i$'s are independent)}\\
+      &=1-(1-F_{X_1}(y))(1-F_{X_2}(y)) \cdots (1-F_{X_n}(y))\\
+      &=1-(1-y)^n.
+    \end{align}
+    Therefore, we conclude
+   \begin{equation}
+         \lim_{n \rightarrow \infty} F_{Y_n}(y)=\left\{
+    \begin{array}{l l}
+    0  &  \quad  y \leq 0 \\
+    1 &  \quad   y>0
+    \end{array} \right.
+    \end{equation}
+    Therefore, $Y_n \ \xrightarrow{d}\ 0$.</li><br>
+
+<li> $Y_n \ \xrightarrow{p}\ 0$: Note that as we found in part (a)
+    \begin{equation}
+       \nonumber F_{Y_n}(y) = \left\{
+    \begin{array}{l l}
+    0  &  \quad  y<0 \\
+    1-(1-y)^n  &  \quad  0 \leq y \leq 1 \\
+    1 &  \quad   y>1
+    \end{array} \right.
+    \end{equation}
+    In particular, note that $Y_n$ is a continuous random variable. To show $Y_n \ \xrightarrow{p}\ 0$, we need to show that
+    \begin{align}%\label{eq:union-bound}
+     \lim_{n \rightarrow \infty} P\big(|Y_n| \geq \epsilon \big)=0, \qquad \textrm{ for all }\epsilon>0.
+    \end{align}
+    Since $Y_n \geq 0$, it suffices to show that
+    \begin{align}%\label{eq:union-bound}
+     \lim_{n \rightarrow \infty} P\big(Y_n \geq \epsilon \big)=0, \qquad \textrm{ for all }\epsilon>0.
+    \end{align}
+    For $\epsilon \in (0,1)$, we have
+    \begin{align}%\label{eq:union-bound}
+     P\big(Y_n \geq \epsilon \big) &=1-P(Y_n < \epsilon)\\
+     &=1-P(Y_n \leq \epsilon) \qquad (\textrm{since $Y_n$ is a continuous random variable})\\
+     &=1-F_{Y_n}(\epsilon)\\
+     &=(1-\epsilon)^n.
+    \end{align}
+    Therefore,
+    \begin{align}%\label{eq:union-bound}
+     \lim_{n \rightarrow \infty} P\big(|Y_n| \geq \epsilon \big)&= \lim_{n \rightarrow \infty} (1-\epsilon)^n \\
+     &=0, \qquad \textrm{ for all $\epsilon \in (0,1]$}.
+    \end{align}</li><br>
+
+
+
+
+<li> $Y_n \ \xrightarrow{L^r}\ 0$, for all $r \geq 1$: By differentiating $F_{Y_n}(y)$, we obtain
+    \begin{equation}
+       \nonumber f_{Y_n}(y) = \left\{
+    \begin{array}{l l}
+    n(1-y)^{n-1}  &  \quad  0 \leq y \leq 1 \\
+    0 &  \quad   \textrm{otherwise}
+    \end{array} \right.
+    \end{equation}
+    Thus, for $r \geq 1$, we can write
+    \begin{align}%\label{}
+      E|Y_n|^{\large r}&=\int_{0}^{1} ny^r(1-y)^{n-1}dy\\
+     &\leq \int_{0}^{1} ny(1-y)^{n-1}dy  \qquad (\textrm{since  }r \geq 1)\\
+     &=\bigg[-y(1-y)^n\bigg]_{0}^{1}+\int_{0}^{1}(1-y)^n dy   \qquad (\textrm{integration by parts})\\
+     &=\frac{1}{n+1}.
+    \end{align}
+    Therefore
+  \begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} E\left(|Y_n|^{\large r}\right)=0.
+  \end{align}</li><br>
+
+
+
+
+
+  <li> $Y_n \ \xrightarrow{a.s}\ 0$: We will prove
+  \begin{align}%\label{}
+    \sum_{n=1}^{\infty} P\big(|Y_n| > \epsilon \big) < \infty,
+  \end{align}
+  which implies $Y_n \ \xrightarrow{a.s}\ 0$. By our discussion in part (b),
+  \begin{align}%\label{}
+    \sum_{n=1}^{\infty} P\big(|Y_n| > \epsilon \big) &= \sum_{n=1}^{\infty} (1-\epsilon)^n\\
+    &=\frac{1-\epsilon}{\epsilon}<\infty \qquad (\textrm{geometric series}).
+  \end{align}</li>
+
+</li></ul>
+</li></ul>
+</div><hr /><br>
+
+
+<span class=problem>Problem </span> 
+ <p>Let $X_n \sim N(0,\frac{1}{n})$. Show that $ X_n \ \xrightarrow{a.s.}\ 0$. <i>Hint:</i> You may decide to use the inequality given in Equation 4.7
+, which is</p>
+      \begin{align}\label{eq:phi-bounds}
+       1-\Phi(x) \leq \frac{1}{\sqrt{2\pi}} \frac{1}{x} e^{{\large -\frac{x^2}{2}}}.
+      \end{align}
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+  We will prove
+  \begin{align}%\label{}
+    \sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big) < \infty,
+  \end{align}
+  which implies $X_n \ \xrightarrow{a.s}\ 0$. In particular,
+  \begin{align}%\label{}
+     P\big(|X_n| > \epsilon \big)&=2\big(1-\Phi(\epsilon n)\big) \qquad (\textrm{since $X_n \sim N(0,\frac{1}{n})$})\\
+   &\leq \frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon n} e^{{\large -\frac{\epsilon^2 n^2}{2}}}\\
+   &\leq \frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon} e^{{\large -\frac{\epsilon^2 n^2}{2}}}\\
+   &\leq \frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon} e^{{\large -\frac{\epsilon^2 n}{2}}}.
+  \end{align}
+  Therefore,
+  \begin{align}%\label{}
+    \sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big) &\leq \sum_{n=1}^{\infty} \frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon} e^{-\frac{\epsilon^2 n}{2}}\\
+   &=\frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon} \sum_{n=1}^{\infty}e^{{\large -\frac{\epsilon^2 n}{2}}}\\
+    &=\frac{1}{\sqrt{2\pi}} \frac{2}{\epsilon} \frac{e^{{\large -\frac{\epsilon^2}{2}}}}{1-e^{{\large -\frac{\epsilon^2}{2}}}} < \infty \qquad (\textrm{geometric series}).
+  \end{align}
+
+</li></ul>
+</li></ul>
+</div><hr /><br>
+
+
+
+<span class=problem>Problem </span> 
+ <p>Consider the sample space $S=[0,1]$ with uniform probability distribution, i.e.,</p>
+  \begin{align}%\label{}
+   P([a,b])=b-a, \qquad \textrm{ for all }0 \leq a \leq b \leq 1.
+  \end{align}
+  Define the sequence $\big\{X_n, n=1,2, \cdots \big \}$ as $X_n(s)=\frac{n}{n+1} s+(1-s)^n$. Also, define the random variable $X$ on this sample space as $X(s)=s$. Show that $ X_n \ \xrightarrow{a.s.}\ X$.
+
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ For any $s \in (0,1]$, we have
+  \begin{align}%\label{}
+  \lim_{n\rightarrow \infty} X_n(s)&= \lim_{n\rightarrow \infty} \left[ \frac{n}{n+1} s+(1-s)^n \right]\\
+   &=s=X(s).
+  \end{align}
+  However, if $s=0$, then
+  \begin{align}%\label{}
+  \lim_{n\rightarrow \infty} X_n(0)&= \lim_{n\rightarrow \infty} \left[\frac{n}{n+1} \cdot 0+(1-0)^n\right]\\
+   &=1.
+  \end{align}
+  Thus, we conclude
+   \begin{align}%\label{}
+  \lim_{n\rightarrow \infty} X_n(s)=X(s), \qquad \textrm{ for all }s \in (0,1].
+  \end{align}
+  Since $P \big( (0,1] \big)=1$, we conclude $ X_n \ \xrightarrow{a.s.}\ X$.
+
+</li></ul>
+</li></ul>
+</div>
+<hr /><br>
+<span class=problem>Problem </span>
+ <p>Let $\{X_n, n=1,2,\cdots \}$ and $\{Y_n, n=1,2,\cdots \}$ be two sequences of random variables, defined on the sample space $S$. Suppose that we know</p>
+      \begin{align}%\label{}
+        &X_n \ \xrightarrow{a.s.}\ X,\\
+        &Y_n \ \xrightarrow{a.s.}\ Y.
+      \end{align}
+      Prove that $X_n+Y_n \ \xrightarrow{a.s.}\ X+Y$.
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+Define the sets $A$ and $B$ as follows:
+  \begin{align}%\label{eq:union-bound}
+   &A=\left\{s \in S: \lim_{n\rightarrow \infty} X_n(s)=X(s)\right\},\\
+   &B=\left\{s \in S: \lim_{n\rightarrow \infty} Y_n(s)=Y(s)\right\}.
+  \end{align}
+  By definition of almost sure convergence, we conclude $P(A)=P(B)=1$. Therefore, $P(A^c)=P(B^c)=0$. We conclude
+  \begin{align}%\label{eq:union-bound}
+   P(A \cap B)&=1-P(A^c \cup B^c)\\
+   &\geq 1-P(A^c)-P(B^c)\\
+   &=1.
+  \end{align}
+  Thus, $P(A \cap B)=1$. Now, consider the sequence $\{Z_n, n=1,2,\cdots \}$, where $Z_n=X_n+Y_n$, and define the set $C$ as
+  \begin{align}%\label{eq:union-bound}
+   C=\left\{s \in S: \lim_{n\rightarrow \infty} Z_n(s)=X(s)+Y(s)\right\}.
+  \end{align}
+  We claim $A \cap B \subset C$. Specifically, if $s \in A \cap B$, then we have
+  \begin{align}%\label{eq:union-bound}
+    \lim_{n\rightarrow \infty} X_n(s)=X(s), \qquad  \lim_{n\rightarrow \infty} Y_n(s)=Y(s).
+  \end{align}
+  Therefore,
+  \begin{align}%\label{eq:union-bound}
+    \lim_{n\rightarrow \infty} Z_n(s) &=\lim_{n\rightarrow \infty} \bigg[X_n(s)+Y_n(s) \bigg]\\
+     &=\lim_{n\rightarrow \infty} X_n(s)+ \lim_{n\rightarrow \infty} Y_n(s)\\
+   &=X(s)+Y(s).
+  \end{align}
+  Thus, $s \in C$. We conclude $A \cap B \subset C$. Thus,
+  \begin{align}%\label{eq:union-bound}
+   P(C) \geq P(A \cap B)=1,
+  \end{align}
+  which implies $P(C)=1$. This means that $Z_n \ \xrightarrow{a.s.}\ X+Y$.
+
+</li></ul></li></ul></div><hr /><br>
+
+<span class=problem>Problem </span>
+ <p>Let $\{X_n, n=1,2,\cdots \}$ and $\{Y_n, n=1,2,\cdots \}$ be two sequences of random variables, defined on the sample space $S$. Suppose that we know</p>
+      \begin{align}%\label{}
+        &X_n \ \xrightarrow{p}\ X,\\
+        &Y_n \ \xrightarrow{p}\ Y.
+      \end{align}
+      Prove that $X_n+Y_n \ \xrightarrow{p}\ X+Y$.
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+ For $n \in \mathbb{N}$, define the following events
+  \begin{align}%\label{eq:union-bound}
+   A_n= \bigg\{|X_n-X| < \frac{\epsilon}{2} \bigg\},\\
+   B_n= \bigg\{|Y_n-Y| < \frac{\epsilon}{2}\bigg\}.
+  \end{align}
+  Since  $X_n \ \xrightarrow{p}\ X$ and $Y_n \ \xrightarrow{p}\ Y$, we have for all $\epsilon>0$
+  \begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(A_n \big)=1,\\
+   \lim_{n \rightarrow \infty} P\big(B_n \big)=1.
+  \end{align}
+  We can also write
+  \begin{align}%\label{eq:union-bound}
+   P(A_n \cap B_n)&=P(A_n)+P(B_n)-P(A_n \cup B_n)\\
+   &\geq P(A_n)+P(B_n)-1.
+  \end{align}
+  Therefore,
+  \begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(A_n \cap B_n)=1.
+  \end{align}
+  Now, let us define the events $C_n$ and $D_n$ as follows:
+  \begin{align}%\label{eq:union-bound}
+   C_n= \bigg\{|X_n-X|+|Y_n-Y| < \epsilon \bigg\},\\
+   D_n= \bigg\{|X_n+Y_n-X-Y| < \epsilon \bigg\}.
+  \end{align}
+  Now, note that $(A_n \cap B_n) \subset C_n$, thus $P(A_n \cap B_n) \leq P(C_n)$. Also, by the triangle inequality for absolute values, we have
+  \begin{align}%\label{eq:union-bound}
+   |(X_n-X)+(Y_n-Y)| \leq |X_n-X|+ |Y_n-Y|.
+  \end{align}
+  Therefore, $C_n \subset D_n$, which implies
+  \begin{align}%\label{eq:union-bound}
+   P(C_n) \leq P(D_n).
+  \end{align}
+  We conclude
+  \begin{align}%\label{eq:union-bound}
+   P(A_n \cap B_n) \leq P(C_n) \leq P(D_n).
+  \end{align}
+  Since $\lim_{n \rightarrow \infty} P(A_n \cap B_n)=1$, we conclude $\lim_{n \rightarrow \infty} P(D_n)=1$. This by definition means that $X_n+Y_n \ \xrightarrow{p}\ X+Y$.
+
+</li></ul></li></ul>
+</div>
+
+	<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_7_almost_sure_convergence.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_3_0_chapter_problem.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c177203d7fa11b',t:'MTc5MjI2Mjc3OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

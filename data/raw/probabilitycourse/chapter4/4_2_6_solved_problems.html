@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 13 theorem	3 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'4.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'4.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'4.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'4.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="4.2.6"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Solved Problems | Special Continuous Distributions</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_2_5_other_distr.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter4/4_3_1_mixed.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>4.2.6 Solved Problems: <br />Special Continuous Distributions</h2></div>			
+    		<div class="clear"></div>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Suppose the number of customers arriving at a store obeys a Poisson distribution with an average of $\lambda$ 
+			customers per unit time. That is, if $Y$ is the number of customers arriving in an interval of length $t$, 
+			then $Y \sim Poisson (\lambda t)$. Suppose that the store opens at time $t=0$. Let $X$ be the arrival 
+			time of the first customer. Show that $X \sim Exponential(\lambda)$.</p>
+
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>We first find $P(X > t)$:
+						 <table align="center">			
+                          <tr>
+                            <td>$P(X > t)$</td>
+                            <td>$=P(\textrm{No arrival in }[0,t])$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=e^{-\lambda t}\frac{(\lambda t)^0}{0!}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=e^{-\lambda t}$.</td>
+                          </tr>
+                          </table><br>
+						  Thus, the CDF of $X$ for $x>0$ is given by
+						  $$F_X(x)=1-P(X>x)=1-e^{-\lambda x},$$
+						  which is the CDF of $Exponential(\lambda)$. Note that by the same argument, the time between 
+						  the first and second customer also has $Exponential(\lambda)$ distribution. In general, 
+						  the time between the $k$'th and $k+1$'th customer is $Exponential(\lambda)$.</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span> (Exponential as the limit of Geometric)<br>
+			<p>Let $Y \sim Geometric(p)$, where $p=\lambda \Delta$. Define $X=Y \Delta$, where $\lambda, \Delta>0$. 
+			Prove that for any $x \in (0,\infty)$, we have
+			$$\lim_{\Delta \rightarrow 0} F_X(x)=1-e^{-\lambda x}.$$</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>If $Y \sim Geometric(p)$ and $q=1-p$, then
+						 <table align="center">			
+                          <tr>
+                            <td>$P(Y \leq n)$</td>
+                            <td>$=\sum_{k=1}^{n} pq^{k-1}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=p. \frac{1-q^{\large{n}}}{1-q}=1-(1-p)^n$.</td>
+                          </tr>
+                          </table><br>
+						  Then for any $y \in (0,\infty)$, we can write
+						  $$P(Y \leq y) =1-(1-p)^{\lfloor y\rfloor},$$
+						  where $\lfloor y\rfloor$ is the largest integer less than or equal to $y$. 
+						  Now, since $X=Y \Delta$, we have
+						  <table align="center">			
+                          <tr>
+                            <td>$F_X(x)$</td>
+                            <td>$=P(X \leq x)$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=P\left(Y \leq \frac{x}{\Delta}\right)$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=1-(1-p)^{\lfloor \frac{\Large{x}}{\Delta} \rfloor}=1-(1-\lambda \Delta)^{\lfloor \frac{\Large{x}}{\Delta} \rfloor}$.</td>
+                          </tr>
+                          </table><br>
+						  Now, we have
+						  <table align="center">			
+                          <tr>
+                            <td>$\lim_{\Delta \rightarrow 0} F_X(x)$</td>
+                            <td>$=\lim_{\Delta \rightarrow 0} 1-(1-\lambda \Delta)^{\lfloor \frac{\Large{x}}{\Delta} \rfloor}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=1-\lim_{\Delta \rightarrow 0} (1-\lambda \Delta)^{\lfloor \frac{\Large{x}}{\Delta} \rfloor}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=1-e^{-\lambda x}$.</td>
+                          </tr>
+                          </table><br>
+						  The last equality holds because 
+						  $\frac{x}{\Delta}-1 \leq \lfloor \frac{x}{\Delta} \rfloor \leq \frac{x}{\Delta}$, and we know
+						  $$\lim_{\Delta \rightarrow 0^{+}} (1-\lambda \Delta)^{\frac{1}{\Delta}}=e^{-\lambda}.$$</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $U \sim Uniform(0,1)$ and $X=-\ln (1-U)$. Show that $X \sim Exponential(1)$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>First note that since $R_U=(0,1)$,  $R_X=(0,\infty)$. We will find the CDF of $X$. 
+						 For $x \in(0,\infty)$, we have
+						 <table align="center">			
+                          <tr>
+                            <td>$F_X(x)$</td>
+                            <td>$=P(X \leq x)$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=P(-\ln (1-U) \leq x)$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=P\left(\frac{1}{1-U} \leq e^x\right)$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=P(U \leq 1-e^{-x})=1-e^{-x}$,</td>
+                          </tr>
+                          </table><br>
+						  which is the CDF of an $Exponential(1)$ random variable.</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X \sim N(2,4)$ and $Y=3-2X$.
+			<ol type="a">
+                <li>Find $P(X > 1)$.</li>
+                <li>Find $P(-2 < Y < 1)$.</li>
+                <li>Find $P(X > 2 |Y < 1)$.</li>
+            </ol></p> 
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p><ol type="a">
+						 	 <li>Find $P(X > 1)$: We have $\mu_X=2$ and $\sigma_X=2$. Thus,
+							 <table align="center">			
+                              <tr>
+                                <td>$P(X > 1)$</td>
+                                <td>$=1-\Phi\left(\frac{1-2}{2}\right)$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$=1-\Phi(-0.5)=\Phi(0.5)=0.6915$</td>
+                              </tr>
+                              </table><br>
+							 </li>
+							 <li>Find $P(-2 < Y < 1)$: Since $Y=3-2X$, using Theorem 4.3, we have $Y \sim N(-1,16)$. 
+							 Therefore,
+							 <table align="center">			
+                              <tr>
+                                <td>$P(-2 < Y < 1)$</td>
+                                <td>$=\Phi\left(\frac{1-(-1)}{4}\right)-\Phi\left(\frac{(-2)-(-1)}{4}\right)$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$=\Phi(0.5)-\Phi(-0.25)=0.29$</td>
+                              </tr>
+                              </table><br>
+                  			 </li>
+							 <li>Find $P(X > 2 |Y < 1)$:
+							 <table align="center">			
+                              <tr>
+                                <td>$P(X > 2 |Y < 1)$</td>
+                                <td>$=P(X > 2 |3-2X < 1)$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$=P(X > 2 |X > 1)$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{P(X > 2,X > 1)}{P(X > 1)}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{P(X > 2)}{P(X > 1)}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{1-\Phi(\frac{2-2}{2})}{1-\Phi(\frac{1-2}{2})}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{1-\Phi(0)}{1-\Phi(-0.5)}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$\approx 0.72$</td>
+                              </tr>
+                              </table><br>
+							 </li>
+						 </ol></p> 
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X \sim N(0,\sigma^2)$. Find $E|X|$</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>We can write $X=\sigma Z$, where $Z \sim N(0,1)$. Thus, $E|X|=\sigma E|Z|$. We have
+						 <table align="center">			
+                          <tr>
+                            <td>$E|Z|$</td>
+                            <td>$=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} |t| e^{-\frac{t^2}{2}}dt$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\frac{2}{\sqrt{2\pi}}\int_{0}^{\infty} |t| e^{-\frac{t^2}{2}}dt \hspace{20pt}(\textrm{integral of an even function})$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\sqrt{\frac{2}{\pi}}\int_{0}^{\infty} t e^{-\frac{t^2}{2}}dt$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\sqrt{\frac{2}{\pi}}\bigg[-e^{-\frac{t^2}{2}} \bigg]_{0}^{\infty}=\sqrt{\frac{2}{\pi}}$</td>
+                          </tr>
+                          </table><br>
+						  Thus, we conclude $E|X|=\sigma E|Z|=\sigma\sqrt{\frac{2}{\pi}}$.</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Show that the constant in the normal distribution must be $\frac{1}{\sqrt{2 \pi}}$. That is, show that
+			$$I=\int_{-\infty}^{\infty} e^{-\frac{x^2}{2}}dx=\sqrt{2 \pi}.$$
+			<i>Hint:</i> Write $I^2$ as a double integral in polar coordinates.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>Let $I=\int_{-\infty}^{\infty} e^{-\frac{x^2}{2}}dx$. We show that $I^2=2\pi$. To see this, note
+						 <table align="center">			
+                          <tr>
+                            <td>$I^2$</td>
+                            <td>$= \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}}dx \int_{-\infty}^{\infty} e^{-\frac{y^2}{2}}dy$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{x^2+y^2}{2}}dxdy$.</td>
+                          </tr>
+                          </table><br>
+						  To evaluate this double integral we can switch to polar coordinates. This can be done by change 
+						  of variables $x=r \cos \theta, y=r \sin \theta$, and $dx dy=rdrd\theta$. In particular, we have
+						  <table align="center">			
+                          <tr>
+                            <td>$I^2$</td>
+                            <td>$=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\frac{x^2+y^2}{2}}dxdy$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\int_{0}^{\infty} \int_{0}^{2\pi} e^{-\frac{r^2}{2}}r d\theta dr$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=2 \pi \int_{0}^{\infty} r e^{-\frac{r^2}{2}} dr$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=2 \pi \bigg[-e^{-\frac{r^2}{2}}\bigg]_{0}^{\infty}=2 \pi$.</td>
+                          </tr>
+                          </table><br></p>  
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $Z \sim N(0,1)$. Prove for all $x \geq 0$,
+			$$\frac{1}{\sqrt{2\pi}} \frac{x}{x^2+1} e^{-\frac{x^2}{2}} \leq P(Z \geq x) \leq \frac{1}{\sqrt{2\pi}} \frac{1}{x} e^{-\frac{x^2}{2}}.$$</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>To show the upper bound, we can write
+						 <table align="center">			
+                          <tr>
+                            <td>$P(Z \geq x)$</td>
+                            <td>$= \frac{1}{\sqrt{2 \pi}}  \int_{x}^{\infty}e^{-\frac{u^2}{2}} du$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$\leq \frac{1}{\sqrt{2 \pi}}  \int_{x}^{\infty} \frac{u}{x} e^{-\frac{u^2}{2}} du \hspace{10pt} (\textrm{since $u \geq x > 0$})$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$= \frac{1}{\sqrt{2 \pi}}\frac{1}{x}  \left[-e^{-\frac{u^2}{2}}\right]^{\infty}_{x}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\frac{1}{\sqrt{2\pi}} \frac{1}{x} e^{-\frac{x^2}{2}}$.</td>
+                          </tr>
+                          </table><br>
+						  To show the lower bound, let $Q(x)=P(Z \geq x)$, and
+						  $$h(x)=Q(x)-\frac{1}{\sqrt{2\pi}} \frac{x}{x^2+1} e^{-\frac{x^2}{2}}, \hspace{10pt} \textrm{ for all }x \geq 0.$$
+						  It suffices to show that
+						  $$h(x)\geq 0, \hspace{10pt} \textrm{ for all }x \geq 0.$$
+						  To see this, note that the function $h$ has the following properties
+						  <ol type="1">
+                              <li>$h(0)=\frac{1}{2}$;</li>
+                              <li>$\lim \limits_{x \rightarrow \infty} h(x)=0$;</li>
+                              <li>$h'(x)=-\frac{2}{\sqrt{2\pi}}\left( \frac{e^{-\frac{x^2}{2}}}{(x^2+1)^2}\right) < 0$,  for all $x \geq 0$.</li>
+                          </ol>
+						  Therefore, $h(x)$ is a strictly decreasing function that starts at $h(0)=\frac{1}{2}$ and 
+						  decreases as $x$ increases. It approaches $0$ as $x$ goes to infinity. We conclude that 
+						  $h(x) \geq 0$, for all $x \geq 0$.</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr />
+
+			<!-- Problem Begin -->
+			<span class='problem'>Problem </span><br />
+			<p>
+			Let $X \sim Gamma(\alpha,\lambda)$, where $\alpha, \lambda \gt 0$. Find $EX$, and $Var(X)$.
+			</p>
+			<div class='solvedprob'>
+				<ul>
+					<li><a><b>Solution</b></a>
+					<ul>
+						<li>
+							<p>
+							To find $EX$ we can write
+							$$
+							\begin{align*}
+							EX 	&#38;= \int_0^\infty x f_X(x) dx \\
+								 	&#38;= \int_0^\infty x \cdot \frac{\lambda^{\alpha}}{\Gamma{\alpha}} x^{\alpha - 1} e^{-\lambda x} {\rm d}x 		\\
+								 	&#38;= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} \int_0^{\infty} x \cdot x^{\alpha - 1} e^{-\lambda x} {\rm d}x 	\\
+								 	&#38;= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} \int_0^{\infty} x^{\alpha} e^{-\lambda x} {\rm d}x								\\
+									&#38;= \frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{\Gamma(\alpha + 1)}{\lambda^{\alpha + 1}}
+									&#38;\textrm{(using Property 2 of the gamma function)}	\\
+									&#38;= \frac{\alpha\Gamma(\alpha)}{\lambda\Gamma(\alpha)} 									
+									&#38;\textrm{(using Property 3 of the gamma function)}	\\
+									&#38;= \frac{\alpha}{\lambda}.	
+							\end{align*}
+							$$
+							</p>
+							<p>
+							Similarly, we can find $EX^2$:
+							$$
+							\begin{align*}
+							EX^2	&#38;=	\int_0^{\infty} x^2 {\rm d}x																																								\\
+										&#38;=	\int_0^{\infty} x^2 \cdot \frac{\lambda^{\alpha}}{\Gamma(\alpha)} x^{\alpha - 1} e^{-\lambda x} {\rm d}x		\\
+										&#38;=	\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \int_0^{\infty} x^2 \cdot x^{\alpha - 1} e^{-\lambda x} {\rm d}x		\\
+										&#38;=	\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \int_0^{\infty} x^{\alpha + 1} e^{-\lambda x} {\rm d}x							\\
+										&#38;=	\frac{\lambda^{\alpha}}{\Gamma(\alpha)} \frac{\Gamma(\alpha + 2)}{\lambda^{\alpha + 2}}
+										&#38;\textrm{(using Property 2 of the gamma function)}		\\
+										&#38;=	\frac{(\alpha + 1)\Gamma(\alpha + 1)}{\lambda^2 \Gamma(\alpha)}
+										&#38;\textrm{(using Property 3 of the gamma function)}		\\
+										&#38;=	\frac{(\alpha + 1) \alpha \Gamma(\alpha)}{\lambda^2 \Gamma(\alpha)}
+										&#38;\textrm{(using Property 3 of the gamma function)}		\\
+										&#38;= 	\frac{\alpha (\alpha + 1)}{\lambda^2}.
+							\end{align*}
+							$$
+							</p>
+							<p>
+							So, we conclude
+							$$
+								\begin{align*}
+									Var(X) 	&#38;= 	EX^2 - (EX)^2			\\
+													&#38;=	\frac{\alpha (\alpha + 1)}{\lambda^2} - \frac{\alpha^2}{\lambda^2}	\\
+													&#38;=	\frac{\alpha}{\lambda^2}.
+								\end{align*}
+							$$
+							</p>
+						</li>
+					</ul></li>
+				</ul>	
+			</div>
+			<!-- Problem End -->
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_2_5_other_distr.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter4/4_3_1_mixed.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17685acdc78c7',t:'MTc5MjI2Mjc1NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

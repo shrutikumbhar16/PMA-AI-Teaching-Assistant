@@ -1,0 +1,10 @@
+{
+  "id": "6.0",
+  "title": "Multiple Random Variables",
+  "chapter": 6,
+  "topic": "Multiple Random Variables",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter6/6_0_0_intro.php",
+  "text": "6.0.0 Introduction\nAll the concepts that we have seen regarding one and two random variables can be extended to more random variables. In particular, we can define joint PDF, joint PMF, and joint CDF for three or more random variables. We provide these definitions in Section 6.1.1. However, working with these functions quickly becomes computationally intractable as the number of random variables grows. Thus, in dealing with multiple random variables we usually resort to other techniques. We discuss some of these techniques, such as moment generating functions and probability bounds, in this chapter.\n."
+}

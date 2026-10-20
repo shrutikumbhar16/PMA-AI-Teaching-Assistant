@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 21 theorem	3 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'6.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'6.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'6.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'6.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="6.2.3"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Chernoff Bounds</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_2_2_markov_chebyshev_inequalities.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter6/6_2_4_cauchy_schwarz.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>6.2.3 Chernoff Bounds</h2></div>			
+    		<div class="clear"></div><!DOCTYPE html>
+           If $X$ is a random variable, then for any $a \in \mathbb{R}$, we can write
+\begin{align}%\label{}
+  P(X \geq a)= P(e^{sX} \geq e^{sa}),  &\qquad \textrm{ for } s>0, \\
+  P(X \leq a)= P(e^{sX} \geq e^{sa}),  &\qquad \textrm{ for } s&lt;0.
+\end{align}
+
+
+Now, note that $e^{sX}$ is always a positive random variable for all $s \in \mathbb{R}$. Thus, we can apply Markov's inequality. So for $s>0$, we can write
+\begin{align}%\label{}
+  P(X \geq a)&= P(e^{sX} \geq e^{sa})\\
+  & \leq \frac{E[e^{sX}]}{e^{sa}}, \hspace{10pt} \textrm{ by Markov's inequality}.
+\end{align}
+Similarly, for $s&lt;0$, we can write
+\begin{align}%\label{}
+  P(X \leq a)&= P(e^{sX} \geq e^{sa})\\
+  & \leq \frac{E[e^{sX}]}{e^{sa}}.
+\end{align}
+Note that $E[e^{sX}]$ is in fact the moment generating function, $M_X(s)$. Thus, we conclude
+            </p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<p align="center">Chernoff Bounds:</p>
+
+<p style="padding-top:5px;">
+<table align="center" width="60%">			
+                          <tr>
+                            <td>$P(X \geq a)\leq e^{-sa}M_X(s),$</td>
+                            <td>$\textrm{ for all }s>0$,</td>
+                          </tr>
+                          <tr>
+                            <td>$P(X \leq a)\leq e^{-sa}M_X(s),$</td>
+                            <td>$ \textrm{ for all }s&lt;0$</td>
+                          </tr>
+						  </table><br>
+</p>
+			</div><br>
+            <p>Since Chernoff bounds are valid for all values of $s>0$ and $s&lt;0$, we can choose $s$ in a way to obtain the best bound, that is we can write
+            
+\begin{align}%\label{}
+  P(X \geq a)&  \leq  \min_{s>0} e^{-sa}M_X(s), \\
+  P(X \leq a)&\leq  \min_{s&lt;0} e^{-sa}M_X(s).
+\end{align}
+Let us look at an example to see how we can use Chernoff bounds.</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			<p>Let $X \sim Binomial(n,p)$. Using Chernoff bounds, find an upper bound on $P(X \geq \alpha n)$, where $p< \alpha&lt;1$. Evaluate the bound for $p=\frac{1}{2}$ and $\alpha=\frac{3}{4}$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 For $X \sim Binomial(n,p)$, we have
+\begin{align}%\label{}
+  M_X(s)=(pe^s+q)^n, &\qquad \textrm{ where }q=1-p.
+\end{align}
+Thus, the Chernoff bound for $P(X \geq a)$ can be written as
+\begin{align}\label{eq:cher-1}
+  P(X \geq \alpha n)&  \leq  \min_{s>0} e^{-sa}M_X(s)\\
+\ &= \min_{s>0} e^{-sa}(pe^s+q)^n.
+\end{align}
+To find the minimizing value of $s$, we can write
+\begin{align}%\label{}
+  \frac{d}{ds} e^{-sa}(pe^s+q)^n=0,
+\end{align}
+which results in
+\begin{align}%\label{}
+  e^{s}=\frac{aq}{np(1-\alpha)}.
+\end{align}
+By using this value of $s$ in Equation 6.3 and some algebra, we obtain
+\begin{align}%\label{}
+  P(X \geq \alpha n)&  \leq \big( \frac{1-p}{1-\alpha}\big)^{(1-\alpha)n} \big(\frac{p}{\alpha}\big)^{\alpha n}.
+\end{align}
+For $p=\frac{1}{2}$ and $\alpha=\frac{3}{4}$, we obtain
+\begin{align}%\label{}
+  P(X \geq \frac{3}{4} n)&  \leq  \big(\frac{16}{27}\big)^{\frac{n}{4}}.
+\end{align}
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+						
+			<p><b><font size="3">Comparison between Markov, Chebyshev, and Chernoff Bounds:</font></b></p>
+			<p>Above, we found upper bounds on $P(X \geq \alpha n)$ for $X \sim Binomial(n,p)$. It is interesting to compare them. Here are the results that we obtain for $p=\frac{1}{4}$ and $\alpha=\frac{3}{4}$:
+\begin{align}%\label{}
+  &P(X \geq \frac{3n}{4})\leq \frac{2}{3}  \hspace{58pt} \textrm{Markov}, \\
+  &P(X \geq \frac{3n}{4})\leq \frac{4}{n}  \hspace{57pt} \textrm{Chebyshev}, \\
+  &P(X \geq \frac{3n}{4})\leq \big(\frac{16}{27}\big)^{\frac{n}{4}}  \hspace{35pt} \textrm{Chernoff}.
+\end{align}
+The bound given by Markov is the "weakest" one. It is constant and does not change as $n$ increases. The bound given by Chebyshev's inequality is "stronger" than the one given by Markov's inequality. In particular, note that $\frac{4}{n}$ goes to zero as $n$ goes to infinity. The strongest bound is the Chernoff bound. It goes to zero exponentially fast.
+</p>
+			
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_2_2_markov_chebyshev_inequalities.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter6/6_2_4_cauchy_schwarz.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176d56e5234ca',t:'MTc5MjI2Mjc2Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

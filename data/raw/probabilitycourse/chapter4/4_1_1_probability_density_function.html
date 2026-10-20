@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 1 theorem	0 lemma 0 definition 1 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'4.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'4.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'4.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'4.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="4.1.1"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Probability Density Function | PDF | Distributions</title>
+	<meta name="description" content="Definitions and examples of the Probability Density Function">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_1_0_continuous_random_vars_distributions.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter4/4_1_2_expected_val_variance.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter4/video4_2.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>4.1.1 Probability Density Function (PDF)</h2></div>			
+    		<div class="clear"></div>
+			
+			<p>To determine the distribution of a discrete random variable we can either provide its PMF or CDF. For 
+			continuous random variables, the CDF is well-defined so we can provide the CDF. However, the PMF does 
+			not work for continuous random variables, because for a continuous random variable $P(X=x)=0$ for all 
+			$x \in \mathbb{R}$. Instead, we can usually define the <b>probability density function (PDF)</b>. The PDF is the 
+			<b>density</b> of probability rather than the probability mass. The concept is very similar to mass density 
+			in physics: its unit is probability per unit length. To get a feeling for PDF, consider a continuous 
+			random variable $X$ and define the function $f_X(x)$ as follows (wherever the limit exists):
+			$$f_X(x)=\lim_{\Delta \rightarrow 0^+} \frac{P(x < X \leq x+\Delta)}{\Delta}.$$
+			The function $f_X(x)$ gives us the probability density at point $x$. It is the limit of the probability 
+			of the interval $(x,x+\Delta]$ divided by the length of the interval as the length of the interval goes 
+			to $0$. Remember that
+			$$P(x < X \leq x+\Delta)=F_X(x+\Delta)-F_X(x).$$
+			So, we conclude that
+			<table align="center">			
+            <tr>
+              <td></td>
+              <td>$$f_X(x)=\lim_{\Delta \rightarrow 0} \frac{F_X(x+\Delta)-F_X(x)}{\Delta}$$</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>$$=\frac{dF_X(x)}{dx}=F'_X(x), \hspace{20pt} \textrm{if }F_X(x) \textrm{ is differentiable at }x.$$</td>
+            </tr>
+            </table><br>
+			Thus, we have the following definition for the PDF of continuous random variables:</p>
+		
+			<div class=cbox>
+			<span class='definition'>Definition </span><br>
+			Consider a continuous random variable $X$ with an absolutely continuous CDF $F_X(x)$. The function $f_X(x)$ defined by
+			$$f_X(x)=\frac{dF_X(x)}{dx}=F'_X(x), \hspace{20pt} \textrm{if }F_X(x) \textrm{ is differentiable at }x$$
+			is called the probability density function (PDF) of $X$.
+
+			
+
+                        </div><br>
+			
+			<p>Let us find the PDF of the uniform random variable $X$ discussed in 
+			<a href="chapter4/4_1_0_continuous_var.php#ex64">Example 4.1</a>. This random 
+			variable is said to have $Uniform(a,b)$ distribution. The CDF of $X$ is given in Equation 4.1. By taking the 
+			derivative, we obtain
+            \begin{equation}
+             f_X(x) = \left\{
+              \begin{array}{l l}
+                \frac{1}{b-a} & \quad  a < x < b\\
+                0 & \quad x < a \textrm{ or } x > b
+              \end{array} \right.
+            \end{equation}
+			Note that the CDF is not differentiable at points $a$ and $b$. Nevertheless, as we will discuss later on, 
+			this is not important. Figure 4.2 shows the PDF of $X$. As we see, the value of the PDF is constant in the 
+			interval from $a$ to $b$. That is why we say $X$ is uniformly distributed over $[a,b]$.</p>
+			
+			<figure>
+  					<img src="//www.probabilitycourse.com/images/chapter4/PDF-Uniform_b.png" id="chapter_image" alt="Figure" title="Figure" border="0" />
+  					<figcaption>Fig.4.2 - PDF for a continuous random variable uniformly distributed over $[a,b]$.</figcaption>
+			</figure>
+			
+			<p>The uniform distribution is the simplest continuous random variable you can imagine. For other types 
+			of continuous random variables the PDF is non-uniform. Note that for small values of $\delta$ we can write
+			$$P(x < X \leq x+\delta) \approx f_X(x) \delta.$$
+			Thus, if $f_X(x_1)>f_X(x_2)$, we can say $P(x_1 < X \leq x_1+\delta)>P(x_2 < X \leq x_2+\delta)$, i.e., the value 
+			of $X$ is more likely to be around $x_1$ than $x_2$. This is another way of interpreting the PDF.</p>
+			
+			<hr /><br>
+			
+			<p>Since the PDF is the derivative of the CDF, the CDF can be obtained from PDF by integration (assuming absolute continuity):
+			$$F_X(x)=\int_{-\infty}^{x} f_X(u)du.$$
+			Also, we have
+			$$P(a < X \leq b) = F_X(b)-F_X(a)=\int_{a}^{b} f_X(u)du.$$
+			In particular, if we integrate over the entire real line, we must get $1$, i.e.,
+			$$\int_{-\infty}^{\infty} f_X(u)du=1.$$
+			That is, the area under the PDF curve must be equal to one. We can see that this holds for the uniform 
+			distribution since the area under the curve in Figure 4.2 is one. Note that $f_X(x)$ is density of 
+			probability, so it must be larger than or equal to zero, but it can be larger than $1$. Let us 
+			summarize the properties of the PDF.</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			Consider a continuous random variable $X$ with PDF $f_X(x)$. We have
+			<ol type="1">
+                <li>$f_X(x) \geq 0$ for all $x \in \mathbb{R}$.</li>
+                <li>$\int_{-\infty}^{\infty} f_X(u)du=1$.</li>
+                <li>$P(a < X \leq b) = F_X(b)-F_X(a)=\int_{a}^{b} f_X(u)du$.</li>
+                <li>More generally, for a set $A$, $P(X \in A) =\int_{A} f_X(u)du$.</li>
+            </ol> 
+			</div><br>
+			
+			<p>In the last item above, the set $A$ must satisfy some mild conditions which are almost always satisfied 
+			in practice. An example of set $A$ could be a union of some disjoint intervals. For example, if 
+			you want to find $P(X \in [0,1] \cup [3,4])$, you can write
+			$$P(X \in [0,1] \cup [3,4]) = \int_{0}^{1} f_X(u)du+\int_{3}^{4} f_X(u)du.$$
+			Let us look at an example to practice the above concepts.</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			Let $X$ be a continuous random variable with the following PDF
+			\begin{equation}
+             \nonumber f_X(x) = \left\{
+              \begin{array}{l l}
+                ce^{-x} & \quad  x \geq 0\\
+                0 & \quad \text{otherwise}
+              \end{array} \right.
+            \end{equation}
+			where $c$ is a positive constant.
+			<ol type="a">
+                <li>Find $c$.</li>
+                <li>Find the CDF of X, $F_X(x)$.</li>
+                <li>Find $P(1 < X < 3)$.</li>
+            </ol> 
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <ol type="a">
+						 	 <li>To find $c$, we can use Property 2 above, in particular
+							 <table align="center">			
+                              <tr>
+                                <td>$1$</td>
+                                <td>$=\int_{-\infty}^{\infty} f_X(u)du$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= \int_{0}^{\infty} ce^{-u}du$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= c  \bigg[-e^{-x}\bigg]_{0}^{\infty}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= c$.</td>
+                              </tr>
+                              </table><br>
+							  Thus, we must have $c=1$.
+							 </li><br>
+							 <li>To find the CDF of X, we use $F_X(x)=\int_{-\infty}^{x} f_X(u)du$, so for $x < 0$, we 
+							 obtain $F_X(x)=0$. For $x \geq 0$, we have
+							 $$F_X(x) = \int_{0}^{x} e^{-u}du=1-e^{-x}.$$
+							 Thus,
+							 \begin{equation}
+                              \nonumber F_X(x) = \left\{
+                              \begin{array}{l l}
+                                1-e^{-x} & \quad  x\geq 0\\
+                                0 & \quad \text{otherwise}
+                              \end{array} \right.
+                              \end{equation}
+							 </li><br>
+							 <li>We can find $P(1 < X < 3)$ using either the CDF or the PDF. If we use the CDF, 
+							 we have
+							 $$P(1 < X < 3)=F_X(3)-F_X(1)=\big[1-e^{-3}\big]-\big[1-e^{-1}\big]=e^{-1}-e^{-3}.$$
+							 Equivalently, we can use the PDF. We have
+							 <table align="center">			
+                              <tr>
+                                <td>$P(1 < X < 3)$</td>
+                                <td>$=\int_{1}^{3} f_X(t)dt$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$=\int_{1}^{3} e^{-t}dt$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=e^{-1}-e^{-3}.$</td>
+                              </tr>
+                              </table><br>
+							 </li>
+						 </ol> 
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<b><font size="3">Range</font></b><br>
+			<p>The range of a random variable $X$ is the set of possible values of the random variable. If $X$ is a 
+			continuous random variable, we can define the range of $X$ as the set of real numbers $x$ for which 
+			the PDF is larger than zero, i.e,
+			$$R_X=\{x | f_X(x)>0\}.$$
+			The set $R_X$ defined here might not exactly show all possible values of $X$, but the difference is 
+			practically unimportant.</p>
+			
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_1_0_continuous_random_vars_distributions.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter4/4_1_2_expected_val_variance.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17656db9834ca',t:'MTc5MjI2Mjc0Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

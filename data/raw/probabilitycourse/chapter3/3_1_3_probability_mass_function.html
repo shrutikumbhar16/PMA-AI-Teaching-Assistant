@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 2 theorem	0 lemma 0 definition 0 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'3.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'3.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'3.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'3.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="3.1.3"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Probability Mass Function | PMF</title>
+	<meta name="description" content="Definition of a probability mass function with examples">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_2_discrete_random_var.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter3/3_1_4_independent_random_var.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter3/video3_1.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>3.1.3 Probability Mass Function (PMF)</h2></div>			
+    		<div class="clear"></div>
+			
+			<p>If $X$ is a discrete random variable then its range $R_X$ is a countable set, so, we can list 
+			the elements in $R_X$. In other words, we can write
+			$$R_X=\{x_1,x_2,x_3,...\}.$$
+			Note that here $x_1, x_2,x_3,...$ are possible values of the random variable $X$. While random 
+			variables are usually denoted by capital letters, to represent the numbers in the range we usually 
+			use lowercase letters such as $x$, $x_1$, $y$, $z$, etc. For a discrete random variable $X$, we 
+			are interested in knowing the probabilities of $X=x_k$. Note that here, the event $A=\{X=x_k\}$ 
+			is defined as the set of outcomes $s$ in the sample space $S$ for which the corresponding value 
+			of $X$ is equal to $x_k$. In particular,
+			$$A=\{s \in S | X(s)=x_k\}.$$
+			The probabilities of events $\{X=x_k\}$ are formally shown by the <b>probability mass function (pmf)</b> of $X$.</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<span class='definition'>Definition </span><br>
+			Let $X$ be a discrete random variable with range $R_X=\{x_1,x_2,x_3, ...\}$ (finite or countably infinite). 
+			The function
+			$$P_X(x_k)=P(X=x_k),  \textrm{ for } k=1,2,3,...,$$
+			is called the <i>probability mass function (PMF)</i> of $X$.		
+			</div><br>
+
+			<p>Thus, the PMF is a probability measure that gives us probabilities of the possible values for a 
+			random variable.  While the above notation is the standard notation for the PMF of $X$, it might 
+			look confusing at first. The subscript $X$ here indicates that this is the PMF of the random variable $X$. 
+			Thus, for example, $P_X(1)$ shows the probability that $X=1$. To better understand all of the above concepts, 
+			let&#39;s look at some examples.</p>
+			
+			<hr /><br>
+			<a name="ex46"></a>
+			<span class='example'>Example </span><br>
+			<p>I toss a fair coin twice, and let $X$ be defined as the number of heads I observe. Find the range of $X$, 
+			$R_X$, as well as its probability mass function $P_X$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 Here, our sample space is given by
+						 $$S=\{HH,HT,TH,TT\}.$$
+						 The number of heads will be $0$, $1$ or $2$. Thus
+						 $$R_X=\{0,1,2\}.$$
+						 Since this is a finite (and thus a countable) set, the random variable $X$ is a discrete random 
+						 variable. Next, we need to find PMF of $X$. The PMF is defined as
+						 $$P_X(k)=P(X=k) \textrm{ for } k=0,1,2.$$
+						 We have
+						 $$P_X(0)=P(X=0)=P(TT)=\frac{1}{4},$$
+						 $$P_X(1) =P(X=1)=P(\{HT,TH\})=\frac{1}{4}+\frac{1}{4}=\frac{1}{2},$$
+						 $$P_X(2)=P(X=2)=P(HH)=\frac{1}{4}.$$
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+
+			Although the PMF is usually defined for values in the range, it is sometimes convenient to extend 
+			the PMF of $X$ to all real numbers. If $x \notin R_X$, we can simply write $P_X(x)=P(X=x)=0$. Thus, 
+			in general we can write
+			
+            \begin{equation}
+             \nonumber P_X(x) = \left\{
+              \begin{array}{l l}
+                P(X=x) & \quad \text{if $x$ is in } R_X\\
+                0 & \quad \text{otherwise}
+              \end{array} \right.
+            \end{equation}
+			
+			<p>To better visualize the PMF, we can plot it. Figure 3.1 shows the PMF of the above 
+			random variable $X$. As we see, the random variable can take three possible values $0,1$ and $2$. 
+			The figure also clearly indicates that the event $X=1$ is twice as likely as the other two possible 
+			values. The Figure can be interpreted in the following way: If we repeat the random experiment 
+			(tossing a coin twice) a large number of times, then about half of the times we observe $X=1$, 
+			about a quarter of times we observe $X=0$, and about a quarter of times we observe $X=2$.</p>
+			
+			<figure>
+  					<img src="http://probabilitycourse.com/images/chapter3/PMF-TwoDice_b.png" id="chapter_image" alt="pmf" title="pmf" border="0" />
+  					<figcaption>Fig.3.1 - PMF for random Variable $X$ in Example 3.3.</figcaption>
+			</figure>
+			
+			<p>For discrete random variables, the PMF is also called the <b>probability distribution</b>. Thus, when 
+			asked to find the probability distribution of a discrete random variable $X$, we can do this by 
+			finding its PMF. The phrase <i>distribution function</i> is usually reserved exclusively for the cumulative 
+			distribution function CDF (as defined later in the book). The word <i>distribution</i>, on the other 
+			hand, in this book is used in a broader sense and could refer to PMF, probability density function (PDF), 
+			or CDF.</p>
+			
+			<hr /><br>
+			<a name="ex47"></a>
+			<span class='example'>Example </span><br>
+			<p>I have an unfair coin for which $P(H)=p$, where $0 < p < 1$. I toss the coin repeatedly until I observe a 
+			heads for the first time. Let $Y$ be the total number of coin tosses. Find the distribution of $Y$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 First, we note that the random variable $Y$ can potentially take any positive integer, so we 
+						 have $R_Y=\mathbb{N}=\{1,2,3,...\}$. To find the distribution of $Y$, we need to 
+						 find $P_Y(k)=P(Y=k)$ for $k=1,2,3,...$. We have
+						 $$P_Y(1) =P(Y=1)=P(H)=p,$$
+						 $$P_Y(2) =P(Y=2)=P(TH)=(1-p)p,$$
+						 $$P_Y(3) =P(Y=3)=P(TTH)=(1-p)^2 p,$$
+						 $$.  \hspace{50pt} .  \hspace{50pt} . \hspace{50pt} .$$
+						 $$.  \hspace{50pt} .  \hspace{50pt} . \hspace{50pt} .$$
+						 $$.  \hspace{50pt} .  \hspace{50pt} . \hspace{50pt} .$$
+						 $$P_Y(k) =P(Y=k)=P(TT...TH)=(1-p)^{k-1} p.$$
+						 Thus, we can write the PMF of $Y$ in the following way
+						 \begin{equation}
+                           \nonumber P_Y(y) = \left\{
+                            \begin{array}{l l}
+                               (1-p)^{y-1} p& \quad \text{for  } y=1,2,3,...\\
+                              0 & \quad \text{otherwise}
+                            \end{array} \right.
+                          \end{equation}
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+
+			<p>Consider a discrete random variable $X$ with Range$(X)=R_X$. Note that by definition the PMF 
+			is a probability measure, so it satisfies all properties of a probability measure. In particular, we have
+			<ul>
+                <li>$0\leq P_X(x) \leq 1$ for all $x$, and</li>
+                <li>$\sum_{x \in R_X} P_X(x)=1$.</li>
+            </ul>
+			Also note that for any set $A \subset R_X$, we can find the probability that $X \in A$ using the PMF
+			$$P(X \in A)=\sum_{x \in A} P_X(x).$$</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			Properties of PMF:
+			<ul>
+                <li>$0\leq P_X(x) \leq 1$ for all $x$;</li>
+                <li>$\sum_{x \in R_X} P_X(x)=1$;</li>
+                <li>for any set $A \subset R_X, P(X \in A)=\sum_{x \in A} P_X(x)$.</li>
+            </ul> 
+			</div><br>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			<p>For the random variable $Y$ in Example 3.4,
+			<ol type="1"> 
+                <li>Check that $\sum_{y \in R_Y} P_Y(y)=1$.</li>
+                <li>If $p=\frac{1}{2}$, find $P(2\leq Y <5)$.</li>
+            </ol> </p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 In Example 3.4, we obtained
+						 $$P_Y(k) =P(Y=k)=(1-p)^{k-1} p, \textrm{ for } k=1,2,3,...$$
+						 Thus,
+						 <ol type="1">
+                              <li>to check that $\sum_{y \in R_Y} P_Y(y)=1$, we have<br><br>
+							  <table align="center">			
+                              <tr>
+                                <td>$\sum_{y \in R_Y} P_Y(y)$</td>
+                                <td>$= \sum_{k=1}^{\infty} (1-p)^{k-1} p$</td>
+								<td></td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= p \sum_{j=0}^{\infty} (1-p)^{j}$</td>
+								<td></td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= p \frac{1}{1-(1-p)}$</td>
+								<td>$\hspace{30pt}\textrm{  Geometric sum}$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= 1$;</td>
+								<td></td>
+                              </tr>
+                              </table><br>
+							  </li>
+							  <li>if $p=\frac{1}{2}$, to find P$(2\leq Y < 5)$, we can write<br><br>
+							  <table align="center">			
+                              <tr>
+                                <td>$\textrm{P}(2\leq Y < 5)$</td>
+                                <td>$= \sum_{k=2}^{4} P_Y(k)$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= \sum_{k=2}^{4} (1-p)^{k-1} p$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= \frac{1}{2}\bigg(\frac{1}{2}+\frac{1}{4}+\frac{1}{8}\bigg)$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{7}{16}$.</td>
+                              </tr>
+                              </table><br>
+							  </li>
+                          </ol> 
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_2_discrete_random_var.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter3/3_1_4_independent_random_var.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c1761f2e1534ca',t:'MTc5MjI2MjczNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

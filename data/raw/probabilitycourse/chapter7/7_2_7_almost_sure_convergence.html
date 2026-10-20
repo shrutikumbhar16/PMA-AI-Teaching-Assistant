@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 11 theorem	4 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.2.7"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Almost Sure Convergence</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_6_convergence_in_mean.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_2_8_solved_probs.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.2.7 Almost Sure Convergence</h2></div>			
+    		<div class="clear"></div>
+<p>Consider a sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ that is defined on an underlying sample space $S$. For simplicity, let us assume that $S$ is a finite set, so we can write</p>
+\begin{align}%\label{}
+  S=\{s_1,s_2,\cdots, s_{\large k}\}.
+\end{align}
+Remember that each $X_n$ is a function from $S$ to the set of real numbers. Thus, we may write
+\begin{align}%\label{}
+  X_n(s_i)=x_{{\large ni}}, \qquad \textrm{ for }i=1,2,\cdots, k.
+\end{align}
+After this random experiment is performed, one of the $s_i$'s will be the outcome of the experiment, and the values of the $X_n$'s are known. If $s_{\large j}$ is the outcome of the experiment, we observe the following sequence:
+\begin{align}%\label{}
+  x_{{\large 1j}}, x_{{\large 2j}}, x_{{\large 3j}}, \cdots.
+\end{align}
+Since this is a sequence of real numbers, we can talk about its convergence. Does it converge? If yes, what does it converge to? <b>Almost sure</b> convergence is defined based on the convergence of such sequences. Before introducing almost sure convergence let us look at an example.
+<br>
+<hr />
+<span class='example'>Example </span>
+<p>Consider the following random experiment: A fair coin is tossed once. Here, the sample space has only two elements $S=\{H,T\}$. We define a sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ on this sample space as follows:</p>
+\begin{equation}
+ \nonumber X_n(s) = \left\{
+  \begin{array}{l l}
+    {\large \frac{n}{n+1}} &  \quad \textrm{ if }s=H  \\
+      &  \quad   \\
+    (-1)^n &  \quad \textrm{ if }s=T
+  \end{array} \right.
+\end{equation}
+<ol type=a>
+  <li> For each of the possible outcomes ($H$ or $T$), determine whether the resulting sequence of real numbers converges or not.</li>
+  <li> Find
+  \begin{align}%\label{}
+   P\left( \left\{s_i \in S: \lim_{n\rightarrow \infty} X_n(s_i)=1\right\}\right).
+  \end{align} </li>
+</ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+<ol type=a>
+  <li> If the outcome is $H$, then we have $X_n(H)=\frac{n}{n+1}$, so we obtain the following sequence
+  \begin{align}%\label{}
+    \frac{1}{2}, \frac{2}{3}, \frac{3}{4}, \frac{4}{5}, \cdots.
+  \end{align}
+  This sequence converges to $1$ as $n$ goes to infinity. If the outcome is $T$, then we have $X_n(T)=(-1)^n$, so we obtain the following sequence
+  \begin{align}%\label{}
+    -1, 1, -1, 1, -1, \cdots.
+  \end{align}
+  This sequence does not converge as it oscillates between $-1$ and $1$ forever.</li>
+
+  <li> By part (a), the event  $\left\{s_i \in S: \lim_{n\rightarrow \infty} X_n(s_i)=1\right\}$ happens if and only if the outcome is $H$, so
+  \begin{align}%\label{}
+   P\left( \left\{s_i \in S: \lim_{n\rightarrow \infty} X_n(s_i)=1\right\}\right) &=P(H)\\
+   &=\frac{1}{2}.
+  \end{align} </li>
+</ol>
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<p>In the above example, we saw that the sequence $X_{n}(s)$ converged when $s=H$ and did not converge when $s=T$. In general, if the probability that the sequence $X_{n}(s)$ converges to $X(s)$ is equal to $1$, we say that $X_n$ converges to $X$ <b>almost surely</b> and write</p>
+\begin{align}%\label{}
+   X_n \ \xrightarrow{a.s.}\ X.
+\end{align}
+
+<div class=cbox>
+<p align=center>Almost Sure Convergence</p>
+A sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ converges <b>almost surely</b> to a random variable $X$, shown by $ X_n \ \xrightarrow{a.s.}\ X$, if
+\begin{align}%\label{eq:union-bound}
+   P\left( \left\{s \in S: \lim_{n\rightarrow \infty} X_n(s)=X(s)\right\}\right)=1.
+\end{align}
+</div>
+<br>
+<hr />
+<span class='example'>Example </span>
+<p>Consider the sample space $S=[0,1]$ with a probability measure that is uniform on this space, i.e.,</p>
+\begin{align}%\label{}
+ P([a,b])=b-a, \qquad \textrm{ for all }0 \leq a \leq b \leq 1.
+\end{align}
+Define the sequence $\big\{X_n, n=1,2, \cdots \big \}$ as follows:
+\begin{equation}
+ \nonumber X_n(s) = \left\{
+  \begin{array}{l l}
+    1  &  \quad  0 \leq s < {\large \frac{n+1}{2n}}  \\
+      &  \quad   \\
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+\end{equation}
+Also, define the random variable $X$ on this sample space as follows:
+\begin{equation}
+ \nonumber X(s) = \left\{
+  \begin{array}{l l}
+    1  &  \quad  0 \leq s < \frac{1}{2}  \\
+      &  \quad   \\
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+\end{equation}
+Show that $ X_n \ \xrightarrow{a.s.}\ X$.
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+Define the set $A$ as follows:
+\begin{align}%\label{eq:union-bound}
+   A= \left\{s \in S: \lim_{n\rightarrow \infty} X_n(s)=X(s)\right\}.
+\end{align}
+We need to prove that $P(A)=1$. Let's first find $A$. Note that $\frac{n+1}{2n}>\frac{1}{2}$, so for any $s \in [0,\frac{1}{2})$, we have
+\begin{align}%\label{}
+  X_n(s)=X(s)=1.
+\end{align}
+Therefore, we conclude that $[0,0.5) \subset A$.  Now if $s> \frac{1}{2}$, then
+\begin{align}%\label{}
+  X(s)=0.
+\end{align}
+Also, since $2s-1>0$, we can write
+\begin{align}%\label{}
+  X_n(s)=0, \qquad \textrm{ for all }n>\frac{1}{2s-1}.
+\end{align}
+Therefore,
+\begin{align}%\label{eq:union-bound}
+   \lim_{n\rightarrow \infty} X_n(s)=0=X(s),  \qquad \textrm{ for all }s>\frac{1}{2}.
+\end{align}
+We conclude $(\frac{1}{2},1] \subset A$. You can check that $s=\frac{1}{2} \notin A$, since
+\begin{align}%\label{}
+  X_n\left(\frac{1}{2}\right)=1, \qquad \textrm{ for all }n,
+\end{align}
+while $X\left(\frac{1}{2}\right)=0$. We conclude
+\begin{align}%\label{}
+  A=\left[0,\frac{1}{2}\right) \cup \left(\frac{1}{2}, 1\right]=S-\left\{\frac{1}{2}\right\}.
+\end{align}
+Since $P(A)=1$, we conclude $ X_n \ \xrightarrow{a.s.}\ X$.
+</li></ul></li></ul>
+</div><hr />
+<br>
+
+<p>In some problems, proving almost sure convergence directly can be difficult. Thus, it is desirable to know some sufficient conditions for almost sure convergence. Here is a result that is sometimes useful when we would like to prove almost sure convergence.</p>
+<br>
+<span class=theorem>Theorem </span>
+<p>Consider the sequence $X_1$, $X_2$, $X_3$, $\cdots$. If for all $\epsilon>0$, we have</p>
+\begin{align}%\label{}
+  \sum_{n=1}^{\infty} P\big(|X_n-X| > \epsilon \big) < \infty,
+\end{align}
+then $ X_n \ \xrightarrow{a.s.}\ X$.
+
+<br><hr />
+
+<span class='example'>Example </span>
+<p>Consider a sequence $\{X_n, n=1,2,3, \cdots \}$ such that</p>
+\begin{equation}
+ \nonumber X_n = \left\{
+  \begin{array}{l l}
+    -\frac{1}{n}  &  \quad \textrm{with probability } \frac{1}{2}  \\
+      &  \quad   \\
+    \frac{1}{n} &  \quad \textrm{with probability } \frac{1}{2}
+  \end{array} \right.
+\end{equation}
+Show that $ X_n \ \xrightarrow{a.s.}\ 0$.
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+By the Theorem above<!--7.5--!>, it suffices to show that
+\begin{align}%\label{}
+  \sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big) < \infty.
+\end{align}
+Note that $|X_n|={\large \frac{1}{n}}$. Thus,  $|X_n| > \epsilon$ if and only if $ n < {\large \frac{1}{\epsilon}}$. Thus, we conclude
+\begin{align}%\label{}
+  \sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big) & \leq \sum_{n=1}^{{\large \lfloor\frac{1}{{\large \epsilon}}\rfloor}} P\big(|X_n| > \epsilon \big)\\
+ & = {\large \lfloor\frac{1}{\epsilon}\rfloor} < \infty.
+\end{align}
+</li></ul></li></ul>
+</div><hr /><br>
+
+
+Theorem 7.5 <!---the one above--!>provides only a sufficient condition for almost sure convergence. In particular, if we obtain
+\begin{align}%\label{}
+  \sum_{n=1}^{\infty} P\big(|X_n-X| > \epsilon \big) = \infty,
+\end{align}
+then we still don't know whether the $X_n$'s converge to $X$ almost surely or not. Here, we provide a condition that is both necessary and sufficient.
+<br><hr />
+<span class=theorem>Theorem </span>
+ <!--\label{thm:as-conv-nec-suff}!-->
+<p>Consider the sequence $X_1$, $X_2$, $X_3$, $\cdots$. For any $\epsilon>0$, define the set of events
+\begin{align}%\label{}
+  A_m=\{|X_n-X|< \epsilon, \qquad   \textrm{for all }n \geq m \}.
+\end{align}
+Then $ X_n \ \xrightarrow{a.s.}\ X$ if and only if for any $\epsilon>0$, we have
+\begin{align}%\label{eq:union-bound}
+   \lim_{m\rightarrow \infty} P(A_m) =1.
+\end{align}
+</p>
+
+<br><hr />
+<span class='example'>Example </span>
+<p>Let $X_1$, $X_2$, $X_3$, $\cdots$ be independent random variables, where $X_n \sim Bernoulli\left(\frac{1}{n} \right)$ for $n=2,3, \cdots$. 
+The goal here is to check whether $ X_n \ \xrightarrow{a.s.}\ 0$.</p>
+<ol>
+  <li> Check that $\sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big) = \infty$.</li>
+  <li> Show that the sequence $X_1$, $X_2$, $...$ does not converge to $0$ almost surely using Theorem 7.6<!--previous theorem right above this--!></li>.
+</ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+<ol>
+  <li> We first note that for $0<\epsilon<1$, we have
+  \begin{align}%\label{}
+    \sum_{n=1}^{\infty} P\big(|X_n| > \epsilon \big)&=  \sum_{n=1}^{\infty} P(X_n=1)\\
+   &= \sum_{n=1}^{\infty} \frac{1}{n} = \infty.
+  \end{align}</li>
+
+  <li> To use Theorem 7.6<!--\ref{thm:as-conv-nec-suff} ie the previous thm!-->, we define
+  \begin{align}%\label{}
+    A_m=\{|X_n|< \epsilon, \qquad   \textrm{for all }n \geq m \}.
+  \end{align}
+  Note that for $0<\epsilon<1$, we have
+  \begin{align}%\label{}
+    A_m=\{X_n=0, \qquad   \textrm{for all }n \geq m \}.
+  \end{align}
+  According to Theorem 7.6 <!--\ref{thm:as-conv-nec-suff}!-->, it suffices to show that
+  \begin{align}%\label{eq:union-bound}
+   \lim_{m\rightarrow \infty} P(A_m) <1.
+  \end{align}
+  We can in fact show that $\lim_{m\rightarrow \infty} P(A_m)=0$. To show this, we will prove $P(A_m)=0$, for every $m \geq 2$.
+  For $0<\epsilon<1$, we have
+  \begin{align}%\label{eq:union-bound}
+   P(A_m) &=P \big(\{X_n=0, \qquad   \textrm{for all }n \geq m \}\big)\\
+   &\leq P \big(\{X_n=0, \qquad   \textrm{for } n=m, m+1, \cdots, N \}\big) \quad (\textrm{for every positive integer $N \geq m$})\\
+   &=P(X_m=0) P(X_{{\large m+1}}=0) \cdots P(X_{N}=0) \qquad (\textrm{since the $X_i$'s are independent})\\
+   &=\frac{m-1}{m} \cdot \frac{m}{m+1} \cdots \frac{N-1}{N}\\
+   &=\frac{m-1}{N}.
+  \end{align}
+  Thus, by choosing $N$ large enough, we can show that $P(A_m)$ is less than any positive number. 
+  Therefore, $P(A_m)=0$ for all $m \geq 2$. 
+  We conclude that $\lim_{m\rightarrow \infty} P(A_m)=0$. Thus, according to Theorem 7.6<!--\ref{thm:as-conv-nec-suff}!--->, the sequence $X_1$, $X_2$, $...$ does not converge to $0$ almost surely.</li>
+</ol>
+</li></ul></li></ul>
+</div><hr /><br>
+
+<p>An important example for almost sure convergence is the <b>strong law of large numbers (SLLN)</b>. Here, we state the SLLN without proof. The interested reader can find a proof of SLLN in <a href='//www.probabilitycourse.com/bibliography.php#etemadi81'>[19]</a>. 
+A simpler proof can be obtained if we assume the finiteness of the fourth moment. (See <a href='//www.probabilitycourse.com/bibliography.php#RossAFirst10'>[20]</a> for example.)</p>
+
+<div class=cbox>
+<p align=center>The strong law of large numbers (SLLN)</p>
+<p>Let $X_1$,$X_2$,...,$X_n$ be i.i.d. random variables with a finite expected value $EX_i=\mu < \infty$. Let also
+\begin{align}%\label{}
+ M_n=\frac{X_1+X_2+...+X_n}{n}.
+\end{align}
+Then $M_n \ \xrightarrow{a.s.}\ \mu$.</p>
+
+</div>
+<hr />
+
+
+<p>We end this section by stating a version of the <b>continuous mapping theorem</b>. This theorem is sometimes useful when proving the convergence of random variables.</p>
+<br><hr />
+<span class=theorem>Theorem </span>
+Let $X_1$, $X_2$, $X_3$, $\cdots$ be a sequence of random variables. Let also $h: \mathbb{R} \mapsto \mathbb{R}$ be a <u>continuous</u> function. Then, the following statements are true:
+<ol>
+  <li> If $X_n \ \xrightarrow{d}\ X$, then $h(X_n) \ \xrightarrow{d}\ h(X)$.</li>
+  <li> If $X_n \ \xrightarrow{p}\ X$, then $h(X_n) \ \xrightarrow{p}\ h(X)$.</li>
+  <li> If $X_n \ \xrightarrow{a.s.}\ X$, then $h(X_n) \ \xrightarrow{a.s.}\ h(X)$.</li>
+</ol>
+
+
+
+
+
+	<hr />
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_6_convergence_in_mean.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_2_8_solved_probs.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c1771b2c5734ca',t:'MTc5MjI2Mjc3OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

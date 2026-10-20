@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 2 theorem	0 lemma 0 definition 1 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.1.3"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Solved Problems</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_1_2_central_limit_theorem.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_2_0_convergence_of_random_variables.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.1.3 Solved Problems</h2></div>			
+    		<div class="clear"></div>
+<span class='problem'>Problem </span><br />
+   There are 100 men on a plane. Let $X_i$ be the weight (in pounds) of the <i>i</i>th man on the plane. 
+   Suppose that the $X_i$'s are i.i.d., and $EX_i = \mu = 170$ and $\sigma_{{\large X_i}} = \sigma = 30$. Find the probability that the total weight of the men on the plane exceeds 18,000 pounds.
+
+<div class="solvedprob"><ul><li><a><b>Solution</b></a>
+<ul><li>
+If $W$ is the total weight, then $W=X_1+X_2+\cdots+X_n$, where $n=100$. We have
+  \begin{align}
+   EW&=n\mu \\
+   &=(100)(170)\\
+   &=17000,\\
+   \mathrm{Var}(W)&=100\mathrm{Var}(X_i) \\
+   &=(100)(30)^2 \\
+   &=90000.
+  \end{align}
+
+  Thus, $\sigma_W=300$. We have
+  \begin{align}
+   P(W > 18000) &= P\left(\frac{W-17000}{300} > \frac{18000-17000}{300}\right)\\
+   &=P\left(\frac{W-17000}{300} > \frac{10}{3}\right)\\
+   &= 1- \Phi\left(\frac{10}{3}\right) \quad (\textrm{by CLT}) \\
+   &\approx 4.3\times10^{-4}.
+  \end{align}
+
+  
+</li></ul>
+</li></ul></div><hr /><br />
+
+<span class=problem>Problem </span>
+<p>Let $X_1$, $X_2$, $\cdots$, $X_{25}$ be i.i.d. with the following PMF</p>
+  \begin{equation}
+  \nonumber P_X(k) = \left\{
+  \begin{array}{l l}
+    0.6  &  \quad k=1  \\
+    0.4  &  \quad k=-1  \\
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+  \end{equation}
+  And let
+  \begin{align}%\label{}
+   Y=X_1+X_2+\cdots+X_n.
+  \end{align}
+  Using the CLT and continuity correction, estimate $P(4 \leq Y \leq 6)$.
+  <br>
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+  We have
+\begin{align}
+EX_i&=(0.6)(1)+(0.4)(-1) \\
+ &=\frac{1}{5},
+\end{align}
+\begin{align}
+ EX_i^2&=0.6+0.4 \\
+ &=1.
+\end{align}
+Therefore,
+\begin{align}
+ \mathrm{Var}(X_i)&=1-\frac{1}{25} \\
+ &=\frac{24}{25}; \\
+ \textrm{thus,} \quad \sigma_{X_i}&=\frac{2\sqrt{6}}{5}.
+\end{align}
+Therefore,
+\begin{align}
+ EY&=25 \times \frac{1}{5} \\
+ &=5,
+\end{align}
+\begin{align}
+ \mathrm{Var}(Y)&=25 \times \frac{24}{25} \\
+ &=24; \\
+ \textrm{thus,} \quad \sigma_Y&=2\sqrt{6}.
+\end{align}
+\begin{align}
+ P(4 \leq Y \leq 6) &= P(3.5 \leq Y \leq 6.5) \quad (\textrm{continuity correction}) \\
+ &=P\left(\frac{3.5-5}{2\sqrt{6}} \leq \frac{Y-5}{2\sqrt{6}} \leq \frac{6.5-5}{2\sqrt{6}}\right) \\
+ &= P\left(-0.3062 \leq \frac{Y-5}{2\sqrt{6}} \leq +0.3062\right) \\
+ &\approx \Phi(0.3062)-\Phi(-0.3062) \quad (\textrm{by the CLT}) \\
+ &= 2\Phi(0.3062)-1\\
+ &\approx 0.2405
+\end{align}
+</li></ul>
+</li></ul>
+</div><hr />
+
+<span class=problem>Problem </span>
+<p>You have invited $64$ guests to a party. You need to make sandwiches for the guests. You believe that a guest might need $0$, $1$ or $2$ sandwiches with probabilities $\frac{1}{4}$, $\frac{1}{2}$, and $\frac{1}{4}$ respectively. You assume that the number of sandwiches each guest needs is independent from other guests. 
+How many sandwiches should you make so that you are $95\%$ sure that there is no shortage?</p>
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+Let $X_i$ be the number of sandwiches that the $i$th person needs, and let
+
+\begin{align}
+Y=X_1+X_2+\cdots+X_{64}.
+\end{align}
+
+The goal is to find $y$ such that
+
+\begin{equation}
+ P(Y \leq y) \geq 0.95
+\end{equation}
+
+First note that
+\begin{align}
+ EX_i&=\frac{1}{4}(0)+\frac{1}{2}(1)+\frac{1}{4}(2) \\
+ &=1,
+\end{align}
+\begin{align}
+ EX_{i}^2&=\frac{1}{4}(0^2)+\frac{1}{2}(1^2)+\frac{1}{4}(2^2) \\
+ &=\frac{3}{2}.
+\end{align}
+Thus,
+\begin{align}
+ \mathrm{Var} (X_i)&= EX_i^2-(EX_i)^2 \\
+ &=\frac{3}{2}-1\\
+ &=\frac{1}{2} \quad \rightarrow \quad \sigma_{X_i}=\frac{1}{\sqrt{2}}.
+\end{align}
+
+Thus,
+\begin{align}
+ EY&= 64 \times 1 \\
+ &=64,
+\end{align}
+\begin{align}
+ \mathrm{Var}(Y)&= 64 \times \frac{1}{2} \\
+ &=32 \rightarrow \sigma_Y=4\sqrt{2}.
+\end{align}
+Now, we can use the CLT to find $y$
+\begin{align}
+ P(Y \leq y)&=P\left(\frac{Y-64}{4\sqrt{2}} \leq \frac{y-64}{4\sqrt{2}}\right) \\
+ &= \Phi\left(\frac{y-64}{4\sqrt{2}}\right) \quad (\textrm{by CLT}).
+\end{align}
+We can write
+\begin{equation}
+ \Phi\left(\frac{y-64}{4\sqrt{2}}\right)=0.95
+\end{equation}
+Therefore,
+\begin{align}
+ \frac{y-64}{4\sqrt{2}} &= \Phi^{-1}(0.95) \\
+ &\approx 1.6449
+\end{align}
+Thus, $y=73.3$.
+
+<p>Therefore, if you make 74 sandwiches, you are $95\%$ sure that there is no shortage. Note that you can find the numerical value of $\Phi^{-1}(0.95)$ by running the norminv(0.95) command in MATLAB.</p>
+</li></ul>
+</li></ul>
+</div><hr />
+
+<span class=problem>Problem </span>
+<p>Let $X_1$ , $X_2$, $\cdots$, $X_n$ be i.i.d. $Exponential(\lambda)$ random variables with $\lambda=1$. Let</p>
+  \begin{align}%\label{}
+       \overline{X}=\frac{X_1+X_2+\cdots+X_n}{n}.
+  \end{align}
+  How large should $n$ be such that
+  \begin{align}%\label{}
+       P\left(0.9 \leq \overline{X} \leq 1.1\right) \geq 0.95 \textrm{?}
+  \end{align}
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+  Let $Y=X_1+X_2+\cdots+X_n$, so $\overline{X}=\frac{Y}{n}$. Since $X_i \sim Exponential(1)$, we have
+
+  \begin{align}
+   E(X_i)=\frac{1}{\lambda}=1,\qquad  \mathrm{Var}(X_i)=\frac{1}{\lambda^2}=1.
+  \end{align}
+
+  Therefore,
+
+  \begin{align}
+   E(Y)=n EX_i=n,\qquad  \mathrm{Var}(Y)=n \mathrm{Var}(X_i)=n,
+  \end{align}
+  \begin{align}
+   P(0.9 \leq \overline{X} \leq 1.1) &= P\left(0.9 \leq \frac{Y}{n} \leq 1.1\right)\\
+   &=P\big(0.9n \leq Y \leq 1.1n\big)\\
+   &=P\left(\frac{0.9n-n}{\sqrt{n}} \leq  \frac{Y-n}{\sqrt{n}}\leq \frac{1.1n-n}{\sqrt{n}}\right)\\
+       &= P\left(-0.1\sqrt{n} \leq  \frac{Y-n}{\sqrt{n}}\leq 0.1\sqrt{n}\right).
+  \end{align}
+
+  By the CLT $\frac{Y-n}{\sqrt{n}}$ is approximately $N(0,1)$, so
+  \begin{align}
+   P(0.9 \leq \overline{X} \leq 1.1) &\approx \Phi\left(0.1\sqrt{n}\right) - \Phi\left(-0.1\sqrt{n}\right) \\
+   &=2\Phi\left(0.1\sqrt{n}\right)-1 \quad (\textrm{since} \quad \Phi(-x)=1-\Phi(x)).
+\end{align}
+We need to have
+\begin{align}
+ 2\Phi\left(0.1\sqrt{n}\right)-1 &\geq 0.95, \qquad \textrm{so} \quad \Phi \left(0.1\sqrt{n}\right)\geq 0.975 .
+\end{align}
+Thus,
+\begin{align}
+ 0.1\sqrt{n} &\geq \Phi^{-1}(0.975)=1.96 \\
+ \sqrt{n} &\geq 19.6 \\
+ n &\geq 384.16
+\end{align}
+Since $n$ is an integer, we conclude $n \geq 385$.
+</li></ul>
+</li></ul>
+</div><hr />
+
+<span class=problem>Problem </span>
+<p>For this problem and the next, you will need to be familiar with moment generating functions (Section 6.1.3). The goal here is to prove the (weak) law of large numbers using MGFs. In particular, let $X_1$, $X_2, \dots, X_n$ be i.i.d. random variables with expected value $EX_i=\mu < \infty$ and MGF $M_X(s)$ that is finite on some interval $[-c,c]$ where $c>0$ is a constant. As usual, let
+      \begin{align}%\label{}
+       \overline{X}=\frac{X_1+X_2+\dots+X_n}{n}.
+      \end{align}
+      Prove
+      \begin{align}
+        \lim_{n\rightarrow \infty} M_{\overline{X}}(s)=e^{{\large s\mu}}, \qquad \textrm{ for all }s \in [-c,c].
+      \end{align}
+      Since this is the MGF of constant random variable $\mu$, we conclude that the distribution of $\overline{X}$ converges to $\mu$.
+      <i>Hint:</i> Use the result of Problem 8 in Section 6.1.6: for a random variable $X$ with a well-defined MGF, $M_X(s)$, we have
+      \begin{equation}
+   \lim_{n\rightarrow\infty} \left[M_X\left(\frac{s}{n}\right)\right]^{\large n}=e^{{\large sEX}}.
+  \end{equation}
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+  We have
+     \begin{align}%\label{}
+         M_{\overline{X}}(s)&=E[e^{s\overline{X}}]\\
+         &=E[e^{s\frac{X_1+X_2+\cdots+X_n}{n}}] \\
+         &= E[e^{s\frac{X_1}{n}}e^{s\frac{X_2}{n}}\cdots e^{s\frac{X_n}{n}}]\\
+         &=E[e^{\frac{sX_1}{n}}]\cdot E[e^{\frac{sX_2}{n}}]\cdots E[e^{\frac{sX_n}{n}}] \quad (\textrm{since the $X_i$'s are independent}) \\
+         &=\left[M_{X}\left(\frac{s}{n}\right)\right]^n \quad (\textrm{since the $X_i$'s are identically distributed})
+      \end{align}
+      Therefore,
+\begin{align}
+ \lim_{n \rightarrow \infty} M_{\overline{X}}(s) &= \lim_{n \rightarrow \infty} [M_{X}\left(\frac{s}{n}\right)]^n\\
+ &=e^{{\large sEX}} \quad (\textrm{by the hint})\\
+ &=e^{{\large s\mu}}.
+\end{align}
+Note that $e^{{\large s\mu}}$ is the MGF of a constant random variable $Y$, with value $Y=\mu$. This means that the random variable $\overline{X}$ converges to $\mu$ (in distribution).
+</li></ul>
+</li></ul>
+</div><hr />
+
+<span class=problem>Problem </span>
+<p>The goal in this problem is to prove the central limit theorem using MGFs. In particular, let $X_1$, $X_2$, ... , $X_n$ be i.i.d. random variables with expected value $EX_i=\mu < \infty$, $\mathrm{Var}(X_i)=\sigma^2< \infty$, and MGF $M_X(s)$ that is finite on some interval $[-c,c]$, where $c>0$ is a constant. As usual, let</p>
+      \begin{align}%\label{}
+        Z_n=\frac{\overline{X}-\mu}{\sigma / \sqrt{n}}=\frac{X_1+X_2+\cdots+X_n-n\mu}{\sqrt{n} \sigma}.
+      \end{align}
+      Prove
+      \begin{align}
+        \lim_{n\rightarrow \infty} M_{Z_n}(s)=e^{{\large \frac{s^2}{2}}}, \qquad \textrm{ for all }s \in [-c,c].
+      \end{align}
+      Since this is the MGF of a standard normal random variable, we conclude that the distribution of $Z_n$ converges to the standard normal random variable.
+      <br>
+<i>Hint:</i> Use the result of Problem 9 in Section 6.1.6: for a random variable $Y$ with a well-defined MGF, $M_Y(s)$, and $EY=0$, $\mathrm{Var}(Y)=1$, we have
+       \begin{align}%\label{}
+          \lim_{n \rightarrow \infty} \left[M_Y\left(\frac{s}{\sqrt{n}}\right)\right]^n=e^{{\large \frac{s^2}{2}}}.
+      \end{align}
+
+
+
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+Let $Y_i$'s be the normalized versions of the $X_i$'s, i.e.,
+      \begin{align}%\label{}
+         Y_i=\frac{X_i-\mu}{\sigma}.
+      \end{align}
+ Then, $Y_i$'s are i.i.d. and
+       \begin{align}%\label{}
+         EY_i&=0,\\
+         \mathrm{Var}(Y_i)&=1.
+      \end{align}
+      We also have
+      \begin{align}%\label{}
+         Z_n&=\frac{\overline{X}-\mu}{\frac{\sigma}{\sqrt{n}}} \\
+         &=\frac{Y_1+Y_2+\cdots+Y_n}{\sqrt{n}}.
+      \end{align}
+      Thus, we have
+      \begin{align}%\label{}
+         M_{Z_n}(s)&=E[e^{s\frac{Y_1+Y_2+\cdots+Y_n}{\sqrt{n}}}] \\
+         &=E[e^{\frac{sY_1}{\sqrt{n}}}] \cdot E[e^{\frac{sY_2}{\sqrt{n}}}] \cdots E[e^{\frac{sY_n}{\sqrt{n}}}] \quad (\textrm{the since $Y_i$'s are independent}) \\
+         &=M_{Y_1}\left(\frac{s}{\sqrt{n}}\right)^n \quad (the Y_i\textrm{'s are identically distributed}).
+      \end{align}
+ Thus, we conclude
+      \begin{align}%\label{}
+         \lim_{n \rightarrow \infty} M_{Z_n}(s)&=\lim_{n \rightarrow \infty} M_{Y_1}\left(\frac{s}{\sqrt{n}}\right)^n \\
+         &=e^{\frac{\large{s^2}}{\large{2}}} \quad (\textrm{by the hint}).
+      \end{align}
+ Since this is the MGF of a standard normal random variable, we conclude the CDF of $Z_n$ converges to the standard normal CDF.
+
+</li></ul>
+</li></ul>
+</div><hr />
+
+
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_1_2_central_limit_theorem.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_2_0_convergence_of_random_variables.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176f39a4b8b06',t:'MTc5MjI2Mjc3MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

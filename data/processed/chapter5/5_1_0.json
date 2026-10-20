@@ -1,0 +1,10 @@
+{
+  "id": "5.1.0",
+  "title": "Two Random Variables",
+  "chapter": 5,
+  "topic": "Joint Distributions",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter5/5_1_0_joint_distributions.php",
+  "text": "5.1.0 Joint Distributions: Two Random Variables\nIn real life, we are often interested in several random variables that are related to each other.\nFor example, suppose that we choose a random family, and we would like to study the number\nof people in the family, the household income, the ages of the family members, etc. Each of\nthese is a random variable, and we suspect that they are dependent. In this chapter, we develop\ntools to study joint distributions of random variables. The concepts are similar to what we have\nseen so far. The only difference is that instead of one random variable, we consider two or more.\nIn this chapter, we will focus on two random variables, but once you understand the theory for two\nrandom variables, the extension to $n$ random variables is straightforward. We will first discuss joint\ndistributions of discrete random variables and then extend the results to continuous random\nvariables.\n."
+}

@@ -1,0 +1,364 @@
+course: "Probability Models and Applications"
+
+sources:
+
+  # Chapter 3
+  - id: "3.1.1"
+    title: "Random Variables"
+    chapter: 3
+    topic: "Random Variables"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_1_random_variables.php"
+
+  - id: "3.1.2"
+    title: "Discrete Random Variables"
+    chapter: 3
+    topic: "Discrete Random Variables"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_2_discrete_random_var.php"
+
+  - id: "3.1.3"
+    title: "Probability Mass Function"
+    chapter: 3
+    topic: "Probability Mass Function"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_3_pmf.php"
+
+  - id: "3.1.4"
+    title: "Independent Random Variables"
+    chapter: 3
+    topic: "Independent Random Variables"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_4_independent_random_var.php"
+
+  - id: "3.1.5"
+    title: "Special Distributions"
+    chapter: 3
+    topic: "Special Discrete Distributions"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_5_special_discrete_distr.php"
+
+  - id: "3.1.6"
+    title: "Solved Problems"
+    chapter: 3
+    topic: "Discrete Random Variables"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter3/3_1_6_solved3_1.php"
+
+  - id: "3.2.1"
+    title: "Cumulative Distribution Function"
+    chapter: 3
+    topic: "CDF"
+    url: "https://www.probabilitycourse.com/chapter3/3_2_1_cdf.php"
+
+  - id: "3.2.2"
+    title: "Expectation"
+    chapter: 3
+    topic: "Expectation"
+    url: "https://www.probabilitycourse.com/chapter3/3_2_2_expectation.php"
+
+  - id: "3.2.3"
+    title: "Functions of Random Variables"
+    chapter: 3
+    topic: "Functions of Random Variables"
+    url: "https://www.probabilitycourse.com/chapter3/3_2_3_functions_random_var.php"
+
+  - id: "3.2.4"
+    title: "Variance"
+    chapter: 3
+    topic: "Variance"
+    url: "https://www.probabilitycourse.com/chapter3/3_2_4_variance.php"
+
+  - id: "3.2.5"
+    title: "Solved Problems"
+    chapter: 3
+    topic: "Discrete Random Variables"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter3/3_2_5_solved3_2.php"
+
+  # Chapter 4
+  - id: "4.0"
+    title: "Continuous and Mixed Random Variables"
+    chapter: 4
+    topic: "Continuous Random Variables"
+    url: "https://www.probabilitycourse.com/chapter4/4_0_0_intro.php"
+
+  - id: "4.1.0"
+    title: "Continuous Random Variables and their Distributions"
+    chapter: 4
+    topic: "Continuous Random Variables"
+    url: "https://www.probabilitycourse.com/chapter4/4_1_0_continuous_random_vars_distributions.php"
+
+  - id: "4.1.1"
+    title: "Probability Density Function"
+    chapter: 4
+    topic: "PDF"
+    url: "https://www.probabilitycourse.com/chapter4/4_1_1_pdf.php"
+
+  - id: "4.1.2"
+    title: "Expected Value and Variance"
+    chapter: 4
+    topic: "Expectation and Variance"
+    url: "https://www.probabilitycourse.com/chapter4/4_1_2_expected_val_variance.php"
+
+  - id: "4.1.3"
+    title: "Functions of Continuous Random Variables"
+    chapter: 4
+    topic: "Functions of Continuous Random Variables"
+    url: "https://www.probabilitycourse.com/chapter4/4_1_3_functions_continuous_var.php"
+
+  - id: "4.1.4"
+    title: "Solved Problems"
+    chapter: 4
+    topic: "Continuous Random Variables"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter4/4_1_4_solved4_1.php"
+
+  - id: "4.2.1"
+    title: "Uniform Distribution"
+    chapter: 4
+    topic: "Uniform Distribution"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_1_uniform.php"
+
+  - id: "4.2.2"
+    title: "Exponential Distribution"
+    chapter: 4
+    topic: "Exponential Distribution"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_2_exponential.php"
+
+  - id: "4.2.3"
+    title: "Normal Distribution"
+    chapter: 4
+    topic: "Normal Distribution"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_3_normal.php"
+
+  - id: "4.2.4"
+    title: "Gamma Distribution"
+    chapter: 4
+    topic: "Gamma Distribution"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_4_Gamma_distribution.php"
+
+  - id: "4.2.5"
+    title: "Other Distributions"
+    chapter: 4
+    topic: "Other Continuous Distributions"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_5_other_distr.php"
+
+  - id: "4.2.6"
+    title: "Solved Problems"
+    chapter: 4
+    topic: "Special Continuous Distributions"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter4/4_2_6_solved4_2.php"
+
+  - id: "4.4"
+    title: "End of Chapter Problems"
+    chapter: 4
+    topic: "Continuous and Mixed Random Variables"
+    content_type: "problem"
+    url: "https://www.probabilitycourse.com/chapter4/4_4_0_chapter4_problems.php"
+
+  # Chapter 5
+  - id: "5.1.0"
+    title: "Two Random Variables"
+    chapter: 5
+    topic: "Joint Distributions"
+    url: "https://www.probabilitycourse.com/chapter5/5_1_0_joint_distributions.php"
+
+  - id: "5.1.1"
+    title: "Joint PMF"
+    chapter: 5
+    topic: "Joint PMF"
+    url: "https://www.probabilitycourse.com/chapter5/5_1_1_joint_pmf.php"
+
+  - id: "5.1.2"
+    title: "Joint CDF"
+    chapter: 5
+    topic: "Joint CDF"
+    url: "https://www.probabilitycourse.com/chapter5/5_1_2_joint_cdf.php"
+
+  - id: "5.1.3"
+    title: "Conditioning and Independence"
+    chapter: 5
+    topic: "Conditioning and Independence"
+    url: "https://www.probabilitycourse.com/chapter5/5_1_3_conditioning_independence.php"
+
+  - id: "5.1.4"
+    title: "Functions of Two Random Variables"
+    chapter: 5
+    topic: "Functions of Two Random Variables"
+    url: "https://www.probabilitycourse.com/chapter5/5_1_4_functions_two_variables.php"
+
+  # Chapter 6
+  - id: "6.0"
+    title: "Multiple Random Variables"
+    chapter: 6
+    topic: "Multiple Random Variables"
+    url: "https://www.probabilitycourse.com/chapter6/6_0_0_intro.php"
+
+  - id: "6.1.1"
+    title: "Joint Distributions and Independence"
+    chapter: 6
+    topic: "Joint Distributions and Independence"
+    url: "https://www.probabilitycourse.com/chapter6/6_1_1_joint_distributions_independence.php"
+
+  - id: "6.1.2"
+    title: "Sums of Random Variables"
+    chapter: 6
+    topic: "Sums of Random Variables"
+    url: "https://www.probabilitycourse.com/chapter6/6_1_2_sums_random_variables.php"
+
+  - id: "6.1.3"
+    title: "Moment Generating Functions"
+    chapter: 6
+    topic: "MGF"
+    url: "https://www.probabilitycourse.com/chapter6/6_1_3_moment_functions.php"
+
+  - id: "6.1.4"
+    title: "Characteristic Functions"
+    chapter: 6
+    topic: "Characteristic Functions"
+    url: "https://www.probabilitycourse.com/chapter6/6_1_4_characteristic_functions.php"
+
+  - id: "6.1.5"
+    title: "Random Vectors"
+    chapter: 6
+    topic: "Random Vectors"
+    url: "https://www.probabilitycourse.com/chapter6/6_1_5_random_vectors.php"
+
+  - id: "6.2.0"
+    title: "Probability Bounds"
+    chapter: 6
+    topic: "Probability Bounds"
+    url: "https://www.probabilitycourse.com/chapter6/6_2_0_probability_bounds.php"
+
+  - id: "6.2.1"
+    title: "Union Bound and Extension"
+    chapter: 6
+    topic: "Union Bound"
+    url: "https://www.probabilitycourse.com/chapter6/6_2_1_union_bound_and_exten.php"
+
+  - id: "6.2.2"
+    title: "Markov and Chebyshev Inequalities"
+    chapter: 6
+    topic: "Markov and Chebyshev Inequalities"
+    url: "https://www.probabilitycourse.com/chapter6/6_2_2_markov_chebyshev_inequalities.php"
+
+  - id: "6.2.3"
+    title: "Chernoff Bounds"
+    chapter: 6
+    topic: "Chernoff Bounds"
+    url: "https://www.probabilitycourse.com/chapter6/6_2_3_chernoff_bounds.php"
+
+  - id: "6.2.4"
+    title: "Cauchy Schwarz Inequality"
+    chapter: 6
+    topic: "Cauchy Schwarz Inequality"
+    url: "https://www.probabilitycourse.com/chapter6/6_2_4_cauchy_schwarz.php"
+
+  # Chapter 7
+  - id: "7.0"
+    title: "Limit Theorems"
+    chapter: 7
+    topic: "Limit Theorems"
+    url: "https://www.probabilitycourse.com/chapter7/7_0_0_intro.php"
+
+  - id: "7.1.0"
+    title: "Limit Theorems"
+    chapter: 7
+    topic: "Limit Theorems"
+    url: "https://www.probabilitycourse.com/chapter7/7_1_0_limit_theorems.php"
+
+  - id: "7.1.1"
+    title: "Law of Large Numbers"
+    chapter: 7
+    topic: "Law of Large Numbers"
+    url: "https://www.probabilitycourse.com/chapter7/7_1_1_law_of_large_numbers.php"
+
+  - id: "7.1.2"
+    title: "Central Limit Theorem"
+    chapter: 7
+    topic: "Central Limit Theorem"
+    url: "https://www.probabilitycourse.com/chapter7/7_1_2_central_limit_theorem.php"
+
+  - id: "7.1.3"
+    title: "Solved Problems"
+    chapter: 7
+    topic: "Limit Theorems"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter7/7_1_3_solved_probs.php"
+
+  - id: "7.2.0"
+    title: "Convergence of Random Variables"
+    chapter: 7
+    topic: "Convergence"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_0_convergence_of_random_variables.php"
+
+  - id: "7.2.1"
+    title: "Convergence of Sequence of Numbers"
+    chapter: 7
+    topic: "Convergence"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_1_convergence_of_a_seq_of_nums.php"
+
+  - id: "7.2.2"
+    title: "Sequence of Random Variables"
+    chapter: 7
+    topic: "Sequence of Random Variables"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_2_sequence_of_random_variables.php"
+
+  - id: "7.2.3"
+    title: "Different Types of Convergence"
+    chapter: 7
+    topic: "Types of Convergence"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_3_different_types_of_convergence_for_sequences_of_random_variables.php"
+
+  - id: "7.2.4"
+    title: "Convergence in Distribution"
+    chapter: 7
+    topic: "Convergence in Distribution"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_4_convergence_in_distribution.php"
+
+  - id: "7.2.5"
+    title: "Convergence in Probability"
+    chapter: 7
+    topic: "Convergence in Probability"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_5_convergence_in_probability.php"
+
+  - id: "7.2.6"
+    title: "Convergence in Mean"
+    chapter: 7
+    topic: "Convergence in Mean"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_6_convergence_in_mean.php"
+
+  - id: "7.2.7"
+    title: "Almost Sure Convergence"
+    chapter: 7
+    topic: "Almost Sure Convergence"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_7_almost_sure_convergence.php"
+
+  - id: "7.2.8"
+    title: "Solved Problems"
+    chapter: 7
+    topic: "Convergence"
+    content_type: "solved_problem"
+    url: "https://www.probabilitycourse.com/chapter7/7_2_8_solved_probs.php"
+
+  # Chapter 8
+  - id: "8.2.0"
+    title: "Point Estimation"
+    chapter: 8
+    topic: "Point Estimation"
+    url: "https://www.probabilitycourse.com/chapter8/8_2_0_point_estimation.php"
+
+  - id: "8.2.1"
+    title: "Evaluating Estimators"
+    chapter: 8
+    topic: "Evaluating Estimators"
+    url: "https://www.probabilitycourse.com/chapter8/8_2_1_evaluating_estimators.php"
+
+  - id: "8.2.2"
+    title: "Point Estimators for Mean and Variance"
+    chapter: 8
+    topic: "Mean and Variance Estimation"
+    url: "https://www.probabilitycourse.com/chapter8/8_2_2_point_estimators_for_mean_and_var.php"
+
+  - id: "8.2.3"
+    title: "Maximum Likelihood Estimation"
+    chapter: 8
+    topic: "Maximum Likelihood Estimation"
+    url: "https://www.probabilitycourse.com/chapter8/8_2_3_max_likelihood_estimation.php"

@@ -1,0 +1,10 @@
+{
+  "id": "4.0",
+  "title": "Continuous and Mixed Random Variables",
+  "chapter": 4,
+  "topic": "Continuous Random Variables",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter4/4_0_0_intro.php",
+  "text": "4.0.0 Introduction\nRemember that discrete random variables can take only a countable number of possible values. On the other\nhand, a continuous random variable $X$ has a range in the form of an interval or a union of non-overlapping\nintervals on the real line (possibly the whole real line). Also, for any  $x \\in \\mathbb{R}$, $P(X=x)=0$.\nThus, we need to develop new tools to deal with continuous random variables. The good news is that the\ntheory of continuous random variables is completely analogous to the theory of discrete random variables.\nIndeed, if we want to oversimplify things, we might say the following: take any formula about discrete\nrandom variables, and then replace\nsums\nwith\nintegrals\n, and replace\nPMFs\nwith\nprobability density functions (\nPDFs\n), and you will get the corresponding formula for continuous\nrandom variables. Of course, there is a little bit more to the story and that's why we need a chapter\nto discuss it. In this chapter, we will also introduce mixed random variables that are mixtures of discrete\nand continuous random variables.\n."
+}

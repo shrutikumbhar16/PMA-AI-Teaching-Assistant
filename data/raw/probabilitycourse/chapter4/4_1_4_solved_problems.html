@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 10 theorem	2 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'4.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'4.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'4.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'4.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="4.1.4"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Solved problems | Continuous random variables</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_1_3_functions_continuous_var.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter4/4_2_1_uniform.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter4/video4_5.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>4.1.4 Solved Problems: <br/> Continuous Random Variables</h2></div>			
+    		<div class="clear"></div>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X$ be a random variable with PDF given by
+			\begin{equation}
+              \nonumber f_X(x) = \left\{
+              \begin{array}{l l}
+                cx^2& \quad   |x| \leq 1\\
+                0 & \quad \text{otherwise}
+              \end{array} \right.
+              \end{equation}
+			  <ol type="a">
+                  <li>Find the constant $c$.</li>
+                  <li>Find $EX$ and Var$(X)$.</li>
+                  <li>Find $P(X \geq \frac{1}{2})$.</li>
+              </ol></p> 
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p><ol type="a">
+						 	 <li>To find $c$, we can use  $\int_{-\infty}^{\infty} f_X(u)du=1$:
+							 <table align="center">			
+                              <tr>
+                                <td>$1$</td>
+                                <td>$=\int_{-\infty}^{\infty} f_X(u)du$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= \int_{-1}^{1} cu^2du$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= \frac{2}{3} c.$</td>
+                              </tr>
+                              </table><br>
+							  Thus, we must have $c=\frac{3}{2}$.
+							  </li>
+							  <li>To find $EX$, we can write
+							  <table align="center">			
+                              <tr>
+                                <td>$EX$</td>
+                                <td>$= \int_{-1}^{1} u f_X(u)du$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= \frac{3}{2}\int_{-1}^{1} u^3 du$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=0.$</td>
+                              </tr>
+                              </table><br>
+							  In fact, we could have guessed $EX=0$ because the PDF is symmetric around $x=0$. 
+							  To find Var$(X)$, we have
+							  <table align="center">			
+                              <tr>
+                                <td>$\textrm{Var}(X)$</td>
+                                <td>$=EX^2-(EX)^2=EX^2$</td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td>$= \int_{-1}^{1} u^2 f_X(u)du$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$= \frac{3}{2}\int_{-1}^{1} u^4 du$</td>
+                              </tr>
+							  <tr>
+                                <td></td>
+                                <td>$=\frac{3}{5}.$</td>
+                              </tr>
+                              </table><br>
+							  </li>
+							  <li>To find $P(X \geq \frac{1}{2})$, we can write
+							  $$P(X \geq \frac{1}{2})=\frac{3}{2} \int_{\frac{1}{2}}^{1} x^2dx=\frac{7}{16}.$$
+							  </li>
+						 </ol></p>						 
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X$ be a continuous random variable with PDF given by
+			$$f_X(x)=\frac{1}{2}e^{-|x|}, \hspace{20pt} \textrm{for all }x \in \mathbb{R}.$$
+			If $Y=X^2$, find the CDF of $Y$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>First, we note that $R_Y=[0,\infty)$. For $y \in [0,\infty)$, we have
+						 <table align="center">			
+                          <tr>
+                            <td>$F_Y(y)$</td>
+                            <td>$=P(Y \leq y)$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=P(X^2 \leq y)$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=P(-\sqrt{y} \leq X \leq \sqrt{y})$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\int_{-\sqrt{y}}^{\sqrt{y}} \frac{1}{2}e^{-|x|} dx$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\int_{0}^{\sqrt{y}} e^{-x} dx$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=1-e^{-\sqrt{y}}.$</td>
+                          </tr>
+                          </table><br>
+						  Thus,
+						  \begin{equation}
+                            \nonumber F_Y(y) = \left\{
+                            \begin{array}{l l}
+                              1-e^{-\sqrt{y}} & \quad   y \geq 0\\
+                              0 & \quad \text{otherwise}
+                            \end{array} \right.
+                            \end{equation}</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X$ be a continuous random variable with PDF
+			\begin{equation}
+            \nonumber f_X(x) = \left\{
+            \begin{array}{l l}
+              4x^3 & \quad   0 < x \leq 1\\
+              0 & \quad \text{otherwise}
+            \end{array} \right.
+            \end{equation}
+			Find $P(X \leq \frac{2}{3} | X> \frac{1}{3})$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>We have
+						 <table align="center">			
+                          <tr>
+                            <td>$P(X \leq \frac{2}{3} | X > \frac{1}{3})$</td>
+                            <td>$=\frac{P(\frac{1}{3} < X \leq \frac{2}{3})}{P(X > \frac{1}{3})}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\frac{\int_{\frac{1}{3}}^{\frac{2}{3}} 4x^3 dx}{\int_{\frac{1}{3}}^{1} 4x^3 dx}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\frac{3}{16}.$</td>
+                          </tr>
+                          </table><br></p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X$ be a continuous random variable with PDF
+			\begin{equation}
+            \nonumber f_X(x) = \left\{
+            \begin{array}{l l}
+              x^2\left(2x+\frac{3}{2}\right) & \quad   0 < x \leq 1\\
+              0 & \quad \text{otherwise}
+            \end{array} \right.
+            \end{equation}
+			If $Y=\frac{2}{X}+3$, find Var$(Y)$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>First, note that
+						 $$\textrm{Var}(Y)=\textrm{Var}\left(\frac{2}{X}+3\right)=4\textrm{Var}\left(\frac{1}{X}\right), \hspace{15pt} \textrm{using Equation 4.4}$$
+						 Thus, it suffices to find Var$(\frac{1}{X})=E[\frac{1}{X^2}]-(E[\frac{1}{X}])^2$. Using LOTUS, we have
+						 $$E\left[\frac{1}{X}\right]=\int_{0}^{1}  x\left(2x+\frac{3}{2}\right) dx =\frac{17}{12}$$
+						 $$E\left[\frac{1}{X^2}\right]=\int_{0}^{1} \left(2x+\frac{3}{2}\right) dx =\frac{5}{2}.$$
+						 Thus, Var$\left(\frac{1}{X}\right)=E[\frac{1}{X^2}]-(E[\frac{1}{X}])^2=\frac{71}{144}$. So, we obtain
+						 $$\textrm{Var}(Y)=4\textrm{Var}\left(\frac{1}{X}\right)=\frac{71}{36}.$$</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X$ be a <u>positive</u> continuous random variable. Prove that $EX=\int_{0}^{\infty} P(X \geq x)  dx$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>We have
+						 $$P(X \geq x)=\int_{x}^{\infty}f_X(t)dt.$$
+						 Thus, we need to show that
+						 $$\int_{0}^{\infty} \int_{x}^{\infty}f_X(t)dtdx=EX.$$
+						 The left hand side is a double integral. In particular, it is the integral of $f_X(t)$ over 
+						 the shaded region in Figure 4.4.
+						 <figure>
+                  				<img src="//www.probabilitycourse.com/images/chapter4/Double-Int-EX_b.png" id="chapter_image" alt="" title="" border="0" />
+                  				<figcaption>Fig.4.4 - The shaded area shows the region of the double integral of Problem 5.</figcaption>
+                		 </figure>
+						 We can take the integral with respect to $x$ or $t$. Thus, we can write
+						 <table align="center">			
+                          <tr>
+                            <td>$\int_{0}^{\infty} \int_{x}^{\infty}f_X(t)dtdx$</td>
+                            <td>$=\int_{0}^{\infty} \int_{0}^{t}f_X(t)dx dt$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\int_{0}^{\infty} f_X(t) \left(\int_{0}^{t} 1 dx \right) dt$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\int_{0}^{\infty} tf_X(t) dt=EX \hspace{20pt} \textrm{since $X$ is a positive random variable}.$</td>
+                          </tr>
+                          </table><br></p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>Let $X \sim Uniform(-\frac{\pi}{2},\pi)$ and $Y=\sin(X)$. Find $f_Y(y)$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 <p>Here $Y=g(X)$, where $g$ is a differentiable function. Although $g$ is not monotone, it can 
+						 be divided to a finite number of regions in which it is monotone. Thus, we can use 
+						 Equation 4.6. We note that since $R_X=[-\frac{\pi}{2},\pi]$, $R_Y=[-1,1]$. By looking at 
+						 the plot of $g(x)=\sin(x)$ over $[-\frac{\pi}{2},\pi]$, we notice that for $y \in (0,1)$ 
+						 there are two solutions to $y=g(x)$, while for $y \in (-1,0)$, there is only one solution. 
+						 In particular, if $y \in (0,1)$, we have two solutions: $x_1=\arcsin(y)$, and  $x_2=\pi-\arcsin(y)$. 
+						 If $y \in (-1,0)$ we have one solution, $x_1=\arcsin(y)$. Thus, for $y \in(-1,0)$, we have
+						 <table align="center">			
+                          <tr>
+                            <td>$f_Y(y)$</td>
+                            <td>$= \frac{f_X(x_1)}{|g'(x_1)|}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$= \frac{f_X(\arcsin(y))}{|\cos(\arcsin(y))|}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$= \frac{\frac{2}{3 \pi}}{\sqrt{1-y^2}}.$</td>
+                          </tr>
+                          </table><br>
+						  For $y \in(0,1)$, we have
+						  <table align="center">			
+                          <tr>
+                            <td>$f_Y(y)$</td>
+                            <td>$= \frac{f_X(x_1)}{|g'(x_1)|}+\frac{f_X(x_2)}{|g'(x_2)|}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$= \frac{f_X(\arcsin(y))}{|\cos(\arcsin(y))|}+\frac{f_X(\pi-\arcsin(y))}{|\cos(\pi-\arcsin(y))|}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$= \frac{\frac{2}{3 \pi}}{\sqrt{1-y^2}}+\frac{\frac{2}{3 \pi}}{\sqrt{1-y^2}}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$= \frac{4}{3 \pi \sqrt{1-y^2}}.$</td>
+                          </tr>
+                          </table><br>
+						  To summarize, we can write
+                          \begin{equation}
+                          \nonumber f_Y(y) = \left\{
+                          \begin{array}{l l}
+                            \frac{2}{3 \pi \sqrt{1-y^2}} & \quad   -1 < y < 0\\
+                            \frac{4}{3 \pi \sqrt{1-y^2}} & \quad   0 < y < 1\\
+                            0 &   \quad \text{otherwise}
+                          \end{array} \right.
+                          \end{equation}</p>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_1_3_functions_continuous_var.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter4/4_2_1_uniform.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17666c831fa1c',t:'MTc5MjI2Mjc0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

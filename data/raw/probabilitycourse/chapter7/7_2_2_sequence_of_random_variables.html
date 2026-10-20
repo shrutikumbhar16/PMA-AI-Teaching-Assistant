@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 2 theorem	0 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.2.2"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Sequence of Random Variables</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_1_convergence_of_a_seq_of_nums.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_2_3_different_types_of_convergence_for_sequences_of_random_variables.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.2.2 Sequence of Random Variables</h2></div>			
+    		<div class="clear"></div><p>Here, we would like to discuss what we precisely mean by a sequence of random variables. Remember that, in any probability model, we have a sample space $S$ and a probability measure $P$. For simplicity, suppose that our sample space consists of a finite number of elements, i.e.,</p>
+\begin{align}%\label{}
+  S=\{s_1,s_2,\cdots, s_k\}.
+\end{align}
+Then, a random variable $X$ is a mapping that assigns a real number to any of the possible outcomes $s_i$, $i=1,2, \cdots, k$. Thus, we may write
+\begin{align}%\label{}
+  X(s_i)=x_i, \qquad \textrm{ for }i=1,2,\cdots, k.
+\end{align}
+
+<p>When we have a sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$, it is also useful to remember that we have an underlying sample space $S$. In particular, each $X_n$ is a function from $S$ to real numbers. Thus, we may write</p>
+\begin{align}%\label{}
+  X_n(s_i)=x_{{\large ni}}, \qquad \textrm{ for }i=1,2,\cdots, k.
+\end{align}
+In sum, a sequence of random variables is in fact a sequence of functions $X_n:S\rightarrow \mathbb{R}$.
+
+<hr />
+<span class='example'>Example </span>
+<p>Consider the following random experiment: A fair coin is tossed once. Here, the sample space has only two elements $S=\{H,T\}$. We define a sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ on this sample space as follows:</p>
+
+\begin{equation}
+ \nonumber X_n(s) = \left\{
+  \begin{array}{l l}
+    \frac{1}{n+1} &  \qquad \textrm{ if }s=H  \\
+      &  \qquad   \\
+    1 &  \qquad \textrm{ if }s=T
+  \end{array} \right.
+\end{equation}
+<ol type='a'>
+  <li> Are the $X_i$'s independent?</li>
+  <li> Find the PMF and CDF of $X_n$, $F_{{\large X_n}}(x)$ for $n=1,2,3, \cdots$.</li>
+  <li> As $n$ goes to infinity, what does $F_{{\large X_n}}(x)$ look like? </li>
+</ol>
+<br>
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+<ol type='a'>
+  <li>The $X_i$'s are not independent because their values are determined by the same coin toss. In particular, to show that $X_1$ and $X_2$ are not independent, we can write
+
+    \begin{align}%\label{}
+     P(X_1=1, X_2=1) &=P(T)  \\
+      &=\frac{1}{2},
+    \end{align}
+    which is different from
+    \begin{align}%\label{}
+     P(X_1=1)\cdot P(X_2=1) &=P(T)\cdot P(T)  \\
+      &=\frac{1}{4}.
+    \end{align}</li>
+
+<li>
+Each $X_i$ can take only two possible values that are equally likely. Thus, the PMF of $X_n$ is given by
+\begin{equation}
+ \nonumber P_{{\large X_n}}(x)=P(X_n=x) = \left\{
+  \begin{array}{l l}
+    \frac{1}{2} &  \qquad \textrm{ if }x=\frac{1}{n+1}  \\
+      &  \qquad   \\
+    \frac{1}{2} &  \qquad \textrm{ if }x=1
+  \end{array} \right.
+\end{equation}
+From this we can obtain the CDF of $X_n$
+\begin{equation}
+ \nonumber F_{{\large X_n}}(x)=P(X_n \leq x) = \left\{
+  \begin{array}{l l}
+    1 &  \qquad \textrm{ if }x \geq 1\\
+      &  \qquad   \\
+    \frac{1}{2} &  \qquad \textrm{ if }\frac{1}{n+1} \leq x <1  \\
+      &  \qquad   \\
+    0 &  \qquad \textrm{ if }x< \frac{1}{n+1}
+  \end{array} \right.
+\end{equation}
+</li>
+<li>
+Figure 7.3 shows the CDF of $X_n$ for different values of $n$. We see in the figure that the CDF of $X_n$ approaches the CDF of a $Bernoulli\left(\frac{1}{2}\right)$ random variable as $n \rightarrow \infty$. As we will discuss in the next sections, this means that the sequence $X_1$, $X_2$, $X_3$, $\cdots$ converges <i>in distribution</i> to a $Bernoulli\left(\frac{1}{2}\right)$ random variable as $n \rightarrow \infty$.
+</li>
+
+
+</ol>
+</li></ul>
+</li></ul>
+</div><hr /><br>
+
+<figure align="center">
+              					  <img src="//www.probabilitycourse.com/images/chapter7/CDF-lim_b_COLOR.png" id="chapter_image" alt="Figure" title="Figure" border="0" /> <br>
+              					  <figcaption align="center">Fig.7.3 - CDFs of $X_n$ for Example 7.12</figcaption>
+   			  </figure>	
+<br><br>
+<p>The previous example was defined on a very simple sample space $S=\{H,T\}$. Let us look at an example that is defined on a more interesting sample space.</p>
+
+<hr />
+<span class='example'>Example </span>
+
+<p>Consider the following random experiment: A fair coin is tossed repeatedly forever. Here, the sample space $S$ consists of all possible sequences of heads and tails. We define the sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ as follows:</p>
+\begin{equation}
+ \nonumber X_n = \left\{
+  \begin{array}{l l}
+    0 &  \qquad \textrm{ if the $n$th coin toss results in a heads}  \\
+      &  \qquad   \\
+    1 &  \qquad \textrm{ if the $n$th coin toss results in a tails}
+  \end{array} \right.
+\end{equation}
+In this example, the $X_i$'s are independent because each $X_i$ is a result of a different coin toss. In fact, the $X_i$'s are i.i.d. $Bernoulli\left(\frac{1}{2}\right)$ random variables. Thus, when we would like to refer to such a sequence, we usually say, ''Let $X_1$, $X_2$, $X_3$, $\cdots$ be a sequence of i.i.d. $Bernoulli\left(\frac{1}{2}\right)$ random variables.'' We usually do not state the sample space because it is implied that the sample space $S$ consists of all possible sequences of heads and tails.
+<br><hr /><br>
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_1_convergence_of_a_seq_of_nums.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_2_3_different_types_of_convergence_for_sequences_of_random_variables.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c177027fe67258',t:'MTc5MjI2Mjc3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "id": "4.2.5",
+  "title": "Other Distributions",
+  "chapter": 4,
+  "topic": "Other Continuous Distributions",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter4/4_2_5_other_distr.php",
+  "text": "4.2.5 Other Distributions\nIn addition to the special distributions that we discussed previously, there are many other continuous\nrandom variables that are used in practice. Depending on the applications you are interested in\nyou might need to deal with some of them. We have provided a list of important distributions\nin the appendix. In the next chapters, we will discuss some of them in more detail. There are also\nsome problems at the end of this chapter that discuss some of these distributions. There is no\nneed to try to memorize these distributions. When you understand the general theory behind\nrandom variables, you can essentially work with any distribution.\n."
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 1 theorem	0 lemma 0 definition 1 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'6.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'6.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'6.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'6.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="6.1.2"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Sums of Random Variables</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_1_1_joint_distributions_independence.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter6/6_1_3_moment_functions.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>6.1.2 Sums of Random Variables</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+<p>
+In many applications, we need to work with a sum of several random variables. In particular, we might need to study a random variable $Y$ given by
+\begin{align}%\label{}
+\nonumber Y=X_1+X_2+ \cdots +X_n.
+\end{align}
+The linearity of expectation tells us that
+\begin{align}%\label{}
+\nonumber EY=EX_1+EX_2+ \cdots +EX_n.
+\end{align}
+We can also find the variance of $Y$ based on our discussion in Section 5.3. In particular, we saw that the variance of a sum of two random variables is
+\begin{align}%\label{}
+\nonumber  \textrm{Var}(X_1+X_2)=\textrm{Var}(X_1)+\textrm{Var}(X_2)+2 \textrm{Cov}(X_1,X_2).
+\end{align}
+For $Y=X_1+X_2+ \cdots +X_n$, we can obtain a more general version of the above equation. We can write
+\begin{align}
+\nonumber \textrm{Var} (Y)&=\textrm{Cov}\left(\sum_{i=1}^{n}X_i,\sum_{j=1}^{n}X_j\right)\\
+\nonumber &=\sum_{i=1}^{n}\sum_{j=1}^{n} \textrm{Cov}(X_i,X_j)  &\textrm{(using part 7 of Lemma 5.3)}\\
+\nonumber &=\sum_{i=1}^{n} \textrm{Var}(X_i)+2 \sum_{i&lt;j} \textrm{Cov}(X_i,X_j).
+\end{align}
+</p>
+
+<div class='cbox'>
+\begin{align}%\label{}
+\nonumber \textrm{Var}\left(\sum_{i=1}^{n} X_i\right)=\sum_{i=1}^{n} \textrm{Var}(X_i)+2 \sum_{i&lt;j} \textrm{Cov}(X_i,X_j)
+\end{align}
+</div><br />
+
+If the $X_i$'s are independent, then $\textrm{Cov}(X_i,X_j)=0$ for $i \neq j$. In this case, we can write
+<div class='cbox' style='width:700px;'>
+\begin{align}%\label{}
+\nonumber \textrm{If $X_1$, $X_2$,...,$X_n$ are independent, }\textrm{Var} \left(\sum_{i=1}^{n} X_i\right)=\sum_{i=1}^{n} \textrm{Var}(X_i).
+\end{align}
+</div>
+
+<!-- Begin Example -->
+<hr /><span class='example'>Example </span><br />
+$N$ people sit around a round table, where $N&gt;5$. Each person tosses a coin. Anyone whose outcome is different from his/her two neighbors will receive a present. Let $X$ be the number of people who receive presents. Find $EX$ and $\textrm{Var}(X)$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+Number the $N$ people from $1$ to $N$. Let $X_i$ be the indicator random variable for the $i$th person, that is, $X_i=1$ if the $i$th person receives a present and zero otherwise. Then
+\begin{align}%\label{}
+X=X_1+X_2+...+X_N.
+\end{align}
+First note that $P(X_i=1)=\frac{1}{4}$. This is the probability that the person to the right has a different outcome times the probability that the person to the left has a different outcome. In other words, if we define $H_i$ and $T_i$ be the events that the $i$th person's outcome is heads and tails respectively, then we can write
+\begin{align}%\label{}
+EX_i &=P(X_i=1)\\
+&=P(H_{i-1},T_i,H_{i+1})+P(T_{i-1},H_i,T_{i+1})\\
+&=\frac{1}{8}+\frac{1}{8}=\frac{1}{4}.
+\end{align}
+Thus, we find
+\begin{align}%\label{}
+EX=EX_1+EX_2+...+EX_N=\frac{N}{4}.
+\end{align}
+Next, we can write
+\begin{align}%\label{}
+\nonumber \textrm{Var} (X)=\sum_{i=1}^{N} \textrm{Var}(X_i)+\sum_{i=1}^{N} \sum_{j \neq i} \textrm{Cov}(X_i,X_j).
+\end{align}
+Since $X_i \sim Bernoulli(\frac{1}{4})$, we have
+\begin{align}%\label{}
+\nonumber \textrm{Var} (X_i)=\frac{1}{4} . \frac{3}{4}=\frac{3}{16}.
+\end{align}
+It remains to find $\textrm{Cov}(X_i,X_j)$. First note that $X_i$ and $X_j$ are independent if there are at least two people between the $i$th person and the $j$th person. In other words, if $2<|i-j|< N-2$, then $X_i$ and $X_j$ are independent, so
+\begin{align}%\label{}
+\textrm{Cov}(X_i,X_j)=0,  \textrm{ for $2<|i-j|< N-2$.}
+\end{align}
+Also, note that there is a lot of symmetry in the problem:
+\begin{align}%\label{}
+\nonumber &\textrm{Cov} (X_1,X_2)=\textrm{Cov} (X_2,X_3)=\textrm{Cov} (X_3,X_4)=...=\textrm{Cov} (X_{N-1},X_{N})=\textrm{Cov} (X_N,X_1),\\
+\nonumber &\textrm{Cov} (X_1,X_3)=\textrm{Cov} (X_2,X_4)=\textrm{Cov} (X_3,X_5)=...=\textrm{Cov} (X_{N-1},X_{1})=\textrm{Cov} (X_N,X_2).
+\end{align}
+Thus, we can write
+\begin{align}%\label{}
+\nonumber \textrm{Var} (X)&=N \textrm{Var}(X_1)+ 2N \textrm{Cov}(X_1,X_2)+2N\textrm{Cov}(X_1,X_3)\\
+&=\frac{3N}{16}+2N \textrm{Cov}(X_1,X_2)+2N\textrm{Cov}(X_1,X_3).
+\end{align}
+So we need to find $\textrm{Cov}(X_1,X_2)$ and $\textrm{Cov}(X_1,X_3)$. We have
+\begin{align}%\label{}
+E[X_1X_2]&=P(X_1=1,X_2=1)\\
+&=P(H_N,T_1,H_2,T_3)+P(T_N,H_1,T_2,H_3) \\
+&=\frac{1}{16}+\frac{1}{16}=\frac{1}{8}.
+\end{align}
+Thus,
+\begin{align}%\label{}
+ \textrm{Cov}(X_1,X_2)&=E[X_1X_2]-E[X_1]E[X_2]\\
+ &=\frac{1}{8}-\frac{1}{16}=\frac{1}{16},
+\end{align}
+\begin{align}%\label{}
+E[X_1X_3]&=P(X_1=1,X_3=1)\\
+&=P(H_N,T_1,H_2,T_3,H_4)+P(T_N,H_1,T_2,H_3,T_4) \\
+&=\frac{1}{32}+\frac{1}{32}=\frac{1}{16}.
+\end{align}
+Thus,
+\begin{align}%\label{}
+ \textrm{Cov}(X_1,X_3)&=E[X_1X_3]-E[X_1]E[X_3]\\
+ &=\frac{1}{16}-\frac{1}{16}=0.
+\end{align}
+Therefore,
+\begin{align}%\label{}
+\nonumber \textrm{Var} (X)&=\frac{3N}{16}+2N \textrm{cov}(X_1,X_2)+2N\textrm{cov}(X_1,X_3)\\
+&=\frac{3N}{16}+\frac{2N}{16}\\
+&=\frac{5N}{16}.
+\end{align}
+</li></ul>
+</li></ul></div><hr /><br />
+
+ We now know how to find the mean and variance of a sum of $n$ random variables, but we might need to go beyond that. Specifically, what if we need to know the PDF of $Y=X_1+X_2+$...$+X_n$? In fact we have addressed that problem for the case where $Y=X_1+X_2$ and $X_1$ and $X_2$ are independent (Example 5.30 in Section 5.2.4). For this case, we found out the PDF is given by convolving the PDF of $X_1$ and $X_2$, that is
+\begin{align}
+  \nonumber f_Y(y)=f_{X_1}(y) \ast f_{X_2}(y)=\int_{-\infty}^{\infty} f_{X_1}(x)f_{X_2}(y-x)dx.
+\end{align}
+For $Y=X_1+X_2+$...$+X_n$, we can use the above formula repeatedly to obtain the PDF of $Y$:
+\begin{align}
+  \nonumber f_Y(y)=f_{X_1}(y) \ast f_{X_2}(y) \ast ... \ast f_{X_n}(y).
+\end{align}
+Nevertheless, this quickly becomes computationally difficult. Thus, we often resort to other methods if we can. 
+One method that is often useful is using moment generating functions, as we discuss in the next section.
+
+
+<!-- /End Example -->
+<!-- /Section Content -->
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_1_1_joint_distributions_independence.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter6/6_1_3_moment_functions.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176b2ae7a7258',t:'MTc5MjI2Mjc2MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

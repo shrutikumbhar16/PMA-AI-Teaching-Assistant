@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 16 theorem	3 lemma 1 definition 3 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'5.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'5.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'5.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'5.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="4.4"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Problems | Continuous and Mixed Random Variables</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_3_3_solved4_3.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter5/5_1_0_joint_distributions.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter4/video4_10.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>4.4 End of Chapter Problems</h2></div>			
+    		<div class="clear"></div>
+			
+			<span class='problem'>Problem </span><br>
+				<p>
+					Choose a real number uniformly at random in the interval $[2,6]$ and call it $X$.
+					<ol type="a">
+						<li>Find the CDF of X, $F_X (x)$.
+						<li>Find $EX$.
+					</ol>
+				</p>
+			<hr /><br>
+			
+			<span class='problem'>Problem </span><br>
+			<p>
+				Let $X$ be a continuous random variable with the following PDF
+				\begin{equation}
+					\nonumber f_X(x) = \left\{
+					\begin{array}{l l}
+              ce^{-4x} & \quad x \geq 0 \\
+              0  &  \quad otherwise
+            \end{array} \right.
+            \end{equation}
+				where $c$ is a positive constant.
+				<ol type="a">
+					<li>Find c.</li>
+					<li>Find the CDF of X, $F_X(x)$.</li>
+					<li>Find $P(2 &lt; X &lt; 5)$.
+					<li>Find $EX$. </li>
+				</ol>
+			</p>
+			<hr /><br />
+			
+			<span class='problem'>Problem </span><br>
+			<p>
+				Let $X$ be a continuous random variable with PDF
+				\begin{equation}
+					\nonumber f_X(x) = \left\{
+					\begin{array}{l l}
+						x^{2} + \frac{2}{3} & \quad 0 \leq x \leq 1 \\
+						0 & \quad otherwise
+					\end{array} \right.
+					\end{equation}
+				<ol type="a">
+					<li>Find $E(X^{n})$, for $n=1,2,3,\cdots$.</li>
+					<li>Find the variance of $X$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+			
+			<span class='problem'>Problem </span><br>
+			<p>
+				Let $X$ be a $uniform(0,1)$ random variable, and let $Y = e^{-X}$.
+				<ol type="a">
+					<li>Find the CDF of $Y$.</li>
+					<li>Find the PDF of $Y$.</li>
+					<li>Find $EY$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+
+			<span class='problem'>Problem </span><br />
+			<p>
+				Let $X$ be a continuous random variable with PDF
+				\begin{equation}
+					\nonumber f_X(x) = \left\{
+					\begin{array}{l l}
+						\frac{5}{32}x^{4} & \quad 0 &lt; x \leq 2 \\	
+						0 & \quad otherwise
+					\end{array} \right.
+					\end{equation}
+				and let $Y = X^{2}$.
+				<ol type="a">
+					<li>Find the CDF of $Y$.</li>
+					<li>Find the PDF of $Y$.</li>
+					<li>Find $EY$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+
+			<span class='problem'>Problem </span><br />
+			<p>
+				Let $X \sim Exponential (\lambda)$, and $Y=a X$, where $a$ is a positive real number.  Show that 
+				$$Y \sim Exponential\left(\frac{\lambda}{a}\right).$$
+			</p>
+			<hr /><br />
+			
+			
+			<span class='problem'>Problem </span><br />
+			<p>
+				 Let $X \sim Exponential (\lambda)$. Show that
+				<ol type="a">
+					<li>$EX^n=\frac{n}{\lambda} EX^{n-1}$, for $n=1,2,3,\cdots$;</li>
+					<li>$EX^n=\frac{n!}{\lambda^{\large{n}}}$, for $n=1,2,3,\cdots$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+			
+			
+			
+			<span class='problem'>Problem </span><br />
+			<p>
+				Let $X \sim N(3,9)$.
+				<ol type="a">
+					<li>Find $P(X &gt; 0)$.</li>
+					<li>Find $P(-3 &lt; X &lt; 8)$.</li>
+					<li>Find $P(X &gt; 5|X &gt; 3)$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+			
+			
+			
+			
+			
+			
+
+			<span class='problem'>Problem </span><br />
+			<p>
+				Let $X \sim N(3,9)$ and $Y = 5 - X$.
+				<ol type="a">
+					<li>Find $P(X &gt; 2)$.</li>
+					<li>Find $P(-1 &lt; Y &lt; 3)$.</li>
+					<li>Find $P(X &gt; 4|Y &lt; 2)$.</li>
+				</ol>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				Let $X$ be a continuous random variable with PDF
+				\begin{equation}
+					\nonumber f_X(x) = 
+					\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}} \hspace{20pt} \textrm{for all }x \in \mathbb{R}.
+					\end{equation}
+				and let $Y = \sqrt{|X|}$. Find $f_Y(y)$.
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+			<p>
+				Let $X \sim Exponential(2)$ and $ Y = 2 + 3X$.
+				<ol type="a">
+					<li>Find $P(X &gt; 2)$.</li>
+					<li>Find $EY$ and $Var(Y)$.</li>
+					<li>Find $P(X &gt; 2|Y &lt; 11)$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+			<p>
+				The <b>median</b> of a continuous random variable $X$ can be defined as the unique real number <i>m</i> that satisfies
+				\begin{equation}
+					P(X \geq m) = P(X &lt; m) = \frac{1}{2}.
+				\end{equation}
+				Find the median of the following random variables
+				<ol type="a">
+					<li>$X \sim Uniform(a,b)$.</li>
+					<li>$Y \sim Exponential(\lambda)$.</li>
+					<li>$W \sim N(\mu,\sigma^2)$.</li>
+				</ol>
+			</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $X$ be a random variable with the following CDF
+					\begin{equation}
+						\nonumber F_X(x) = \left\{
+						\begin{array}{l l}
+							0 & \quad \textrm{for}\: x &lt; 0 \\
+							x & \quad \textrm{for}\: 0 \leq x &lt; \frac{1}{4} \\
+							x + \frac{1}{2} & \quad \textrm{for}\: \frac{1}{4} \leq x &lt; \frac{1}{2} \\
+							1 & \quad \textrm{for}\: x \geq \frac{1}{2}
+						\end{array} \right.
+						\end{equation}
+					<ol type="a">
+						<li>Plot $F_X(x)$ and explain why $X$ is a mixed random variable.</li>
+						<li>Find $P(X \leq \frac{1}{3})$.</li>
+						<li>Find $P(X \geq \frac{1}{4})$.</li>
+						<li>Write CDF of $X$ in the form of</li>
+						\begin{equation}
+							\nonumber F_X(x) = C(x) + D(x),
+						\end{equation}
+						where $C(x)$ is a continuous function and $D(x)$ is in the form of a staircase function, i.e.,
+						\begin{equation}
+							\nonumber D(x)=\sum_k a_ku(x - x_k).
+						\end{equation}
+						<li>Find $c(x) = \frac{d}{dx}C(x)$.</li>
+						<li>Find $EX$ using $EX = \int_{-\infty}^{\infty} xc(x)dx + \sum_k x_k a_k$</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $X$ be a random variable with the following CDF
+					\begin{equation}
+						\nonumber F_X(x) = \left\{
+						\begin{array}{l l}
+							0 & \quad \textrm{for}\: x &lt; 0 \\
+							x & \quad \textrm{for}\: 0 \leq x &lt; \frac{1}{4} \\
+							x + \frac{1}{2} & \quad \textrm{for}\: \frac{1}{4} \leq x &lt; \frac{1}{2} \\
+							1 & \quad \textrm{for}\: x \geq \frac{1}{2}
+						\end{array} \right.
+						\end{equation}
+					<ol type="a">
+						<li>Find the generalized PDF of $X, f_X(x)$.</li>
+						<li>Find $EX$ using $f_X(x)$.</li>
+						<li>Find $Var(X)$ using $f_X(x)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $X$ be a mixed random variable with the following generalized PDF
+					\begin{equation}
+						\nonumber f_X(x) = \frac{1}{3}\delta(x + 2) + \frac{1}{6}\delta(x - 1) + \frac{1}{2}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}.
+					\end{equation}
+					<ol type="a">
+						<li>Find $P(X = 1)$ and $P(X = -2)$.</li>
+						<li>Find $P(X \geq 1)$.</li>
+						<li>Find $P(X = 1|X \geq 1)$.</li>
+						<li>Find $EX$ and $Var(X)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					A company makes a certain device. We are interested in the lifetime of the device. It is estimated that around 2% of the devices are defective from the start so they have a lifetime of 0 years. If a device is not defective, then the lifetime of the device is exponentially distributed with a parameter $\lambda = 2$ years. Let X be the lifetime of a randomly chosen device.					
+					<ol type="a">
+						<li>Find the generalized PDF of $X$.</li>
+						<li>Find $P(X \geq 1)$.</li>
+						<li>Find $P(X &gt; 2|X \geq 1)$.</li>
+						<li>Find $EX$ and $Var(X)$.</li>
+					</ol>
+
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					A continuous random variable is said to have a $Laplace(\mu,b)$ distribution [<a href="../bibliography.php#wiki-Laplace">14</a>] if its PDF is given by
+					\begin{equation}
+						\nonumber f_X(x) = \frac{1}{2b} \exp \left( -\frac{|x - \mu|}{b}\right)\\
+						\nonumber =
+						\left\{\begin{array}{l l}
+      				\frac{1}{2b} \exp  \left( \frac{x-\mu}{b} \right) & \quad \textrm{if }\: x < \mu\\
+      				\frac{1}{2b} \exp \left( -\frac{x-\mu}{b} \right)   & \quad \textrm{if }\: x \geq \mu
+  					\end{array}\right.
+					\end{equation}
+										
+					where $\mu \in \mathbb{R}$ and $b &gt; 0$.
+					<ol type="a">
+						<li>If $X \sim Laplace(0,1)$, find $EX$ and $Var(X)$.</li>
+						<li>If $X \sim Laplace(0,1)$ and $Y = bX + \mu$, show that $Y \sim Laplace(\mu,b)$.</li>
+						<li>Let $Y \sim Laplace(\mu,b)$, where $\mu \in \mathbb{R}$ and $b &gt; 0$. Find $EY$ and $Var(Y)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $X \sim Laplace(0,b)$, i.e.,
+					\begin{equation}
+						\nonumber f_X(x) = \frac{1}{2b} \exp \left( -\frac{|x|}{b} \right),
+					\end{equation}
+					where $b &gt; 0$. Define $Y = |X|$. Show that $Y \sim Exponential \left( \frac{1}{b} \right)$.
+				</p>
+			<hr /><br />
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					A continuous random variable is said to have the <b>standard Cauchy</b> distribution if its PDF is given by
+					\begin{equation}
+						\nonumber f_X(x) = \frac{1}{\pi(1 + x^2)}.
+					\end{equation}
+					If $X$ has a standard Cauchy distribution, show that $EX$ is not well-defined. Also, show $EX^2 = \infty$.
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					A continuous random variable is said to have a <b>Rayleigh distribution</b> with parameter $\sigma$ if its PDF is given by
+					\begin{equation}
+						\nonumber f_X(x) = \frac{x}{\sigma^2} e^{-x^2/2\sigma^2} u(x)\\
+  					\nonumber  =
+    					\left\{\begin{array}{l l}
+      				\frac{x}{\sigma^2} e^{-x^2/2\sigma^2} & \quad \textrm{if}\: x \geq 0\\
+      				0  & \quad \textrm{if } x &lt; 0
+  					\end{array}\right.
+						\end{equation}
+					where $\sigma &gt; 0$.
+					<ol type="a">
+						<li>If $X \sim Rayleigh(\sigma)$, find $EX$.</li>
+						<li>If $X \sim Rayleigh(\sigma)$, find the CDF of $X, F_X(x)$.</li>
+						<li>If $X \sim Exponential(1)$ and $Y = \sqrt{2\sigma^2X}$, show that $Y \sim Rayleigh(\sigma)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					A continuous random variable is said to have a $Pareto(x_m,\alpha)$ distribution [<a href="../bibliography.php#wiki-Pareto">15</a>] if its PDF is given by
+					\begin{equation}
+					\nonumber f_X(x) = \left\{
+						\begin{array}{l l}
+							\alpha \frac{x_m^{\alpha}}{x^{\alpha+1}} & \quad \textrm{for}\: x \geq x_m \\
+							0 & \quad \textrm{for}\: x &lt; x_m
+						\end{array} \right.
+						\end{equation}
+					where $x_m, \alpha &gt; 0$. Let $X \sim Pareto(x_m,\alpha)$.
+					<ol type="a">
+						<li>Find the CDF of $X$, $F_X(x)$.</li>
+						<li>Find $P(X &gt; 3x_m|X &gt; 2x_m)$.</li>
+						<li>If $\alpha &gt; 2$, find $EX$ and $Var(X)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $Z \sim N(0,1)$. If we define $X = e^{\sigma Z+\mu}$, then we say that $X$ has a log-normal distribution with parameters
+					$\mu$ and $\sigma$, and we write $X \sim LogNormal(\mu,\sigma)$.
+					<ol type="a">
+						<li>If $X \sim LogNormal(\mu,\sigma)$, find the CDF of $X$ in terms of the $\Phi$ function.</li>
+						<li>Find $EX$ and $Var(X)$.</li>
+					</ol>
+				</p>
+			<hr /><br />
+
+
+			<span class='problem'>Problem </span><br />
+				<p>
+					Let $X_1$, $X_2$, $\cdots$, $X_n$ be independent random variables with $X_i \sim Exponential(\lambda)$. Define
+					\begin{equation}
+					\nonumber Y = X_1 + X_2 + \cdots + X_n.
+					\end{equation}
+					As we will see later, $Y$ has a <b>Gamma</b> distribution with parameters $n$ and $\lambda$, i.e.,
+					$Y \sim Gamma(n,\lambda)$. Using this, show that if $Y \sim Gamma(n,\lambda)$, then $EY = \frac{n}{\lambda}$ and $Var(Y) = \frac{n}{\lambda^2}$.
+				</p>
+			<hr /><br />
+
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter4/4_3_3_solved4_3.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter5/5_1_0_joint_distributions.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c1768abf88c766',t:'MTc5MjI2Mjc1NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

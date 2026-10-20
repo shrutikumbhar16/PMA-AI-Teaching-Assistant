@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 7 theorem	1 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.2.5"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Convergence in Probability</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_4_convergence_in_distribution.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_2_6_convergence_in_mean.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.2.5 Convergence in Probability</h2></div>			
+    		<div class="clear"></div>
+<p>Convergence in probability is stronger than convergence in distribution. In particular, for a sequence $X_1$, $X_2$, $X_3$, $\cdots$ to converge to a random variable $X$, we must have that $P(|X_n-X| \geq \epsilon)$ goes to $0$ as $n\rightarrow \infty$, for any $\epsilon > 0$. To say that $X_n$ converges in probability to $X$, we write</p>
+\begin{align}%\label{eq:union-bound}
+    X_n \ \xrightarrow{p}\ X .
+\end{align}
+Here is the formal definition of convergence in probability:
+
+<div class=cbox>
+<p align=center>Convergence in Probability</p>
+A sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ converges <b>in probability</b> to a random variable $X$, shown by $ X_n \ \xrightarrow{p}\ X$, if
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n-X| \geq \epsilon \big)=0, \qquad \textrm{ for all }\epsilon>0.
+\end{align}
+
+</div>
+
+<hr />
+<span class='example'>Example </span>
+
+
+<p>Let $X_n \sim Exponential(n)$, show that $ X_n \ \xrightarrow{p}\ 0$. That is, the sequence $X_1$, $X_2$, $X_3$, $\cdots$ converges in probability to the zero random variable $X$.
+</p>
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+We have
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n-0| \geq \epsilon \big) &=\lim_{n \rightarrow \infty} P\big(X_n \geq \epsilon \big) & (\textrm{ since $X_n\geq 0$ })\\
+   &=\lim_{n \rightarrow \infty} e^{-n\epsilon}  & (\textrm{ since $X_n \sim Exponential(n)$ })\\
+   &=0 , \qquad \textrm{ for all }\epsilon>0.
+\end{align}
+
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<span class='example'>Example </span>
+
+<p>Let $X$ be a random variable, and $X_n=X+Y_n$, where
+\begin{align}%\label{}
+  EY_n=\frac{1}{n}, \qquad \mathrm{Var}(Y_n)=\frac{\sigma^2}{n},
+\end{align}
+where $\sigma>0$ is a constant. Show that $X_n \ \xrightarrow{p}\ X$.</p>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+First note that by the triangle inequality, for all $a,b \in \mathbb{R}$, we have $|a+b| \leq |a|+|b|$. Choosing $a=Y_n-EY_n$ and $b=EY_n$, we obtain
+\begin{align}%\label{eq:union-bound}
+     |Y_n| \leq \left|Y_n-EY_n\right|+\frac{1}{n}.
+\end{align}
+Now, for any $\epsilon>0$, we have
+\begin{align}%\label{eq:union-bound}
+   P\big(|X_n-X| \geq \epsilon \big)&=P\big(|Y_n| \geq \epsilon \big)\\
+   & \leq P\left(\left|Y_n-EY_n\right|+\frac{1}{n} \geq \epsilon \right)\\
+   & = P\left(\left|Y_n-EY_n\right|\geq \epsilon-\frac{1}{n} \right)\\
+   & \leq   \frac{\mathrm{Var}(Y_n)}{\left(\epsilon-\frac{1}{n} \right)^2} &\textrm{(by Chebyshev's inequality)}\\
+   &= \frac{\sigma^2}{n \left(\epsilon-\frac{1}{n} \right)^2}\rightarrow 0 \qquad \textrm{ as }  n\rightarrow \infty.
+\end{align}
+Therefore, we conclude $X_n \ \xrightarrow{p}\ X$.
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<p>As we mentioned previously, convergence in probability is stronger than convergence in distribution. That is, if $X_n \ \xrightarrow{p}\ X$, then $X_n \ \xrightarrow{d}\ X$. 
+The converse is not necessarily true. 
+For example, let $X_1$, $X_2$, $X_3$, $\cdots$ be a sequence of i.i.d. $Bernoulli\left(\frac{1}{2}\right)$ random variables. 
+Let also $X \sim Bernoulli\left(\frac{1}{2}\right)$ be independent from the $X_i$'s.  Then, $X_n \ \xrightarrow{d}\ X$. However, $X_n$ does not converge in probability to $X$, since $|X_n-X|$ is in fact also a $Bernoulli\left(\frac{1}{2}\right)$ random variable and</p>
+
+\begin{align}%\label{eq:union-bound}
+   P\big(|X_n-X| \geq \epsilon \big)&=\frac{1}{2}, \qquad \textrm{ for }  0<\epsilon<1.
+\end{align}
+
+<p>A special case in which the converse is true is when $X_n \ \xrightarrow{d}\ c$, where $c$ is a constant. In this case, convergence in distribution implies convergence in probability. We can state the following theorem:</p>
+
+<br /><span class=theorem>Theorem </span>
+
+If $X_n \ \xrightarrow{d}\ c$, where $c$ is a constant, then $X_n \ \xrightarrow{p}\ c$.
+
+<div class=solvedprob><ul><li><a><i>Proof</i></a>
+<ul><li>
+Since $X_n \ \xrightarrow{d}\ c$, we conclude that for any $\epsilon>0$, we have
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} F_{X_n}(c-\epsilon)=0,\\
+   \lim_{n \rightarrow \infty} F_{X_n}(c+\frac{\epsilon}{2})=1.
+\end{align}
+We can write for any $\epsilon>0$,
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n-c| \geq \epsilon \big) &= \lim_{n \rightarrow \infty} \bigg[P\big(X_n \leq c-\epsilon \big) + P\big(X_n \geq c+\epsilon \big)\bigg]\\
+   &=\lim_{n \rightarrow \infty} P\big(X_n \leq c-\epsilon \big) + \lim_{n \rightarrow \infty} P\big(X_n \geq c+\epsilon \big)\\
+   &=\lim_{n \rightarrow \infty} F_{X_n}(c-\epsilon) + \lim_{n \rightarrow \infty} P\big(X_n \geq c+\epsilon \big)\\
+   &= 0 + \lim_{n \rightarrow \infty} P\big(X_n \geq c+\epsilon \big) \hspace{50pt} (\textrm{since } \lim_{n \rightarrow \infty} F_{X_n}(c-\epsilon)=0)\\
+   &\leq  \lim_{n \rightarrow \infty} P\big(X_n > c+\frac{\epsilon}{2} \big)\\
+   &= 1-\lim_{n \rightarrow \infty} F_{X_n}(c+\frac{\epsilon}{2})\\
+   &=0   \hspace{140pt} (\textrm{since } \lim_{n \rightarrow \infty} F_{X_n}(c+\frac{\epsilon}{2})=1).
+\end{align}
+Since $\lim \limits_{n \rightarrow \infty} P\big(|X_n-c| \geq \epsilon \big) \geq 0$, we conclude that
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n-c| \geq \epsilon \big)&= 0, \qquad \textrm{ for all }\epsilon>0,
+\end{align}
+which means $X_n \ \xrightarrow{p}\ c$.
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<p>The most famous example of convergence in probability is the weak law of large numbers (WLLN). We proved WLLN in Section <a href="chapter7/7_1_1_law_of_large_numbers.php">7.1.1</a>. The WLLN states that if $X_1$, $X_2$, $X_3$, $\cdots$ are i.i.d. random variables with mean $EX_i=\mu<\infty$, then the average sequence defined by</p>
+\begin{align}%\label{}
+ \overline{X}_n=\frac{X_1+X_2+...+X_n}{n}
+\end{align}
+<p>converges in probability to $\mu$. It is called the "weak" law because it refers to convergence in probability. There is another version of the law of large numbers that is called the strong law of large numbers (SLLN). We will discuss SLLN in Section <a href="chapter7/7_2_7_almost_sure_convergence.php">7.2.7</a>.</p>
+	<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_4_convergence_in_distribution.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_2_6_convergence_in_mean.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c177115e72c766',t:'MTc5MjI2Mjc3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

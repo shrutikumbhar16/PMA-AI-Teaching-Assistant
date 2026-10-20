@@ -1,0 +1,10 @@
+{
+  "id": "4.2.1",
+  "title": "Uniform Distribution",
+  "chapter": 4,
+  "topic": "Uniform Distribution",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter4/4_2_1_uniform.php",
+  "text": "4.2.1 Uniform Distribution\nWe have already seen the uniform distribution. In particular, we have the following definition:\nA continuous random variable $X$ is said to have a\nUniform\ndistribution over the interval $[a,b]$,\nshown as $X \\sim Uniform(a,b)$, if its PDF is given by\n\\begin{equation}\n\\nonumber f_X(x) = \\left\\{\n\\begin{array}{l l}\n\\frac{1}{b-a} & \\quad  a < x < b\\\\\n0 & \\quad x < a \\textrm{ or } x > b\n\\end{array} \\right.\n\\end{equation}\nWe have already found the CDF and the expected value of the uniform distribution. In particular, we\nknow that if $X \\sim Uniform(a,b)$, then its CDF is given by\nequation 4.1 in example 4.1\n,\nand its mean is given by\n$$EX=\\frac{a+b}{2}$$\nTo find the variance, we can find $EX^2$ using LOTUS:\n$EX^2$\n$= \\int_{-\\infty}^{\\infty} x^2f_X(x)dx$\n$=\\int_{a}^{b} x^2 \\left(\\frac{1}{b-a}\\right) dx$\n$=\\frac{a^2+ab+b^2}{3}$.\nTherefore,\n$\\textrm{Var}(X)$\n$=EX^2-(EX)^2$\n$=\\frac{(b-a)^2}{12}$.\n."
+}

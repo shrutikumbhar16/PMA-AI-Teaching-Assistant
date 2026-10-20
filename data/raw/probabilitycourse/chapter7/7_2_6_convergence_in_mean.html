@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 9 theorem	2 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'7.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'7.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'7.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'7.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="7.2.6"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Convergence in Mean</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_5_convergence_in_probability.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter7/7_2_7_almost_sure_convergence.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>7.2.6 Convergence in Mean</h2></div>			
+    		<div class="clear"></div>
+<p>One way of interpreting the convergence of a sequence $X_n$ to $X$ is to say that the ''distance'' between $X$ and $X_n$ is getting smaller and smaller. For example, if we define the distance between $X_n$ and $X$ as $P\big(|X_n-X| \geq \epsilon \big)$, we have convergence in probability. One way to define the distance between $X_n$ and $X$ is</p>
+\begin{align}%\label{eq:union-bound}
+   E\left(|X_n-X|^{\large r}\right),
+\end{align}
+<p>where $r \geq 1$ is a fixed number. This refers to <b>convergence in mean</b>. (<i>Note: for convergence in mean, it is usually required that $E|X^{\large r}_n|<\infty$.</i>) The most common choice is $r=2$, in which case it is called the <b>mean-square convergence</b>. (<i>Note: Some authors refer to the case $r=1$ as convergence in mean.</i>)</p>
+
+<div class=cbox>
+<p align=center>Convergence in Mean</p>
+Let $r \geq 1$ be a fixed number. A sequence of random variables $X_1$, $X_2$, $X_3$, $\cdots$ converges <b>in the $r$th mean</b> or <b>in the $L^{\large r}$ norm</b> to a random variable $X$, shown by $ X_n \ \xrightarrow{L^{\large r}}\ X$, if
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} E\left(|X_n-X|^{\large r}\right)=0.
+\end{align}
+If $r=2$, it is called the <b>mean-square convergence</b>, and it is shown by $ X_n \ \xrightarrow{m.s.}\ X$.
+</div>
+
+<hr /><br>
+<!-- This is an exemple-->
+<span class='example'>Example </span>
+<p>Let $X_n \sim Uniform\left(0, \frac{1}{n}\right)$. Show that $ X_n \ \xrightarrow{L^{\large r}}\ 0$, for any $r \geq 1$.</p>
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+The PDF of $X_n$ is given by
+\begin{equation}
+ \nonumber f_{X_n}(x) = \left\{
+  \begin{array}{l l}
+   n  &  \quad 0 \leq x \leq \frac{1}{n}  \\
+      &  \quad   \\
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+\end{equation}
+We have
+\begin{align}%\label{eq:union-bound}
+   E\left(|X_n-0|^{\large r}\right)&=\int_{0}^{\frac{1}{n}} x^{\large r} n \hspace{10pt} dx\\
+   &= \frac{1}{(r+1) n^{\large r}} \rightarrow 0, \qquad \textrm{ for all }r\geq 1.
+\end{align}
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+<br />
+
+
+
+<!-- This is a theor-->
+<span class=theorem>Theorem </span>
+<p>Let $1 \leq r \leq s$. If $ X_n \ \xrightarrow{L^{\large s}}\ X$, then $ X_n \ \xrightarrow{L^{\large r}}\ X$.</p>
+
+<div class=solvedprob><ul><li><a><i>Proof</i></a>
+<ul><li>
+
+We can use  H&ouml;lder's inequality, which was proved in Section 6.2.6<!--\ref{sec:solved-ineq}-->. H&ouml;lder's Inequality states that  \begin{align}%\label{}
+    E |XY| \leq  \big(E|X|^p\big)^{{\large \frac{1}{p}}} \big(E|Y|^q\big)^{{\large \frac{1}{q}}},
+  \end{align}
+  where $1 < p$ , $q < \infty$ and ${\large \frac{1}{p}}+{\large \frac{1}{q}}= 1$. In H&ouml;lder's inequality, choose
+  \begin{align}%\label{}
+   X&=|X_n-X|^{\large r}, \\
+   Y&=1,\\
+   p&=\frac{s}{r}>1.
+  \end{align}
+We obtain
+\begin{align}%\label{}
+    E |X_n-X|^{\large r} \leq  \big(E|X_n-X|^{\large s}\big)^{{\large \frac{1}{p}}}.
+  \end{align}
+Now, by assumption $ X_n \ \xrightarrow{L^{\large s}}\ X$, which means
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} E\left(|X_n-X|^{\large s}\right)=0.
+\end{align}
+We conclude
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} E\left(|X_n-X|^{\large r}\right) & \leq  \lim_{n \rightarrow \infty} \big(E|X_n-X|^{\large s}\big)^{\frac{1}{p}}\\
+   &= 0.
+\end{align}
+Therefore, $ X_n \ \xrightarrow{L^{\large r}}\ X$.
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<p>As we mentioned before, convergence in mean is stronger than convergence in probability. We can prove this using Markov's inequality.</p>
+<hr />
+<br />
+
+
+<!-- This is a theorem -->
+<span class=theorem>Theorem </span>
+<p>If $ X_n \ \xrightarrow{L^{\large r}}\ X$ for some $r\geq 1$, then $ X_n \ \xrightarrow{p}\ X$.</p>
+
+<div class=solvedprob><ul><li><a><i>Proof</i></a>
+<ul><li>
+
+For any $\epsilon>0$, we have
+\begin{align}%\label{}
+  P\big(|X_n-X| \geq \epsilon \big)&= P\big(|X_n-X|^{\large r} \geq \epsilon^{\large r} \big) & \textrm{ (since $r \geq 1$)}\\
+  & \leq \frac{E|X_n-X|^{\large r}}{\epsilon^{\large r}} &\textrm{ (by Markov's inequality)}.
+\end{align}
+Since by assumption $\lim \limits_{n \rightarrow \infty} E\left(|X_n-X|^{\large r}\right)=0$, we conclude
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n-X| \geq \epsilon \big)=0, \qquad \textrm{ for all }\epsilon>0.
+\end{align}
+
+</li></ul>
+</li></ul>
+</div><hr /><br />
+
+<p>The converse of Theorem 7.4<!---\ref{thm:m-conv-p}---!> is not true in general. That is, there are sequences that converge in probability but not in mean. Let us look at an example.</p>
+<br />
+<hr />
+
+<!-- This is an exemple-->
+<span class='example'>Example </span>
+<p>Consider a sequence $\{X_n, n=1,2,3, \cdots \}$ such that</p>
+\begin{equation}
+ \nonumber X_n = \left\{
+  \begin{array}{l l}
+    n^2  &  \qquad \textrm{with probability } \frac{1}{n}  \\
+      &  \qquad   \\
+    0 &  \qquad \textrm{with probability } 1-\frac{1}{n}
+  \end{array} \right.
+\end{equation}
+Show that
+<ol type=a>
+  <li> $X_n \ \xrightarrow{p}\ 0$.</li>
+  <li> $X_n$ does not converge in the $r$th mean for any $r \geq 1$.</li>
+</ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+
+<ol type=a>
+  <li> To show $X_n \ \xrightarrow{p}\ 0$, we can write, for any $\epsilon>0$ 
+  \begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|X_n| \geq \epsilon \big)&=\lim_{n \rightarrow \infty} P(X_n=n^2)\\
+   &= \lim_{n \rightarrow \infty} \frac{1}{n}\\
+   &=0.
+  \end{align}
+  We conclude that $X_n \ \xrightarrow{p}\ 0$. </li>
+  <li> For any $r \geq 1$, we can write
+  \begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} E\left(|X_n|^{\large r}\right)&=\lim_{n \rightarrow \infty} \left( n^{2r} \cdot \frac{1}{n} +0 \cdot \left(1-\frac{1}{n}\right) \right)\\
+   &=\lim_{n \rightarrow \infty} n^{2r-1}\\
+  \ &=\infty \qquad (\textrm{since $r \geq 1$}).
+  \end{align}
+  Therefore, $X_n$ does not converge in the $r$th mean for any $r \geq 1$. In particular, it is interesting to note that, although $X_n \ \xrightarrow{p}\ 0$, the expected value of $X_n$ does not converge to $0$. </li>
+
+</li></ul>
+</li></ul>
+</div><hr /> <br />
+
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter7/7_2_5_convergence_in_probability.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter7/7_2_7_almost_sure_convergence.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c177163cb28afd',t:'MTc5MjI2Mjc3Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

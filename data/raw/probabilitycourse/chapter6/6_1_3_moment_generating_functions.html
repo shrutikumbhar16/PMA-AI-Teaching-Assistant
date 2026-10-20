@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 2 theorem	0 lemma 0 definition 1 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'6.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'6.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'6.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'6.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="6.1.3"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Moment Generating Functions</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_1_2_sums_random_variables.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter6/6_1_4_characteristic_functions.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>6.1.3 Moment Generating Functions</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+Here, we will introduce and discuss <b>moment generating functions (MGFs)</b>. Moment generating functions are useful for several reasons, one of which is their application to analysis of sums of random variables. Before discussing MGFs, let's define moments.
+<br> <br>
+<br /><span class='definition'>Definition </span>.
+The <b><i>n</i>th moment</b> of a random variable $X$ is defined to be $E[X^n]$. The <b><i>n</i>th central moment</b> of $X$ is defined to be $E[(X-EX)^n]$.
+<br />
+<br> <br>
+For example, the first moment is the expected value $E[X]$. The second central moment is the variance of $X$. Similar to mean and variance, other moments give useful information about random variables.
+
+<div class='cbox'>
+The moment generating function (MGF) of a random variable $X$ is a function $M_X(s)$ defined as
+\begin{align}%\label{}
+\nonumber  M_X(s)=E\left[e^{sX}\right].
+\end{align}
+We say that MGF of $X$ exists, if there exists a positive constant $a$ such that $M_X(s)$ is finite for all $s \in [-a,a]$.
+</div><br />
+
+Before going any further, let's look at an example.
+
+<!-- begin Example -->
+<hr /><span class='example'>Example </span><br />
+For each of the following random variables, find the MGF.
+<ol type='a'>
+  <li> $X$ is a discrete random variable, with PMF
+ 
+  \begin{equation}
+             \nonumber P_X(k) = \left\{
+            \begin{array}{l l}
+              \frac{1}{3} & \quad  k=1\\
+			   &  \quad   \\
+               \frac{2}{3}  & \quad  k=2\\
+            \end{array} \right.
+            \end{equation}
+	</li>
+	<li>
+  $Y$ is a $Uniform(0,1)$ random variable.
+	</li>
+</ol>
+
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+<ol type='a'>
+  <li> For $X$, we have
+  \begin{align}%\label{}
+  \nonumber M_X(s)&=E\left[e^{sX}\right]  \\
+  \nonumber &=\frac{1}{3}e^s+\frac{2}{3}e^{2s}.
+  \end{align}
+  which is well-defined for all $s \in \mathbb{R}$.
+  </li>
+	<li> For $Y$, we can write
+  \begin{align}%\label{}
+  \nonumber M_Y(s)&=E\left[e^{sY}\right]  \\
+  \nonumber &=\int_{0}^{1}e^{sy}dy\\
+  \nonumber &=\frac{e^s-1}{s}.
+  \end{align}
+  Note that we always have $M_Y(0)=E[e^{0 \cdot Y}]=1$, thus $M_Y(s)$ is also well-defined for all $s \in \mathbb{R}$.
+</li></ol>
+</li></ul>
+</li></ul></div><hr /><br />
+Why is the MGF useful? There are basically two reasons for this. First, the MGF of $X$ gives us all moments of $X$. That is why it is called the moment generating function. Second, the MGF (if it exists) uniquely determines the distribution. That is, if two random variables have the same MGF, then they must have the same distribution. Thus, if you find the MGF of a random variable, you have indeed determined its distribution. We will see that this method is very useful when we work on sums of several independent random variables. Let's discuss these in detail.
+
+<h2>Finding Moments from MGF:</h2>
+Remember the Taylor series for $e^x$: for all $x \in \mathbb{R}$, we have
+\begin{align}%\label{}
+\nonumber  e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...=\sum_{k=0}^{\infty} \frac{x^k}{k!}.
+\end{align}
+Now, we can write
+\begin{align}%\label{}
+\nonumber  e^{sX}&=\sum_{k=0}^{\infty} \frac{(sX)^k}{k!}=\sum_{k=0}^{\infty} \frac{X^k s^k}{k!}.
+\end{align}
+Thus, we have
+\begin{align}%\label{}
+\nonumber  M_X(s)=E[e^{sX}]&=\sum_{k=0}^{\infty} E[X^k] \frac{s^k}{k!}.
+\end{align}
+We conclude that the $k$th moment of $X$ is the coefficient of  $\frac{s^k}{k!}$ in the Taylor series of $M_X(s)$. Thus, if we have the Taylor series of $M_X(s)$, we can obtain all moments of $X$.
+
+<!-- begin example -->
+<hr /><span class='example'>Example </span><br />
+If $Y \sim Uniform(0,1)$, find $E[Y^k]$ using $M_Y(s)$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+We found $M_Y(s)$ in Example 6.3, so we have
+\begin{align}%\label{}
+  \nonumber M_Y(s)&=\frac{e^s-1}{s}\\
+  \nonumber &=\frac{1}{s} \left(\sum_{k=0}^{\infty} \frac{s^k}{k!}-1\right)\\
+  \nonumber &=\frac{1}{s} \sum_{k=1}^{\infty} \frac{s^k}{k!}\\
+  \nonumber &=\sum_{k=1}^{\infty} \frac{s^{k-1}}{k!}\\
+  \nonumber &=\sum_{k=0}^{\infty}\frac{1}{k+1} \frac{s^{k}}{k!}.
+\end{align}
+Thus, the coefficient of $\frac{s^{k}}{k!}$ in the Taylor series for $M_Y(s)$ is $\frac{1}{k+1}$, so
+\begin{align}%\label{}
+\nonumber  E[X^k]=\frac{1}{k+1}.
+\end{align}
+</li></ul>
+</li></ul></div><hr /><br />
+
+We remember from calculus that the coefficient of $\frac{s^k}{k!}$ in the Taylor series of $M_X(s)$ is obtained by taking the $k$th derivative of $M_X(s)$ and evaluating it at $s=0$. Thus, we can write
+
+\begin{align}
+\nonumber  E[X^k]=\frac{d^k}{ds^k}M_X(s)|_{s=0}.
+\end{align}
+
+<div class='cbox'>
+We can obtain all moments of $X^k$ from its MGF:
+\begin{align}%\label{}
+\nonumber  M_X(s)=\sum_{k=0}^{\infty} E[X^k] \frac{s^k}{k!},
+\end{align}
+\begin{align}%\label{}
+\nonumber  E[X^k]=\frac{d^k}{ds^k}M_X(s)|_{s=0}.
+\end{align}
+</div>
+
+<!-- begin example -->
+<hr /><span class='example'>Example </span><br />
+Let $X \sim Exponential(\lambda)$. Find the MGF of $X$, $M_X(s)$, and all of its moments, $E[X^k]$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+Recall that the PDF of $X$ is
+\begin{align}%\label{}
+\nonumber f_X(x)=\lambda e^{-\lambda x} u(x),
+\end{align}
+where $u(x)$ is the unit step function. We conclude
+\begin{align}
+  \nonumber M_X(s)&=E[e^{sX}]  \\
+  \nonumber &=\int_{0}^{\infty}\lambda e^{-\lambda x} e^{sx}dx\\
+   &=\left[-\frac{\lambda}{\lambda-s} e^{-(\lambda-s) x}\right]_{0}^{\infty}, \hspace{10pt} \textrm{for }s&lt;\lambda\\
+  \nonumber &=\frac{\lambda}{\lambda-s},  \hspace{10pt} \textrm{for }s&lt;\lambda.
+\end{align}
+Therefore, $M_X(s)$ exists for all $s&lt;\lambda$. To find the moments of $X$, we can write
+\begin{align}%\label{}
+  \nonumber M_X(s)&=\frac{\lambda}{\lambda-s}\\
+  \nonumber &=\frac{1}{1-\frac{s}{\lambda}}\\
+  \nonumber &=\sum_{k=0}^{\infty} \left(\frac{s}{\lambda}\right)^k, \hspace{10pt} \textrm{for }\left|\frac{s}{\lambda}\right|&lt;1\\
+  \nonumber &=\sum_{k=0}^{\infty} \frac{k!}{\lambda^k} \frac{s^k}{k!}.
+\end{align}
+We conclude that
+\begin{align}%\label{}
+  \nonumber E[X^k]=\frac{k!}{\lambda^k}, \hspace{10pt} \textrm{ for }k=0,1,2,...
+\end{align}
+</li></ul>
+</li></ul></div><br />
+<!-- end example -->
+
+<!-- begin example -->
+<hr /><span class='example'>Example </span><br />
+Let $X \sim Poisson(\lambda)$. Find the MGF of $X$, $M_X(s)$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+We have
+\begin{align}%\label{}
+\nonumber P_X(k)= e^{-\lambda} \frac{\lambda^k}{k!}, \hspace{10pt} \textrm{ for }k=0,1,2,...
+\end{align}
+Thus,
+\begin{align}%\label{}
+  \nonumber M_X(s)&=E[e^{sX}]  \\
+  \nonumber &=\sum_{k=0}^{\infty} e^{sk} e^{-\lambda} \frac{\lambda^k}{k!}\\
+  \nonumber &=e^{-\lambda} \sum_{k=0}^{\infty} e^{sk}\frac{\lambda^k}{k!}\\
+  \nonumber &=e^{-\lambda} \sum_{k=0}^{\infty}\frac{(\lambda  e^{s})^k}{k!}\\
+  \nonumber &=e^{-\lambda}e^{\lambda e^s} \hspace{10pt} (\textrm{Taylor series for }e^x)\\
+  \nonumber &=e^{\lambda (e^s-1)}, \hspace{10pt} \textrm{for all } s\in \mathbb{R}.
+\end{align}
+</li></ul>
+</li></ul></div><hr /><br />
+<!-- end example -->
+
+As we discussed previously, the MGF uniquely determines the distribution. This is a very useful fact. We will see examples of how we use it shortly. Right now let's state this fact more precisely as a theorem. We omit the proof here.
+
+<br /><span class='theorem'>Theorem </span>
+Consider two random variables $X$ and $Y$. Suppose that there exists a positive constant $c$ such that MGFs of $X$ and $Y$ are finite and identical for all values of $s$ in $[-c,c]$. Then,
+\begin{align}%\label{}
+\nonumber  F_X(t)=F_Y(t), \textrm{ for all }t \in \mathbb{R}.
+\end{align}
+
+<!-- begin example -->
+<hr /><span class='example'>Example </span><br />
+For a random variable $X$, we know that
+\begin{align}%\label{}
+\nonumber  M_X(s)=\frac{2}{2-s}, \textrm{ for }s \in (-2,2).
+\end{align}
+Find the distribution of $X$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+We note that the above MGF is the MGF of an exponential random variable with $\lambda=2$ (Example 6.5). Thus, we conclude that $X \sim Exponential(2)$.
+</li></ul>
+</li></ul></div><hr /><br />
+<!-- end example -->
+
+<h2>Sum of Independent Random Variables:</h2>
+Suppose $X_1$, $X_2$, ..., $X_n$ are $n$ independent random variables, and the random variable $Y$ is defined as
+\begin{align}%\label{}
+\nonumber Y=X_1+X_2+ \cdots +X_n.
+\end{align}
+Then,
+\begin{align}%\label{}
+\nonumber  M_Y(s)&=E[e^{sY}] \\
+\nonumber  &=E[e^{s(X_1+X_2+ \cdots +X_n)}]\\
+\nonumber  &=E[e^{sX_1} e^{sX_2} \cdots e^{sX_n}] \\
+\nonumber  &=E[e^{sX_1}] E[e^{sX_2}] \cdots E[e^{sX_n}]  \hspace{10pt} \textrm{(since the $X_i$'s are independent)}\\
+        &=M_{X_1}(s)M_{X_2}(s) \cdots M_{X_n}(s).
+\end{align}
+
+<div class='cbox'>
+If $X_1$, $X_2$, ..., $X_n$ are $n$ <u>independent</u> random variables, then
+\begin{align}%\label{}
+\nonumber  M_{X_1+X_2+\cdots +X_n}(s)=M_{X_1}(s)M_{X_2}(s) \cdots M_{X_n}(s).
+\end{align}
+</div><br />
+
+<hr /><span class='example'>Example </span><br />
+If $X \sim Binomial(n,p)$ find the MGF of $X$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+We can solve this question directly using the definition of MGF, but an easier way to solve it is to use the fact that a binomial random variable can be considered as the sum of $n$ independent and identically distributed (i.i.d.) Bernoulli random variables. Thus, we can write
+\begin{align}%\label{}
+\nonumber X=X_1+X_2+ \cdots +X_n,
+\end{align}
+where $X_i \sim Bernoulli(p)$. Thus,
+\begin{align}%\label{}
+\nonumber  M_{X}(s)&=M_{X_1}(s)M_{X_2}(s) \cdots M_{X_n}(s)\\
+ &=\big(M_{X_1}(s)\big)^n  \hspace{10pt} (\textrm{since the $X_i$'s are i.i.d.})
+\end{align}
+Also,
+\begin{align}%\label{}
+\nonumber  M_{X_1}(s)&=E[e^{sX_1}]=pe^s+1-p.
+\end{align}
+Thus, we conclude
+\begin{align}%\label{}
+\nonumber  M_{X}(s)=\big(pe^s+1-p\big)^n.
+\end{align}
+</li></ul>
+</li></ul></div><br />
+
+<!-- begin example -->
+<hr /><span class='example'>Example </span><br />
+Using MGFs prove that if $X \sim Binomial(m,p)$ and $Y \sim Binomial(n,p)$ are independent, then $X+Y \sim Binomial(m+n,p)$.
+<div class='solvedprob'><ul><li><a><b>Solution</b></a>
+<ul><li>
+We have
+\begin{align}%\label{}
+ M_X(s)&= \big(pe^s+1-p\big)^m,  \\
+ M_Y(s)&=\big(pe^s+1-p\big)^n.
+\end{align}
+Since $X$ and $Y$ are independent, we conclude that
+\begin{align}%\label{}
+ M_{X+Y}(s)&=M_X(s)M_Y(s)\\
+ &=\big(pe^s+1-p\big)^{m+n},
+\end{align}
+which is the MGF of a $Binomial(m+n,p)$ random variable. Thus, $X+Y \sim Binomial(m+n,p)$.
+</li></ul>
+</li></ul></div><hr /><br />
+<!-- end example -->
+
+
+
+<!-- /Section Content -->
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_1_2_sums_random_variables.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter6/6_1_4_characteristic_functions.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176b79c9a8b09',t:'MTc5MjI2Mjc2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

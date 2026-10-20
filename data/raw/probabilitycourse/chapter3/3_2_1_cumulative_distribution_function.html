@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 8 theorem	1 lemma 1 definition 9 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'3.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'3.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'3.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'3.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="3.2.1"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Cumulative Distribution Function</title>
+	<meta name="description" content="Definition and examples of the Cumulative Distribution Function">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_6_solved3_1.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter3/3_2_2_expectation.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter3/video3_5.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>3.2.1 Cumulative Distribution Function</h2></div>			
+    		<div class="clear"></div>
+			
+			<p>The PMF is one way to describe the distribution of a discrete random variable. As we will see later on, 
+			PMF cannot be defined for continuous random variables. The cumulative distribution function (CDF) 
+			of a random variable is another method to describe the distribution of random variables. The advantage 
+			of the CDF is that it can be defined for any kind of random variable (discrete, continuous, and mixed).</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<span class='definition'>Definition </span><br>
+			The cumulative distribution function (CDF) of random variable $X$ is defined as
+			$$F_X(x) = P(X \leq x),  \textrm{ for all }x \in \mathbb{R}.$$
+			</div><br>
+			
+			<p>Note that the subscript $X$ indicates that this is the CDF of the random variable $X$. Also, note that the CDF 
+			is defined for all $x \in \mathbb{R}$. Let us look at an example.</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			<p>I toss a coin twice. Let $X$ be the number of observed heads. Find the CDF of $X$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 Note that here $X \sim Binomial (2, \frac{1}{2})$. The range of $X$ is $R_X=\{0,1,2\}$ and 
+						 its PMF is given by
+						 $$P_X(0)=P(X=0)=\frac{1}{4},$$
+						 $$P_X(1) =P(X=1)=\frac{1}{2},$$
+						 $$P_X(2)=P(X=2)=\frac{1}{4}.$$
+						 To find the CDF, we argue as follows. First, note that if $x < 0$, then
+						 $$F_X(x)=P(X \leq x)=0, \textrm{ for } x < 0.$$
+						 Next, if $x\geq 2$,
+						 $$F_X(x)=P(X \leq x)=1, \textrm{ for } x\geq 2.$$
+						 Next, if $0 \leq x < 1$,
+						 $$F_X(x)=P(X \leq x)=P(X=0)=\frac{1}{4}, \textrm{ for } 0 \leq x < 1.$$
+						 Finally, if $1 \leq x < 2$,
+						 $$F_X(x)=P(X \leq x)=P(X=0)+P(X=1)=\frac{1}{4}+\frac{1}{2}=\frac{3}{4}, \textrm{ for } 1 \leq x < 2.$$
+						 Thus, to summarize, we have
+						 \begin{equation}
+                           \nonumber F_X(x) = \left\{
+                          \begin{array}{l l}
+                             0 & \quad \text{for  } x < 0\\
+                             \frac{1}{4} & \quad \text{for  } 0 \leq x < 1\\
+                             \frac{3}{4} & \quad \text{for  } 1 \leq x < 2 \\
+                             1 & \quad \text{for  } x \geq 2\\
+                          \end{array} \right.
+                        \end{equation}
+						<p>Note that when you are asked to find the CDF of a random variable, you need to find the function for the 
+            			entire real line. Also, for discrete random variables, we must be careful when to use "$ < $" or "$\leq$".  
+            			Figure 3.3 shows the graph of $F_X(x)$. Note that the CDF is flat between the points 
+            			in $R_X$ and jumps at each value in the range. The size of the jump at each point is equal to the probability 
+            			at that point. For, example, at point $x=1$, the CDF jumps from $\frac{1}{4}$ to $\frac{3}{4}$. The size 
+            			of the jump here is $\frac{3}{4}-\frac{1}{4}=\frac{1}{2}$ which is equal to $P_X(1)$. Also, note that 
+            			the open and closed circles at point $x=1$ indicate that $F_X(1)=\frac{3}{4}$ and not $\frac{1}{4}$.</p>
+						<figure>
+              					<img src="http://probabilitycourse.com/images/chapter3/CDF-TwoDice_b.png" id="chapter_image" alt="Figure" title="Figure" border="0" />
+              					<figcaption>Fig.3.3 - CDF for Example 3.9.</figcaption>
+            			</figure>						
+						</li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<p>In general, let $X$ be a discrete random variable with range $R_X=\{x_1,x_2,x_3,...\}$, such that 
+			$x_1 < x_2 < x_3 < ...$ Here, for simplicity, we assume that the range $R_X$ is bounded from below, i.e., 
+			$x_1$ is the smallest value in $R_X$. If this is not the case then $F_X(x)$ approaches zero as 
+			$x \rightarrow -\infty$ rather than hitting zero. Figure 3.4 shows the general form of the CDF, 
+			$F_X(x)$, for such a random variable. We see that the CDF is in the form of a staircase. In particular, 
+			note that the CDF starts at $0$; i.e.,$F_X(-\infty)=0$. Then, it jumps at each point in the range. 
+			In particular, the CDF stays flat between $x_k$ and $x_{k+1}$, so we can write
+			$$F_X(x)=F_X(x_k), \textrm{ for }x_k \leq x < x_{k+1}.$$</p>
+
+			<p>The CDF jumps at each $x_k$. In particular, we can write
+			$$F_X(x_k)-F_X(x_k-\epsilon)=P_X(x_k), \textrm{ For $\epsilon>0$ small enough.}$$
+			Thus, the CDF is always a non-decreasing function, i.e., if $y \geq x$ then $F_X(y)\geq F_X(x)$. 
+			Finally, the CDF approaches $1$ as $x$ becomes large. We can write
+			$$\lim_{x \rightarrow \infty} F_X(x)=1.$$</p>
+			
+			<figure>
+  					<img src="http://probabilitycourse.com/images/chapter3/CDF-Discrete_b.png" id="chapter_image" alt="Figure" title="Figure" border="0" />
+  					<figcaption>Fig.3.4 - CDF of a discrete random variable.</figcaption>
+			</figure>
+			
+			<p>Note that the CDF completely describes the distribution of a discrete random variable. In particular, 
+			we can find the PMF values by looking at the values of the jumps in the CDF function. Also, if we have 
+			the PMF, we can find the CDF from it. In particular, if $R_X=\{x_1,x_2,x_3,...\}$, we can write
+			$$F_X(x)=\sum_{x_k \leq x} P_X(x_k).$$
+			Now, let us prove a useful formula.</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			For all $a \leq b$, we have
+			$$\hspace{50pt} P(a < X \leq b)=F_X(b)-F_X(a) \hspace{80pt} (3.1)$$
+			</div><br>
+			
+			<p>To see this, note that for $a \leq b$ we have
+			$$P(X \leq b)=P(X \leq a) + P(a < X \leq b).$$
+			Thus,
+			$$F_X(b)=F_X(a) + P(a < X \leq b).$$
+			Again, pay attention to the use of "$ < $" and "$\leq$" as they could make a difference in the case of discrete random variables. 
+			We will see later that Equation 3.1 is true for all types of random variables 
+			(discrete, continuous, and mixed). Note that the CDF gives us $P(X \leq x)$. To find $P(X < x)$, for a 
+			discrete random variable, we can simply write
+			$$P(X < x)=P(X \leq x)-P(X=x)=F_X(x)-P_X(x).$$</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			Let $X$ be a discrete random variable with range $R_X=\{1,2,3,...\}$. Suppose the PMF of $X$ is given by
+			$$P_X(k)=\frac{1}{2^k}   \textrm{  for } k=1,2,3,...$$
+			<ol type="a">
+                <li>Find and plot the CDF of $X$, $F_X(x)$.</li>
+                <li>Find $P(2 < X \leq 5)$.</li>
+                <li>Find $P(X > 4)$.</li>
+            </ol> 
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 First, note that this is a valid PMF. In particular,
+						 $$\sum_{k=1}^{\infty} P_X(k)=\sum_{k=1}^{\infty} \frac{1}{2^k}=1   \textrm{  (geometric sum)}$$
+						 <ol type="a">
+						 	 <li>To find the CDF, note that
+							 <table align="center">			
+                              <tr>
+                                <td>$\textrm{For } x < 1,$</td>
+                                <td>$F_X(x)=0$.</td>
+                              </tr>
+                              <tr>
+                                <td>$\textrm{For } 1\leq x < 2,$</td>
+                                <td>$F_X(x)=P_X(1)=\frac{1}{2}$.</td>
+                              </tr>
+							  <tr>
+                                <td>$\textrm{For } 2\leq x < 3,$</td>
+                                <td>$F_X(x)=P_X(1)+P_X(2)=\frac{1}{2}+ \frac{1}{4}=\frac{3}{4}$.</td>
+                              </tr>
+                              </table><br>
+							  In general we have
+							  $$\textrm{For }  0 < k \leq x < k+1,$$
+							  $$F_X(x) =P_X(1)+P_X(2)+...+P_X(k)$$
+							  $$=\frac{1}{2}+ \frac{1}{4}+...+\frac{1}{2^k}=\frac{2^k-1}{2^k}.$$
+							  <p>Figure 3.5 shows the CDF of $X$.</p>
+							  <figure>
+                      					<img src="http://probabilitycourse.com/images/chapter3/CDF-geometric_b.png" id="chapter_image" alt="Figure" title="Figure" border="0" />
+                      					<figcaption>Fig.3.5 - CDF of random variable given in Example 3.10.</figcaption>
+                    		  </figure>
+							 </li><br>
+							 <li>To find $P(2 < X \leq 5)$, we can write
+							 $$P(2 < X \leq 5)=F_X(5)-F_X(2)=\frac{31}{32}-\frac{3}{4}=\frac{7}{32}.$$
+							 Or equivalently, we can write
+							 $$P(2 < X \leq 5)=P_X(3)+P_X(4)+P_X(5)=\frac{1}{8}+\frac{1}{16}+\frac{1}{32}=\frac{7}{32},$$
+							 which gives the same answer.
+							 </li><br>
+							 <li>To find $P(X > 4)$, we can write
+							 $$P(X > 4)=1-P(X \leq 4)=1-F_X(4)=1-\frac{15}{16}=\frac{1}{16}.$$
+							 </li>						 
+						 </ol> 
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_6_solved3_1.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter3/3_2_2_expectation.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176334b28c766',t:'MTc5MjI2Mjc0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

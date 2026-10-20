@@ -1,0 +1,10 @@
+{
+  "id": "8.2.0",
+  "title": "Point Estimation",
+  "chapter": 8,
+  "topic": "Point Estimation",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter8/8_2_0_point_estimation.php",
+  "text": "8.2.0 Point Estimation\nHere, we assume that $\\theta$ is an unknown parameter to be estimated. For example, $\\theta$ might be the expected value of a random variable, $\\theta=EX$. The important assumption here is that $\\theta$ is a fixed (non-random) quantity. To estimate $\\theta$, we need to collect some data. Specifically, we get a random sample $X_1$, $X_2$, $X_3$, $...$, $X_n$ such that $X_i$'s have the same distribution as $X$. To estimate $\\theta$, we define a point estimator $\\hat{\\Theta}$ that is  a function of the random sample, i.e.,\n\\begin{align}%\\label{}\n\\hat{\\Theta}=h(X_1,X_2,\\cdots,X_n).\n\\end{align}\nFor example, if $\\theta=EX$, we may choose $\\hat{\\Theta}$ to be the sample mean\n\\begin{align}%\\label{}\n\\hat{\\Theta}=\\overline{X}=\\frac{X_1+X_2+...+X_n}{n}.\n\\end{align}\nThere are infinitely many possible estimators for $\\theta$, so how can we make sure that we have chosen a good estimator? How do we compare different possible estimators? To do this, we provide a list of some desirable properties that we would like our estimators to have. Intuitively, we know that a good estimator should be able to give us values that are \"close\" to the real value of $\\theta$. To make this notion more precise we provide some definitions.\n."
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 22 theorem	3 lemma 0 definition 2 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'6.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'6.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'6.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'6.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="6.2.4"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Cauchy-Schwarz Inequality</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_2_3_chernoff_bounds.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter6/6_2_5_jensen's_inequality.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>6.2.4 Cauchy-Schwarz Inequality</h2></div>			
+    		<div class="clear"></div>		
+			<p>
+           You might have seen the <b>Cauchy-Schwarz inequality</b> in your linear algebra course. 
+		   The same inequality is valid for random variables. Let us state and prove the Cauchy-Schwarz inequality for random variables.
+            </p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<p align="center">Cauchy-Schwarz Inequality</p>
+
+<p style="padding-top:5px;">For any two random variables $X$ and $Y$, we have
+\begin{align}%\label{}
+  |EXY| \leq \sqrt{E[X^2] E[Y^2]},
+\end{align}
+where equality holds if and only if $X=\alpha Y$, for some constant $\alpha \in \mathbb{R}$.</p>
+			</div><br>
+            <p>You can prove the Cauchy-Schwarz inequality with the same methods that we used to prove $|\rho(X,Y)| \leq 1$ in <a href="chapter5/5_3_1_covariance_correlation.php">Section 5.3.1.</a> Here we provide another proof. Define the random variable $W=(X-\alpha Y)^2$. Clearly, $W$ is a nonnegative random variable for any value of $\alpha \in \mathbb{R}$. Thus, we obtain
+            <table align="center" width="60%">			
+                          <tr>
+                            <td>$ 0 \leq EW$</td>
+                            <td>$=E(X-\alpha Y)^2$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=E[X^2-2\alpha XY+ \alpha^2 Y^2]$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=E[X^2]-2\alpha E[XY]+ \alpha^2 E[Y^2]$.</td>
+                          </tr>
+						  </table><br>
+So, if we let $f(\alpha)=E[X^2]-2\alpha E[XY]+ \alpha^2 E[Y^2]$, then we know that $f(\alpha) \geq 0$, for all $\alpha \in \mathbb{R}$. Moreover, if $f(\alpha)=0$ for some $\alpha$, then we have $EW=E(X-\alpha Y)^2=0$, which essentially means $X= \alpha Y$ with probability one. To prove the Cauchy-Schwarz inequality, choose $\alpha=\frac{EXY}{EY^2}$. We obtain
+<table align="center">			
+                          <tr>
+                            <td>$0$</td>
+                            <td>$\leq E[X^2]-2\alpha E[XY]+ \alpha^2 E[Y^2]$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=E[X^2]-2\frac{EXY}{EY^2} E[XY]+ \frac{(EXY)^2}{(EY^2)^2} E[Y^2]$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=E[X^2]-\frac{(E[XY])^2}{EY^2}.$</td>
+                          </tr>
+						  </table><br>
+Thus, we conclude
+\begin{align}%\label{}
+  (E[XY])^2 \leq E[X^2] E[Y^2],
+\end{align}
+which implies
+\begin{align}%\label{}
+  |EXY| \leq \sqrt{E[X^2] E[Y^2]}.
+\end{align}
+Also, if $|EXY| = \sqrt{E[X^2] E[Y^2]}$, we conclude that $f(\frac{EXY}{EY^2})=0$, which implies $X= \frac{EXY}{EY^2} Y$ with probability one.</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			<p>Using the Cauchy-Schwarz inequality, show that for any two random variables $X$ and $Y$
+\begin{align}%\label{}
+  |\rho(X,Y)| \leq 1.
+\end{align}
+Also, $|\rho(X,Y)| = 1$ if and only if $Y=aX+b$ for some constants $a,b \in \mathbb{R}$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 Let
+\begin{align}%\label{}
+  U=\frac{X-EX}{\sigma_X}, &\qquad V=\frac{Y-EY}{\sigma_Y}.
+\end{align}
+Then $EU=EV=0$, and $Var(U)=Var(V)=1$. Using the Cauchy-Schwarz inequality for $U$ and $V$, we obtain
+\begin{align}%\label{}
+  |EUV| \leq \sqrt{E[U^2] E[V^2]}=1.
+\end{align}
+But note that $EUV=\rho(X,Y)$, thus we conclude
+\begin{align}%\label{}
+  |\rho(X,Y)| \leq 1,
+\end{align}
+where equality holds if and only if $V=\alpha U$ for some constant $\alpha \in \mathbb{R}$. That is
+\begin{align}%\label{}
+  \frac{Y-EY}{\sigma_Y}=\alpha \frac{X-EX}{\sigma_X},
+\end{align}
+which implies
+\begin{align}%\label{}
+  Y=\frac{\alpha \sigma_Y}{\sigma_X} X+ (EY-\frac{\alpha \sigma_Y}{\sigma_X} EX).
+\end{align}
+In the Solved Problems section, we provide a generalization of the Cauchy-Schwrarz inequality, called <em>H&ouml;lder's inequality</em>.
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+
+			
+		
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter6/6_2_3_chernoff_bounds.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter6/6_2_5_jensen's_inequality.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176da8d6546f3',t:'MTc5MjI2Mjc2Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 5 theorem	0 lemma 0 definition 1 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'3.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'3.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'3.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'3.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="3.1.4"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Independent Random Variables</title>
+	<meta name="description" content="Definition of independent random variables with examples">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_3_pmf.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter3/3_1_5_special_discrete_distr.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter3/video3_2.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>3.1.4 Independent Random Variables</h2></div>			
+    		<div class="clear"></div>
+
+			
+			<p>In real life, we usually need to deal with more than one random variable. For example, if you study 
+			physical characteristics of people in a certain area, you might pick a person at random and then 
+			look at his/her weight, height, etc. The weight of the randomly chosen person is one random variable, 
+			while his/her height is another one. Not only do we need to study each random variable separately, 
+			but also we need to consider if there is <i>dependence</i> (i.e., correlation) between them. Is it 
+			true that a taller person is more likely to be heavier or not? The issues of dependence between 
+			several random variables will be studied in detail later on, but here we would like to talk about 
+			a special scenario where two random variables are <i>independent</i>.</p>
+			
+			<p>The concept of independent random variables is very similar to independent events. Remember, two 
+			events $A$ and $B$ are independent if we have $P(A,B)=P(A)P(B)$ (remember comma means <i>and</i>, i.e., 
+			$P(A,B)=P(A \textrm{ and } B)=P(A \cap B)$). Similarly, we have the following definition for independent 
+			discrete random variables.</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<span class='definition'>Definition </span><br>
+			Consider two discrete random variables $X$ and $Y$. We say that $X$ and $Y$ are independent if
+			$$P\bigg(X=x,Y=y\bigg)=P(X=x) P(Y=y), \hspace{20pt} \textrm{ for all } x,y.$$
+			In general, if two random variables are independent, then  you can write
+			$$P\bigg(X \in A,Y \in B\bigg)=P(X \in A) P(Y \in B), \hspace{20pt} \textrm{ for all sets } A \textrm{ and } B.$$
+			</div><br>
+			
+			<p>Intuitively, two random variables $X$ and $Y$ are independent if knowing the value of one of them 
+			does not change the probabilities for the other one. In other words, if $X$ and $Y$ are independent, 
+			we can write
+			$$P(Y=y|X=x)=P(Y=y), \textrm{ for all } x,y.$$
+			Similar to independent events, it is sometimes easy to argue that two random variables are independent 
+			simply because they do not have any physical interactions with each other. Here is a simple example: 
+			I toss a coin $2N$ times. Let $X$ be the number of heads that I observe in the first $N$ coin tosses 
+			and let $Y$ be the number of heads that I observe in the second $N$ coin tosses. Since $X$ and $Y$ are 
+			the result of independent coin tosses, the two random variables $X$ and $Y$ are independent. On the 
+			other hand, in other scenarios, it might be more complicated to show whether two random variables are 
+			independent.</p>
+			
+			<hr /><br>
+			<span class='example'>Example </span><br>
+			<p>I toss a coin twice and define $X$ to be the number of heads I observe. Then, I toss the coin two more 
+			times and define $Y$ to be the number of heads that I observe this time. Find 
+			$P\bigg((X < 2) \textrm{ and } (Y>1)\bigg)$.</p>
+			<div class="solvedprob">
+				 <ul>
+				 	 <li><a><b>Solution</b></a>
+				 	 <ul>
+					 	 <li>
+						 Since $X$ and $Y$ are the result of different independent coin tosses, the two random 
+						 variables $X$ and $Y$ are independent. Also, note that both random variables have the 
+						 distribution we found in 
+						 <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter3/3_1_3_pmf.php#ex46">Example 3.3</a>. 
+						 We can write
+						 <table align="center">			
+                          <tr>
+                            <td>$P\bigg((X < 2) \textrm{ and } (Y > 1)\bigg)$</td>
+                            <td>$=P(X < 2)P(Y > 1) \hspace{20pt} \textrm{(because $X$ and $Y$ are independent)}$</td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td>$=\big(P_X(0)+P_X(1)\big)P_Y(2)$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\left(\frac{1}{4}+\frac{1}{2}\right)\frac{1}{4}$</td>
+                          </tr>
+						  <tr>
+                            <td></td>
+                            <td>$=\frac{3}{16}$.</td>
+                          </tr>
+                          </table><br>
+						 </li>
+					 </ul>
+					 </li>
+				 </ul>
+			</div>
+			<hr /><br>
+			
+			<p>We can extend the definition of independence to $n$ random variables.</p>
+			
+			<div style="padding: 15px; border: black 1px solid">
+			<span class='definition'>Definition </span><br>
+			Consider $n$ discrete random variables $X_1, X_2, X_3, ...,X_n$. We say that $X_1, X_2, X_3, ...,X_n$ are 
+			independent if
+			$$P\bigg(X_1=x_1, X_2=x_2, ... ,X_n=x_n\bigg)$$
+			$$=P(X_1=x_1) P(X_2=x_2) ... P(X_n=x_n), \hspace{20pt} \textrm{ for all } x_1, x_2,..., x_n.$$
+			</div><br>
+
+			<hr />
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter3/3_1_3_pmf.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter3/3_1_5_special_discrete_distr.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c176240a868a14',t:'MTc5MjI2MjczOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

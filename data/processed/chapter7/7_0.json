@@ -1,0 +1,10 @@
+{
+  "id": "7.0",
+  "title": "Limit Theorems",
+  "chapter": 7,
+  "topic": "Limit Theorems",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter7/7_0_0_intro.php",
+  "text": "7.0.0 Introduction\nIn this chapter, we will discuss limit theorems and convergence modes for random variables.\nLimit theorems are among the most fundamental results in probability theory.\nWe will discuss two important limit theorems in Section 7.1:\nthe law of large numbers (LLN)\nand\nthe central limit theorem  (CLT)\n. We will also talk about the importance of these theorems as applied in practice. In Section\n7.2\n, we will discuss the convergence of sequences of random variables.\n."
+}

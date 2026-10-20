@@ -1,0 +1,47 @@
+[
+  {
+    "question": "What is expectation of a random variable?",
+    "expected_scope": "in_scope",
+    "expected_topic": "Expectation"
+  },
+  {
+    "question": "What is a probability mass function?",
+    "expected_scope": "in_scope",
+    "expected_topic": "Probability Mass Function"
+  },
+  {
+    "question": "Explain the Central Limit Theorem.",
+    "expected_scope": "in_scope",
+    "expected_topic": "Central Limit Theorem"
+  },
+  {
+    "question": "What is convergence in probability?",
+    "expected_scope": "in_scope",
+    "expected_topic": "Convergence in Probability"
+  },
+  {
+    "question": "What is maximum likelihood estimation?",
+    "expected_scope": "in_scope",
+    "expected_topic": "Maximum Likelihood Estimation"
+  },
+  {
+    "question": "Explain Brownian motion.",
+    "expected_scope": "out_of_scope"
+  },
+  {
+    "question": "What is a martingale?",
+    "expected_scope": "out_of_scope"
+  },
+  {
+    "question": "Explain the Radon-Nikodym theorem.",
+    "expected_scope": "out_of_scope"
+  },
+  {
+    "question": "What is QPSK?",
+    "expected_scope": "out_of_scope"
+  },
+  {
+    "question": "Explain TCP/IP.",
+    "expected_scope": "out_of_scope"
+  }
+]

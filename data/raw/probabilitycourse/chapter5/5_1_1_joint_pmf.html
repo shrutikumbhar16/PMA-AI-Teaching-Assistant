@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 0 theorem	0 lemma 0 definition 0 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'5.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'5.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'5.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'5.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="5.1.1"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Joint Probability Mass Function | Marginal PMF | PMF</title>
+	<meta name="description" content="Defining PMF for two random variables">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter5/5_1_0_joint_distributions.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter5/5_1_2_joint_cdf.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+			<div class="right hide_print"><a style="text-decoration: none;" href="//www.probabilitycourse.com/videos/chapter5/video5_1.php"><span style="font-size:20px; color:#7A1919; position:relative; top:6px; "><u>Video Available</u></span> <img src="//icons.iconarchive.com/icons/bokehlicia/captiva/32/web-google-youtube-icon.png" alt="Video Available" title="Video Available" border="0" style="vertical-align: middle;"/></a></div>			<div class="left"><br><h2>5.1.1 Joint Probability Mass Function (PMF)</h2></div>			
+    		<div class="clear"></div>
+<!-- Section content -->
+Remember that for a discrete random variable $X$, we define the PMF as $P_X(x)=P(X=x)$. Now, if we have two random variables $X$ and $Y$, and we would like to study them jointly, we define the <b>joint probability mass function</b> as follows:
+
+<div class="cbox">
+The <b>joint probability mass function</b> of two discrete random variables $X$ and $Y$ is defined as
+\begin{align}%\label{}
+\nonumber P_{XY}(x,y)=P(X=x, Y=y).
+\end{align}
+</div>
+Note that as usual, the comma means "and," so we can write
+\begin{align}%\label{}
+\nonumber P_{XY}(x,y)&=P(X=x, Y=y) \\
+\nonumber &= P\big((X=x)\textrm{ and }(Y=y)\big).
+\end{align}
+We can define the joint range for $X$ and $Y$ as
+\begin{align}%\label{}
+\nonumber R_{XY}=\{(x,y) | P_{XY}(x,y)>0\}.
+\end{align}
+In particular, if $R_X=\{x_1,x_2,... \}$ and $R_Y=\{y_1,y_2,...\}$, then we can always write
+\begin{align}%\label{}
+\nonumber R_{XY} & \subset R_X \times R_Y \\
+\nonumber &= \{(x_i,y_j) | x_i \in R_X, y_j \in R_Y \}.
+\end{align}
+In fact, sometimes we define $R_{XY}=R_X \times R_Y$ to simplify the analysis. In this case, for some pairs $(x_i,y_j)$ in  $R_X \times R_Y$, $P_{XY}(x_i,y_j)$ might be zero. For two discrete random variables $X$ and $Y$, we have
+
+<div class="cbox">
+\begin{align}%\label{}
+\nonumber \sum_{(x_i,y_j) \in R_{XY}} P_{XY}(x_i,y_j)=1
+\end{align}
+</div>
+
+We can use the joint PMF to find $P\big( (X,Y) \in A \big)$ for any set $A \subset \mathbb{R}^2$. Specifically, we have
+<div class="cbox">
+\begin{align}%\label{}
+\nonumber P\big( (X,Y) \in A \big)=\sum_{(x_i,y_j) \in (A \cap R_{XY})} P_{XY}(x_i,y_j)
+\end{align}
+</div>
+
+Note that the event $X=x$ can be written as $\{(x_i,y_j): x_i=x, y_j \in R_Y \}$. Also, the event $Y=y$ can be written as $\{(x_i,y_j): x_i\in R_X, y_j=y\}$. Thus, we can write
+\begin{align}%\label{}
+\nonumber P_{XY}(x,y)&=P(X=x, Y=y) \\
+\nonumber &=P\big((X=x)\cap(Y=y)\big).
+\end{align}
+
+<h2>Marginal PMFs</h2>
+ The joint PMF contains all the information regarding the distributions of $X$ and $Y$. This means that, for example, we can obtain PMF of $X$ from its joint PMF with $Y$. Indeed, we can write
+\begin{align}%\label{}
+\nonumber P_X(x) &= P(X=x)\\
+\nonumber &=\sum_{y_j \in R_Y} P(X=x, Y=y_j) &\textrm{law of total probablity}\\
+\nonumber &=\sum_{y_j \in R_Y} P_{XY}(x,y_j).
+\end{align}
+Here, we call $P_X(x)$ the <b>marginal PMF</b> of $X$. Similarly, we can find the marginal PMF of $Y$ as
+\begin{align}%\label{}
+\nonumber P_Y(Y)=\sum_{x_i \in R_X} P_{XY}(x_i,y).
+\end{align}
+
+<div class="cbox">
+<p style="text-align: center;">Marginal PMFs of $X$ and $Y$:</p>
+\begin{align}\label{Eq:marginals}
+\nonumber P_X(x)&=\sum_{y_j \in R_Y} P_{XY}(x,y_j), \hspace{20pt} \textrm{ for any } x \in R_X \\  
+ P_Y(y)&=\sum_{x_i \in R_X} P_{XY}(x_i,y), \hspace{20pt} \textrm{ for any } y \in R_Y \hspace{40pt} (5.1) 
+\end{align}
+</div><br />
+Let's practice these concepts by looking at an example.
+</p><hr /><br />
+<span class="example">Example </span><br />
+Consider two random variables $X$ and $Y$ with joint PMF given in Table 5.1.
+
+	<style>
+		#table51{
+			font-size:16px;
+			border-collapse: collapse;
+			display:block;
+			width: 330px;
+			margin: 20px auto;
+		}
+		#table51 tr, #table51 td {
+			border: 1px solid black;
+		}
+		#table51 tr td {
+			width: 80px;
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+	<h4 style="text-align:center">Table 5.1 Joint PMF of $X$ and $Y$ in Example 5.1</h4>
+	<table id="table51">
+		<tr>
+			<td>&nbsp;</td><td>$Y = 0$</td><td>$Y = 1$</td><td>$Y = 2$</td>
+		</tr>
+		<tr style="height:80px;">
+			<td>$X = 0$</td><td>$\frac{1}{6}$</td><td>$\frac{1}{4}$</td><td>$\frac{1}{8}$</td>	
+		</tr>
+		<tr style="height:80px;">
+			<td>$X = 1$</td><td>$\frac{1}{8}$</td><td>$\frac{1}{6}$</td><td>$\frac{1}{6}$</td>
+		</tr>
+	</table> <br />
+Figure 5.1 shows $P_{XY}(x,y)$.<br /><br />
+<img src="images/chapter5/pmfXY.png" id="chapter_image"/>
+<p style="text-align: center;">Figure 5.1: Joint PMF of $X$ and $Y$ (Example 5.1).</p>
+<ol type='a'>
+	<li>Find $P(X=0,Y\leq1)$.</li>
+	<li>Find the marginal PMFs of $X$ and $Y$.</li>
+	<li>Find $P(Y=1|X=0)$.</li>
+	<li>Are $X$ and $Y$ independent?</li>
+</ol>
+<div class="solvedprob">
+	<ul>
+		<li><a><b>Solution</b></a>
+			<ul>
+				<li>
+					<ol type="a">
+						<li>
+		To find $P(X=0, Y \leq 1)$, we can write
+		\begin{align}%\label{}
+		\nonumber P(X=0, Y \leq 1) =P_{XY}(0,0)+ P_{XY}(0,1)=\frac{1}{6}+\frac{1}{4}=\frac{5}{12}.
+		\end{align}
+						</li>
+						<li>
+		Note that from the table,
+		\begin{align}%\label{}
+		\nonumber R_X=\{0,1\}  \hspace{20pt}\textrm{ and }\hspace{20pt}  R_Y=\{0,1,2\}.
+		\end{align}
+		Now we can use Equation 5.1 to find the marginal PMFs. For example, to find $P_X(0)$, we can write
+
+		\begin{align}%\label{}
+		\nonumber P_X(0)&=P_{XY}(0,0)+P_{XY}(0,1)+P_{XY}(0,2)\\
+		\nonumber &=\frac{1}{6}+\frac{1}{4}+\frac{1}{8}\\
+		\nonumber &=\frac{13}{24}.
+		\end{align}
+		We obtain
+		\begin{equation}
+	 \nonumber P_X(x) = \left\{
+		\begin{array}{l l}
+			 \frac{13}{24} &  \quad x=0  \\
+				&  \quad   \\
+			 \frac{11}{24} &  \quad x=1  \\
+				&  \quad   \\
+			0 &  \quad \text{otherwise}
+		\end{array} \right.
+	\end{equation}
+
+  \begin{equation}
+ \nonumber P_Y(y) = \left\{
+  \begin{array}{l l}
+     \frac{7}{24} &  \quad y=0  \\
+      &  \quad   \\
+     \frac{5}{12} &  \quad y=1  \\
+      &  \quad   \\
+     \frac{7}{24} &  \quad y=2  \\
+    &  \quad   \\
+    0 &  \quad \text{otherwise}
+  \end{array} \right.
+\end{equation}
+				</li>
+				<li>
+ Find $P(Y=1 | X=0)$:
+  Using the formula for conditional probability, we have
+   \begin{align}%\label{}
+       \nonumber P(Y=1 | X=0)&=\frac{P(X=0, Y=1)}{P(X=0)}\\
+       \nonumber &=\frac{P_{XY}(0,1)}{P_X(0)}\\
+       \nonumber &=\frac{\frac{1}{4}}{\frac{13}{24}}=\frac{6}{13}.
+     \end{align}
+				</li>
+				<li>
+  Are $X$ and $Y$ independent? $X$ and $Y$ are not independent, because as we just found out
+
+  \begin{align}%\label{}
+       \nonumber P(Y=1|X=0)=\frac{6}{13} \neq P(Y=1)=\frac{5}{12}.
+  \end{align}
+
+  <b>Caution</b>: If we want to show that $X$ and $Y$ are independent, we need to check that $P(X=x_i,Y=y_j)=P(X=x_i)P(Y=y_j)$, for all $x_i \in R_X$ and all $y_j \in R_Y$. Thus, even if in the above calculation we had found $P(Y=1 | X=0)= P(Y=1)$, we would not yet have been able to conclude that $X$ and $Y$ are independent. For that, we would need to check the independence condition for all  $x_i \in R_X$ and all $y_j \in R_Y$.
+
+						</li>
+					</ol>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<!-- end section content -->
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter5/5_1_0_joint_distributions.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter5/5_1_2_joint_cdf.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17694bcc56145',t:'MTc5MjI2Mjc1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

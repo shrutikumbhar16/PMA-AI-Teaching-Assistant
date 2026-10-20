@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 1 theorem	1 lemma 0 definition 0 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'8.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'8.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'8.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'8.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="8.2.1"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Evaluating Estimators</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter8/8_2_0_point_estimation.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter8/8_2_2_point_estimators_for_mean_and_var.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>8.2.1 Evaluating Estimators</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+
+<p>We define three main desirable properties for point estimators. The first one is related to the estimator's <i>bias</i>. The bias of an estimator $\hat{\Theta}$ tells us on average how far $\hat{\Theta}$ is from the real value of $\theta$.</p>
+
+
+<div class=cbox>
+Let $\hat{\Theta}=h(X_1,X_2,\cdots,X_n)$ be a point estimator for $\theta$. The <b>bias</b> of  point estimator $\hat{\Theta}$ is defined by
+\begin{align}%\label{}
+  B(\hat{\Theta})=E[\hat{\Theta}]-\theta.
+\end{align}
+
+</div>
+
+<p>In general, we would like to have a bias that is close to $0$, indicating that on average, $\hat{\Theta}$ is close to $\theta$. It is worth noting that $B(\hat{\Theta})$ might depend on the actual value of $\theta$. In other words, you might have an estimator for which $B(\hat{\Theta})$ is small for some values of $\theta$ and large for some other values of $\theta$. A desirable scenario is when $B(\hat{\Theta})=0$, i.e, $E[\hat{\Theta}]=\theta$, for all values of $\theta$. In this case, we say that $\hat{\Theta}$ is an <i>unbiased</i> estimator of $\theta$.</p>
+
+<div class=cbox>
+Let $\hat{\Theta}=h(X_1,X_2,\cdots,X_n)$ be a point estimator for a parameter $\theta$. We say that $\hat{\Theta}$ is an <b>unbiased</b> of  estimator of $\theta$ if
+\begin{align}%\label{}
+  B(\hat{\Theta})=0, \qquad \textrm{ for all possible values of }\theta.
+\end{align}
+</div>
+
+<hr />
+<span class='example'>Example </span><br>
+<p>Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample. Show that the sample mean
+\begin{align}%\label{}
+  \hat{\Theta}=\overline{X}=\frac{X_1+X_2+...+X_n}{n}
+\end{align}
+is an unbiased estimator of $\theta=EX_i$.
+</p>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+We have
+\begin{align}%\label{}
+  B(\hat{\Theta})&=E[\hat{\Theta}]-\theta\\
+ &=E\left[\overline{X}\right]-\theta\\
+ &=EX_i-\theta\\
+ &=0.
+\end{align}
+</li></ul></li></ul>
+</div><hr /><br>
+
+Note that if an estimator is unbiased, it is not necessarily a good estimator. In the above example, if we choose $\hat{\Theta}_1=X_1$, then $\hat{\Theta}_1$ is also an unbiased estimator of $\theta$:
+\begin{align}%\label{}
+  B(\hat{\Theta}_1)&=E[\hat{\Theta}_1]-\theta\\
+ &=EX_1-\theta\\
+ &=0.
+\end{align}
+Nevertheless, we suspect that $\hat{\Theta}_1$ is probably not as good as the sample mean $\overline{X}$. Therefore, we need other measures to ensure that an estimator is a "good" estimator. A very common measure is the <i>mean squared error</i> defined by $E\big[(\hat{\Theta}-\theta)^2\big]$.
+
+<div class=cbox>
+The <b>mean squared error</b> (MSE) of a point estimator $\hat{\Theta}$, shown by $MSE(\hat{\Theta})$, is defined as
+\begin{align}%\label{}
+  MSE(\hat{\Theta})=E\big[(\hat{\Theta}-\theta)^2\big].
+\end{align}
+
+</div>
+
+Note that $\hat{\Theta}-\theta$ is the error that we make when we estimate $\theta$ by $\hat{\Theta}$. Thus, the MSE is a measure of the distance between $\hat{\Theta}$ and $\theta$, and a smaller MSE is generally indicative of a better estimator.
+
+<hr />
+<span class='example'>Example </span><br>
+<p>Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample from a distribution with mean $EX_i=\theta$, and variance $\mathrm{Var}(X_i)=\sigma^2$. Consider the following two estimators for $\theta$:</p>
+<ol>
+  <li> $\hat{\Theta}_1=X_1$.</li>
+  <li> $\hat{\Theta}_2=\overline{X}=\frac{X_1+X_2+...+X_n}{n}$.</li>
+</ol>
+<p>Find $MSE(\hat{\Theta}_1)$ and $MSE(\hat{\Theta}_2)$ and show that for $n>1$, we have
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_1)>MSE(\hat{\Theta}_2).
+\end{align}</p>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ We have
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_1)&=E\big[(\hat{\Theta}_1-\theta)^2\big]\\
+ &=E[(X_1-EX_1)^2]\\
+ &=\mathrm{Var}(X_1)\\
+ &=\sigma^2.
+\end{align}
+To find $MSE(\hat{\Theta}_2)$, we can write
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_2)&=E\big[(\hat{\Theta}_2-\theta)^2\big]\\
+ &=E[(\overline{X}-\theta)^2]\\
+ &=\mathrm{Var}(\overline{X}-\theta)+\big(E[\overline{X}-\theta]\big)^2.
+\end{align}
+The last equality results from $EY^2=\mathrm{Var}(Y)+(EY)^2$, where $Y=\overline{X}-\theta$. Now, note that
+\begin{align}%\label{}
+ \mathrm{Var}(\overline{X}-\theta)=\mathrm{Var}(\overline{X})
+\end{align}
+since $\theta$ is a constant. Also, $E[\overline{X}-\theta]=0$. Thus, we conclude
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_2)&=\mathrm{Var}(\overline{X})\\
+ &=\frac{\sigma^2}{n}.
+\end{align}
+Thus, we conclude for $n>1$,
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_1)>MSE(\hat{\Theta}_2).
+\end{align}
+</li></ul></li></ul>
+</div><hr /><br>
+
+<p>From the above example, we conclude that although both $\hat{\Theta}_1$ and $\hat{\Theta}_2$ are unbiased estimators of the mean, $\hat{\Theta}_2=\overline{X}$ is probably a better estimator since it has a smaller MSE. In general, if $\hat{\Theta}$ is a point estimator for $\theta$, we can write</p>
+\begin{align}%\label{}
+  MSE(\hat{\Theta})&=E\big[(\hat{\Theta}-\theta)^2\big]\\
+ &=\mathrm{Var}(\hat{\Theta}-\theta)+\big(E[\hat{\Theta}-\theta]\big)^2\\
+ &=\mathrm{Var}(\hat{\Theta})+B(\hat{\Theta})^2.
+\end{align}
+
+
+<div class=cbox>
+If $\hat{\Theta}$ is a point estimator for $\theta$,
+\begin{align}%\label{}
+  MSE(\hat{\Theta})=\mathrm{Var}(\hat{\Theta})+B(\hat{\Theta})^2,
+\end{align}
+where $B(\hat{\Theta})=E[\hat{\Theta}]-\theta$ is the bias of $\hat{\Theta}$.
+
+</div>
+
+<p>The last property that we discuss for point estimators is <i>consistency</i>. Loosely speaking, we say that an estimator is consistent if as the sample size $n$ gets larger, $\hat{\Theta}$ converges to the real value of $\theta$. More precisely, we have the following definition:</p>
+
+<div class=cbox>
+Let $\hat{\Theta}_1$, $\hat{\Theta}_2$, $\cdots$, $\hat{\Theta}_n$, $\cdots$, be a sequence of point estimators of $\theta$. We say that $\hat{\Theta}_n$ is a <b>consistent</b> estimator of $\theta$, if
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|\hat{\Theta}_n-\theta| \geq \epsilon \big)=0, \textrm{ for all }\epsilon>0.
+\end{align}
+</div>
+
+<hr />
+<span class='example'>Example </span><br>
+<p>Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample with mean $EX_i=\theta$, and variance $\mathrm{Var}(X_i)=\sigma^2$. Show that $\hat{\Theta}_n=\overline{X}$ is a consistent estimator of $\theta$.</p>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ We need to show that
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} P\big(|\overline{X}-\theta| \geq \epsilon \big)=0, \qquad \textrm{ for all }\epsilon>0.
+\end{align}
+But this is true because of the weak law of large numbers. In particular, we can use Chebyshev's inequality to write
+\begin{align}%\label{}
+  P(|\overline{X}-\theta| \geq \epsilon) &\leq \frac{\mathrm{Var}(\overline{X})}{\epsilon^2}\\
+ =\frac{\sigma^2}{n \epsilon^2},
+\end{align}
+which goes to $0$ as $n \rightarrow \infty$.
+</li></ul</li></ul>
+</div><hr /><br>
+
+We could also show the consistency of $\hat{\Theta}_n=\overline{X}$ by looking at the MSE. As we found previously, the MSE of $\hat{\Theta}_n=\overline{X}$ is given by
+\begin{align}%\label{}
+  MSE(\hat{\Theta}_n)=\frac{\sigma^2}{n}.
+\end{align}
+Thus, $MSE(\hat{\Theta}_n)$ goes to $0$ as $n \rightarrow \infty$. From this, we can conclude that $\hat{\Theta}_n=\overline{X}$ is a consistent estimator for $\theta$. In fact, we can state the following theorem:
+
+
+<a name="theorem2"></a>
+<hr /><br>
+<span class=theorem>Theorem </span>
+
+<p>Let $\hat{\Theta}_1$, $\hat{\Theta}_2$, $\cdots$ be a sequence of point estimators of $\theta$. If
+\begin{align}%\label{eq:union-bound}
+   \lim_{n \rightarrow \infty} MSE(\hat{\Theta}_n)=0,
+\end{align}
+then $\hat{\Theta}_n$ is a consistent estimator of $\theta$.</p>
+
+
+<div class=solvedprob><ul><li><a><i>Proof</i></a>
+<ul><li>
+ We can write
+\begin{align}%\label{}
+  P(|\hat{\Theta}_n-\theta| \geq \epsilon) &= P(|\hat{\Theta}_n-\theta|^2 \geq \epsilon^2)\\
+ & \leq \frac{E[\hat{\Theta}_n-\theta]^2}{\epsilon^2} \qquad (\text{by Markov's inequality})\\
+ &=\frac{MSE(\hat{\Theta}_n)}{\epsilon^2},
+\end{align}
+which goes to $0$ as $n \rightarrow \infty$ by the assumption.
+</li></ul></li></ul>
+</div><hr /><br>
+
+
+
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter8/8_2_0_point_estimation.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter8/8_2_2_point_estimators_for_mean_and_var.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17729fd4f6145',t:'MTc5MjI2Mjc4MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

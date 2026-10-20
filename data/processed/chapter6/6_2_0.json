@@ -1,0 +1,10 @@
+{
+  "id": "6.2.0",
+  "title": "Probability Bounds",
+  "chapter": 6,
+  "topic": "Probability Bounds",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter6/6_2_0_probability_bounds.php",
+  "text": "6.2.0 Probability Bounds\nIn this section, we will discuss probability bounds.\nThese are inequalities that are usually applicable to a general scenario.\nThere are several scenarios in which we resort to inequalities.\nSometimes we do not have enough information to calculate a desired quantity (such as the probability of an event or the expected value of a random variable). In other situations, the problem might be complicated and exact calculation might be very difficult. In other scenarios, we might want to provide a result that is general and applicable to wide range of problems.\nFor example, suppose that you are an engineer and you design a communication system. Your company wants to ensure that the error probability in your system be less than a given value, say $10^{-5}$. Calculating the exact value of probability might be difficult due to some unknown parameters or simply because the communication system is a complicated one. Here you do not actually need to find the error probability exactly, but all you need to do is to show that it is less than $10^{-5}$.\nIn this section, we will discuss several inequalities. Depending on the problem you are dealing with, you might decide which one to use.\n."
+}

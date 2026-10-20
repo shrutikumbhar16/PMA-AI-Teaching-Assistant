@@ -1,0 +1,10 @@
+{
+  "id": "7.2.3",
+  "title": "Different Types of Convergence",
+  "chapter": 7,
+  "topic": "Types of Convergence",
+  "content_type": "theory",
+  "source": "ProbabilityCourse",
+  "source_url": "https://www.probabilitycourse.com/chapter7/7_2_3_different_types_of_convergence_for_sequences_of_random_variables.php",
+  "text": "7.2.3 Different Types of Convergence for Sequences of Random Variables\nHere, we would like to provide definitions of different types of convergence and discuss how they are related.\nConsider a sequence of random variables $X_1$, $X_2$, $X_3$, $\\cdots$, i.e, $\\big\\{X_n, n \\in \\mathbb{N}\\}$. This sequence might ''converge'' to a random variable $X$. There are four types of convergence that we will discuss in this section:\nConvergence in distribution,\nConvergence in probability,\nConvergence in mean,\nAlmost sure convergence.\nThese are all different kinds of convergence. A sequence might converge in one sense but not another.\nSome of these convergence types are ''stronger'' than others and some are ''weaker.''\nBy this, we mean the following: If Type A convergence is stronger than Type B convergence, it means that Type A convergence implies Type B convergence.\nFigure 7.4 summarizes how these types of convergence are related. In this figure, the stronger types of convergence are on top and, as we move to the bottom, the convergence becomes weaker. For example, using the figure, we conclude that if a sequence of random variables converges\nin probability\nto a random variable $X$, then the sequence converges\nin distribution\nto $X$ as well.\nFig.7.4 -  Relations between different types of convergence\n."
+}

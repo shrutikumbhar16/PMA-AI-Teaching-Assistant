@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href="//www.probabilitycourse.com/">
+	<style>
+body	{	counter-reset: example 6 theorem	2 lemma 0 definition 0 problem 0;}
+.example,.theorem,.lemma,.problem, .definition { font-weight:bold; }
+.example:after { counter-increment: example 1; content:'8.'counter(example); }
+.theorem:after { counter-increment: theorem 1; content:'8.'counter(theorem); }
+.lemma:after		{ counter-increment: lemma	1;	content:'8.'counter(lemma);		}
+.problem:after { counter-increment: problem 1; content:counter(problem); }
+.definition:after { counter-increment: definition 1; content:'8.'counter(definition); }
+</style>
+	<!--<base href="../" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="section"	content="8.2.3"  />
+	<script type="text/javascript">
+		var w = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		if(w < 20000){
+			onload = function() {
+				//document.body.innerHTML = document.body.innerHTML.replace(/\\hspace{50pt}/g, '\hspace{5pt}');
+				//document.body.innerHTML = document.body.innerHTML.replace(/experiment/g, 'experiments');
+				//document.body.innerHTML = document.body.innerHTML.replace('\hspace{40pt}', '');
+				//MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		}
+	</script>
+	
+	<script type="text/x-mathjax-config">
+			var w = window.innerWidth
+			|| document.documentElement.clientWidth
+			|| document.body.clientWidth;
+			if(w > 800){
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']],
+					},
+				});
+				
+			} else {
+				
+				MathJax.Hub.Config({
+					jax: ["input/TeX","output/SVG"],
+					tex2jax: { inlineMath: [['$','$'],['\\(','\\)']]},
+					
+					"HTML-CSS": {
+					scale: "70",
+					linebreaks: {  automatic: true}
+					},
+					noReflows: false
+				});
+				
+			}
+	</script>	
+	<script type="text/javascript"
+  			src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+			
+	</script>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_risk_js_code.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/solved_prob.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/login_slide_toggle.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_menu.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/scroll_navigation.js"></script>	
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/extend_list.js"></script>
+	<script type="text/javascript" src="//www.probabilitycourse.com/javascript/formula_popup.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link media="only screen and (min-device-width: 751px) and (max-width:9999px)" href="style_sheet.css" title="Simplr" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 750px)" href="mobile.css"/>
+	<link rel="stylesheet" type="text/css" href="print.css" media="print" />
+	
+	
+	<title>Maximum Likelihood Estimation</title>
+	<meta name="description" content="">
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-54518759-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+</head><body>
+	<div id="container">
+		<!-- Header - hidden from print -->
+		<span class="hide_print">
+			<div id="header">
+				<div id="mobile_menu"><ul><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/">HOME</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/videos/videos.php">VIDEOS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/calculator/calculator.php">CALCULATOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/comments.php">COMMENTS</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/courses.php">COURSES</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTOR</a></li><li><a STYLE="text-decoration: none;" href="//www.probabilitycourse.com/Login/mobile_login.php">LOG IN</a></li></ul></div>				<script type="text/javascript" src="//www.probabilitycourse.com/javascript/top_page_html_code.js"></script>
+												<li><a href="//www.probabilitycourse.com/for_instructors.php">FOR INSTRUCTORS</a></li></ul></div><div id="right"><ul><li class="login_container"><a>Sign In</a></li></ul><div class="login_extended"><form NAME ="form1" METHOD ="POST" ACTION ="//www.probabilitycourse.com/Login/login.php" /><center>Email: <INPUT TYPE = "TEXT" Name ="email" maxlength="50"  style="width:85%" /> <br />Password: <INPUT type="password" Name ="password"  maxlength="100"  style="width: 85%" /> <br /><INPUT TYPE = "Submit" Name = "Submit1"  VALUE = "Login" /></center></form> <a style="top:3px;" href= "//www.probabilitycourse.com/Login/forgot_password.php"> Forgot password? </a></div>				</div>
+				<div style="clear:both;"></div>
+				</div>
+			</div>
+		</span>
+		<!-- /Header -->
+		
+		<div id="wrapper">
+			<div id="content">
+			<div class="thinblock">
+					<span class="hide_print">
+						<div class="left"><a>&larr; </a><a id="previous" href="chapter8/8_2_2_point_estimators_for_mean_and_var.php">previous</a></div>
+						<div class="right"><a id="next" href="chapter8/8_2_4_asymptotic_probs_of_MLE.php">next</a><a> &rarr;</a></div>
+					</span>
+    			<div class="clear"></div>
+    		</div>
+			<hr />
+						
+						<div class="left"><br><h2>8.2.3 Maximum Likelihood Estimation</h2></div>			
+    		<div class="clear"></div>
+<!-- Section Content -->
+<p>So far, we have discussed estimating the mean and variance of a distribution. Our methods have been somewhat ad hoc. More specifically, it is not clear how we can estimate other parameters. We now would like to talk about a systematic way of parameter estimation. Specifically, we would like to introduce an estimation method, called <i>maximum likelihood estimation</i> (MLE). To give you the idea behind MLE let us look at an example.</p>
+
+<a name="example8_7"></a>
+<hr />
+<!-- This is an example-->
+<span class='example'>Example </span><br>
+<p>I have a bag that contains $3$ balls. Each ball is either red or blue, but I have no information in addition to this. Thus, the number of blue balls, call it $\theta$, might be $0$, $1$, $2$, or $3$. I am allowed to choose $4$ balls at random from the bag <u>with</u> replacement.  We define the random variables $X_1$, $X_2$, $X_3$, and $X_4$ as follows</p>
+\begin{equation}
+ \nonumber X_i = \left\{
+  \begin{array}{l l}
+    1 &  \qquad \text{if the $i$th chosen ball is blue}  \\
+      &  \qquad   \\
+    0 &  \qquad \text{if the $i$th chosen ball is red}
+  \end{array} \right.
+\end{equation}
+Note that $X_i$'s are i.i.d. and $X_i \sim Bernoulli(\frac{\theta}{3})$. After doing my experiment, I observe the following values for $X_i$'s.
+\begin{align}%\label{}
+  x_1=1, x_2=0, x_3=1, x_4=1.
+\end{align}
+Thus, I observe $3$ blue balls and $1$ red balls.
+<ol>
+  <li> For each possible value of $\theta$, find the probability of the observed sample, $(x_1, x_2, x_3, x_4)=(1,0,1,1)$.</li>
+  <li> For which value of $\theta$ is the probability of the observed sample is the largest?</li>
+</ol><br>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+Since $X_i \sim Bernoulli(\frac{\theta}{3})$, we have
+\begin{equation}
+ \nonumber P_{X_i}(x)= \left\{
+  \begin{array}{l l}
+     \frac{\theta}{3} & \qquad \textrm{ for }x=1  \\
+      &  \qquad   \\
+    1-\frac{\theta}{3} &  \qquad \textrm{ for }x=0
+  \end{array} \right.
+\end{equation}
+Since $X_i$'s are independent, the joint PMF of $X_1$, $X_2$, $X_3$, and $X_4$ can be written as
+\begin{align}%\label{}
+  P_{X_1 X_2 X_3 X_4}(x_1, x_2, x_3, x_4) &= P_{X_1}(x_1) P_{X_2}(x_2) P_{X_3}(x_3) P_{X_4}(x_4)
+\end{align}
+Therefore,
+\begin{align}%\label{}
+  P_{X_1 X_2 X_3 X_4}(1,0,1,1) &= \frac{\theta}{3} \cdot \left(1-\frac{\theta}{3}\right) \cdot \frac{\theta}{3} \cdot \frac{\theta}{3}\\
+ &=\left(\frac{\theta}{3}\right)^3 \left(1-\frac{\theta}{3}\right).
+\end{align}
+Note that the joint PMF depends on $\theta$, so we write it as $ P_{X_1 X_2 X_3 X_4}(x_1, x_2, x_3, x_4; \theta)$. We obtain the values given in Table 8.1 for the probability of $(1,0,1,1)$.
+
+	
+	<table border="1" cellpadding="10" align="center">			
+            <tr>
+              <td>$\theta$</td>
+              <td>$P_{X_1 X_2 X_3 X_4}(1, 0, 1, 1; \theta)$ </td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>0</td>             
+            </tr>
+			<tr>
+              <td>1</td>
+              <td>0.0247</td>
+            </tr>
+			<tr>
+              <td>2</td>
+              <td>0.0988</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>0</td>
+            </tr>
+            </table><br>
+	<div align="center">Table 8.1: Values of $P_{X_1 X_2 X_3 X_4}(1, 0, 1, 1; \theta)$ for <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter8/8_1_1_random_sampling.php#example8_1">Example 8.1</a> </div><br>
+
+<p>The probability of observed sample for $\theta=0$ and $\theta=3$ is zero. This makes sense because our sample included both red and blue balls. From the table we see that the probability of the observed data is maximized for $\theta=2$. This means that the observed data is most likely to occur for $\theta=2$. For this reason, we may choose $\hat{\theta}=2$ as our estimate of $\theta$. This is called the maximum likelihood estimate (MLE) of $\theta$.</p>
+</li></ul></li></ul>
+</div><hr /><br>
+<p>The above example gives us the idea behind the maximum likelihood estimation. Here, we introduce this method formally. To do so, we first define the <b>likelihood</b> function.  Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample from a distribution with a parameter $\theta$  (In general, $\theta$ might be a vector, $\mathbf{\theta}=(\theta_1, \theta_2, \cdots, \theta_k)$.) Suppose that $x_1$, $x_2$, $x_3$, $...$, $x_n$ are the observed values of $X_1$, $X_2$, $X_3$, $...$, $X_n$. If $X_i$'s are discrete random variables, we define the <i>likelihood</i> function as the probability of the observed sample as a function of $\theta$:</p>
+\begin{align}
+ \nonumber L(x_1, x_2, \cdots, x_n; \theta)&=P(X_1=x_1, X_2=x_2, \cdots, X_n=x_n; \theta)\\
+  &=P_{X_1 X_2 \cdots X_n}(x_1, x_2, \cdots, x_n; \theta).
+\end{align}
+To get a more compact formula, we may use the vector notation, $\mathbf{X}=(X_1, X_2, \cdots, X_n)$. Thus, we may write
+\begin{align}
+ \nonumber L(\mathbf{x}; \theta)=P_{\mathbf{X}}(\mathbf{x}; \theta).
+\end{align}
+If $X_1$, $X_2$, $X_3$, $...$, $X_n$ are jointly continuous, we use the joint PDF instead of the joint PMF. Thus, the likelihood is defined by
+\begin{align}
+ \nonumber L(x_1, x_2, \cdots, x_n; \theta)=f_{X_1 X_2 \cdots X_n}(x_1, x_2, \cdots, x_n; \theta).
+\end{align}
+
+
+<div class=cbox>
+Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample from a distribution with a parameter $\theta$. Suppose that we have observed $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$.
+<ol>
+  <li> If $X_i$'s are discrete, then the <b>likelihood function</b> is defined as
+  \begin{align}
+  \nonumber L(x_1, x_2, \cdots, x_n; \theta)=P_{X_1 X_2 \cdots X_n}(x_1, x_2, \cdots, x_n; \theta).
+  \end{align}</li>
+  <li> If $X_i$'s are jointly continuous, then the likelihood function is defined as
+  \begin{align}
+  \nonumber L(x_1, x_2, \cdots, x_n; \theta)=f_{X_1 X_2 \cdots X_n}(x_1, x_2, \cdots, x_n; \theta).
+  \end{align}</li>
+</ol>
+In some problems, it is easier to work with the <b>log likelihood function</b> given by
+\begin{align}
+ \nonumber \ln L(x_1, x_2, \cdots, x_n; \theta).
+\end{align}
+
+</div>
+
+<a name="example8_8"></a>
+<hr />
+<!-- This is an example-->
+<span class='example'>Example </span><br>
+<p>For the following random samples, find the likelihood function:</p>
+<ol>
+  <li> $X_i \sim Binomial(3, \theta)$, and we have observed $(x_1,x_2,x_3,x_4)=(1,3,2,2)$.</li>
+  <li> $X_i \sim Exponential(\theta)$ and we have observed $(x_1,x_2,x_3,x_4)=(1.23,3.32,1.98,2.12)$.</li>
+</ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ Remember that when we have a random sample, $X_i$'s are i.i.d., so we can obtain the joint PMF and PDF by multiplying the marginal (individual) PMFs and PDFs.
+<ol>
+  <li> If $X_i \sim Binomial(3, \theta)$, then
+  \begin{align}
+    P_{X_i}(x;\theta) = {3 \choose x} \theta^x(1-\theta)^{3-x}
+  \end{align}
+  Thus,
+  \begin{align}
+   L(x_1, x_2, x_3, x_4; \theta)&=P_{X_1 X_2 X_3 X_4}(x_1, x_2,x_3, x_4; \theta)\\
+   &=P_{X_1}(x_1;\theta) P_{X_2}(x_2;\theta) P_{X_3}(x_3;\theta) P_{X_4}(x_4;\theta)\\
+   &={3 \choose x_1} {3 \choose x_2}  {3 \choose x_3}  {3 \choose x_4} \theta^{x_1+x_2+x_3+x_4} (1-\theta)^{12-(x_1+x_2+x_3+x_4)}.
+  \end{align}
+  Since we have observed $(x_1,x_2,x_3,x_4)=(1,3,2,2)$, we have
+  \begin{align}
+   L(1,3,2,2; \theta)&={3 \choose 1} {3 \choose 3}  {3 \choose 2}  {3 \choose 2} \theta^{8} (1-\theta)^{4}\\
+   &=27 \qquad \theta^{8} (1-\theta)^{4}.
+  \end{align}</li>
+
+
+  <li> If $X_i \sim Exponential(\theta)$, then
+  \begin{align}
+    f_{X_i}(x;\theta) = \theta e^{-\theta x}u(x),
+  \end{align}
+  where $u(x)$ is the unit step function, i.e., $u(x)=1$ for $x \geq 0$ and $u(x)=0$ for $x<0$. Thus, for $x_i \geq 0$, we can write
+  \begin{align}
+   L(x_1, x_2, x_3, x_4; \theta)&=f_{X_1 X_2 X_3 X_4}(x_1, x_2,x_3, x_4; \theta)\\
+   &=f_{X_1}(x_1;\theta) f_{X_2}(x_2;\theta) f_{X_3}(x_3;\theta) f_{X_4}(x_4;\theta)\\
+   &= \theta^{4} e^{-(x_1+x_2+x_3+x_4) \theta}.
+  \end{align}
+  Since we have observed $(x_1,x_2,x_3,x_4)=(1.23,3.32,1.98,2.12)$, we have
+  \begin{align}
+   L(1.23,3.32,1.98,2.12; \theta)&=\theta^{4} e^{-8.65 \theta}.
+  \end{align}</li>
+</ol>
+</li></ul></li></ul></div>
+<hr /><br>
+
+
+<p>Now that we have defined the likelihood function, we are ready to define maximum likelihood estimation. Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample from a distribution with a parameter $\theta$. Suppose that we have observed $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$. The maximum likelihood estimate of $\theta$, shown by $\hat{\theta}_{ML}$ is the value that maximizes the likelihood function</p>
+\begin{align}
+ \nonumber L(x_1, x_2, \cdots, x_n; \theta).
+\end{align}
+
+Figure 8.1 illustrates finding the maximum likelihood estimate as the maximizing value of $\theta$ for the likelihood function. There are two cases shown in the figure: In the first graph, $\theta$ is a discrete-valued parameter, such as the one in <a href ="chapter8/8_2_3_max_likelihood_estimation.php#example8_7"> Example 8.7 </a>. In the second one, $\theta$ is a continuous-valued parameter, such as the ones in Example 8.8. In both cases, the maximum likelihood estimate of $\theta$ is the value that maximizes the likelihood function.
+
+<figure>
+  	<img src="images/chapter8/MLE-color.png" width="85%" alt="MLE" title="MLE" border="0" />
+  	<figcaption>Figure 8.1 - The maximum likelihood estimate for $\theta$.</figcaption>
+</figure>
+
+
+Let us find the maximum likelihood estimates for the observations of <a href="chapter8/8_2_3_max_likelihood_estimation.php#example8_8">Example 8.8.</a>
+
+<a name="example8_9"></a>
+<hr />
+
+<!-- This is an example-->
+<span class='example'>Example </span><br>
+<p>For the following random samples, find the maximum likelihood estimate of $\theta$:</p>
+<ol>
+  <li> $X_i \sim Binomial(3, \theta)$, and we have observed $(x_1,x_2,x_3,x_4)=(1,3,2,2)$.</li>
+  <li> $X_i \sim Exponential(\theta)$ and we have observed $(x_1,x_2,x_3,x_4)=(1.23,3.32,1.98,2.12)$.</li>
+</ol>
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li> 
+<ol>
+  <li> In <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter8/8_2_3_max_likelihood_estimation.php#example8_8">Example 8.8.</a>, we found the likelihood function as
+  \begin{align}
+   L(1,3,2,2; \theta)=27 \qquad \theta^{8} (1-\theta)^{4}.
+  \end{align}
+  To find the value of $\theta$ that maximizes the likelihood function, we can take the derivative and set it to zero. We have
+  \begin{align}
+   \frac{d L(1,3,2,2; \theta)}{d\theta}= 27 \big[\qquad 8\theta^{7} (1-\theta)^{4}-4\theta^{8} (1-\theta)^{3} \big].
+  \end{align}
+  Thus, we obtain
+  \begin{align}
+   \hat{\theta}_{ML}=\frac{2}{3}.
+  \end{align}
+</li>
+
+
+
+  <li> In <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter8/8_2_3_max_likelihood_estimation.php#example8_8">Example 8.8.</a>, we found the likelihood function as
+  \begin{align}
+   L(1.23,3.32,1.98,2.12; \theta)=\theta^{4} e^{-8.65 \theta}.
+  \end{align}
+  Here, it is easier to work with the log likelihood function, $\ln L(1.23,3.32,1.98,2.12; \theta)$. Specifically,
+  \begin{align}
+   \ln  L(1.23,3.32,1.98,2.12; \theta)=4 \ln \theta -8.65 \theta.
+  \end{align}
+  By differentiating, we obtain
+  \begin{align}
+   \frac{4}{\theta}-8.65=0,
+  \end{align}
+  which results in
+  \begin{align}
+   \hat{\theta}_{ML}=0.46
+  \end{align}</li>
+
+</ol>
+It is worth noting that technically, we need to look at the second derivatives and endpoints to make sure that the values that we obtained above are the maximizing values. For this example, it turns out that the obtained values are indeed the maximizing values.
+</li></ul></li></ul>
+</div><hr /><br>
+
+
+<p>Note that the value of the maximum likelihood estimate is a function of the observed data. Thus, as any other estimator, the maximum likelihood estimator (MLE), shown by $\hat{\Theta}_{ML}$ is indeed a random variable. The MLE estimates $\hat{\theta}_{ML}$ that we found above were the values of the random variable $\hat{\Theta}_{ML}$ for the specified observed d</p>
+
+
+<div class=cbox>
+<p align=center><u>The Maximum Likelihood Estimator (MLE)</u></p>
+Let $X_1$, $X_2$, $X_3$, $...$, $X_n$  be a random sample from a distribution with a parameter $\theta$. Given that we have observed $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$,  a maximum likelihood estimate of $\theta$, shown by $\hat{\theta}_{ML}$ is a value of $\theta$ that maximizes the likelihood function
+\begin{align}
+ \nonumber L(x_1, x_2, \cdots, x_n; \theta).
+\end{align}
+A maximum likelihood estimator (MLE) of the parameter $\theta$, shown by $\hat{\Theta}_{ML}$ is a random variable $\hat{\Theta}_{ML}$$=$$\hat{\Theta}_{ML}(X_1, X_2, \cdots, X_n)$ whose value when $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$ is given by $\hat{\theta}_{ML}$.
+
+</div>
+
+
+<hr />
+<!-- This is an example-->
+<span class='example'>Example </span><br>
+<p>For the following examples, find the maximum likelihood estimator (MLE) of $\theta$:</p>
+<ol>
+  <li> $X_i \sim Binomial(m, \theta)$, and we have observed $X_1$, $X_2$, $X_3$, $...$, $X_n$.</li>
+  <li> $X_i \sim Exponential(\theta)$ and we have observed $X_1$, $X_2$, $X_3$, $...$, $X_n$.</li>
+</ol>
+
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+<ol>
+  <li> Similar to our calculation in <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter8/8_2_3_max_likelihood_estimation.php#example8_8">Example 8.8.</a>, for the observed values of $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$, the likelihood function is given by
+      \begin{align}
+       L(x_1, x_2, \cdots, x_n; \theta)&= P_{X_1 X_2 \cdots X_n}(x_1, x_2, \cdots, x_n; \theta)\\
+       &=\prod_{i=1}^{n} P_{X_i}(x_i; \theta)\\
+       &=\prod_{i=1}^{n} {m \choose x_i} \theta^{x_i} (1-\theta)^{m-x_i}\\
+       &=\left[\prod_{i=1}^{n} {m \choose x_i} \right] \theta^{\sum_{i=1}^n x_i} (1-\theta)^{mn-\sum_{i=1}^n x_i}.
+      \end{align}
+      Note that the first term does not depend on $\theta$, so we may write $L(x_1, x_2, \cdots, x_n; \theta)$ as
+      \begin{align}
+       L(x_1, x_2, \cdots, x_n; \theta)= c \qquad \theta^{s} (1-\theta)^{mn-s},
+      \end{align}
+      where $c$ does not depend on $\theta$, and $s=\sum_{k=1}^n x_i$. By differentiating and setting the derivative to $0$ we obtain
+      \begin{align}
+       \hat{\theta}_{ML}= \frac{1}{mn}\sum_{k=1}^n x_i.
+      \end{align}
+      This suggests that the MLE can be written as
+      \begin{align}
+       \hat{\Theta}_{ML}= \frac{1}{mn}\sum_{k=1}^n X_i.
+      \end{align}</li>
+
+
+
+  <li> Similar to our calculation in <a style="color: #337810; background: none; padding: 0px; border: none; margin: 0px;" href="chapter8/8_2_3_max_likelihood_estimation.php#example8_8">Example 8.8.</a>, for the observed values of $X_1=x_1$, $X_2=x_2$, $\cdots$, $X_n=x_n$, the likelihood function is given by
+      \begin{align}
+       L(x_1, x_2, \cdots, x_n; \theta)&=\prod_{i=1}^{n} f_{X_i}(x_i; \theta)\\
+       &=\prod_{i=1}^{n} \theta e^{-\theta x_i}\\
+       &=\theta^{n} e^{- \theta \sum_{k=1}^n x_i}.
+      \end{align}
+      Therefore,
+      \begin{align}
+       \ln L(x_1, x_2, \cdots, x_n; \theta)=n \ln \theta - \sum_{k=1}^n x_i  \theta.
+      \end{align}
+      By differentiating and setting the derivative to $0$ we obtain
+      \begin{align}
+       \hat{\theta}_{ML}= \frac{n}{\sum_{k=1}^n x_i}.
+      \end{align}
+      This suggests that the MLE can be written as
+      \begin{align}
+       \hat{\Theta}_{ML}=\frac{n}{\sum_{k=1}^n X_i}.
+      \end{align}</li>
+
+</ol>
+</li></ul></li></ul>
+</div><hr /><br>
+
+<p>The examples that we have discussed had only one unknown parameter $\theta$. In general, $\theta$ could be a vector of parameters, and we can apply the same methodology to obtain the MLE. More specifically, if we have $k$ unknown parameters $\theta_1$, $\theta_2$, $\cdots$, $\theta_k$, then we need to maximize the likelihood function</p>
+\begin{equation}
+L(x_1, x_2, \cdots, x_n; \theta_1, \theta_2, \cdots, \theta_k)
+\end{equation}
+to obtain the maximum likelihood estimators $\hat{\Theta}_{1}$, $\hat{\Theta}_{2}$, $\cdots$, $\hat{\Theta}_{k}$. Let's look at an example.
+
+<hr />
+<!-- This is an example-->
+<span class='example'>Example </span><br>
+<p>Suppose that we have observed the random sample $X_1$, $X_2$, $X_3$, $...$, $X_n$, where  $X_i \sim N(\theta_1, \theta_2)$, so</p>
+\begin{align}%\label{}
+  f_{X_i}(x_i;\theta_1,\theta_2)=\frac{1}{\sqrt{2 \pi \theta_2}} e^{-\frac{(x_i-\theta_1)^2}{2 \theta_2}}.
+\end{align}
+Find the maximum likelihood estimators for $\theta_1$ and $\theta_2$.
+
+
+<div class=solvedprob><ul><li><a><b>Solution</b></a>
+<ul><li>
+ The likelihood function is given by
+\begin{align}
+   L(x_1, x_2, \cdots, x_n; \theta_1,\theta_2)&=\frac{1}{(2 \pi)^{\frac{n}{2}} {\theta_2}^{\frac{n}{2}}}  \exp \left({-\frac{1}{2 \theta_2} \sum_{i=1}^{n} (x_i-\theta_1)^2}\right).
+\end{align}
+Here again, it is easier to work with the log likelihood function
+\begin{align}
+   \ln L(x_1, x_2, \cdots, x_n; \theta_1,\theta_2)&= -\frac{n}{2} \ln (2 \pi) -\frac{n}{2} \ln \theta_2 -\frac{1}{2 \theta_2} { \sum_{i=1}^{n} (x_i-\theta_1)^2}.
+\end{align}
+We take the derivatives with respect to $\theta_1$ and $\theta_2$ and set them to zero:
+
+\begin{align}%\label{}
+ \frac{\partial }{\partial \theta_1} \ln L(x_1, x_2, \cdots, x_n; \theta_1,\theta_2) &=\frac{1}{\theta_2} \sum_{i=1}^{n} (x_i-\theta_1)=0 \\
+ \frac{\partial }{\partial \theta_2} \ln L(x_1, x_2, \cdots, x_n; \theta_1,\theta_2) &=-\frac{n}{2\theta_2}+\frac{1}{2\theta^2_2} \sum_{i=1}^{n}(x_i-\theta_1)^2=0.
+\end{align}
+By solving the above equations, we obtain the following maximum likelihood estimates for $\theta_1$ and $\theta_2$:
+\begin{align}%\label{}
+  &\hat{\theta}_1=\frac{1}{n} \sum_{i=1}^{n} x_i,\\
+  &\hat{\theta}_2=\frac{1}{n} \sum_{i=1}^{n} (x_i-\hat{\theta}_1)^2.
+\end{align}
+We can write the MLE of $\theta_1$ and $\theta_2$ as random variables $\hat{\Theta}_1$ and $\hat{\Theta}_2$:
+\begin{align}%\label{}
+  &\hat{\Theta}_1=\frac{1}{n} \sum_{i=1}^{n} X_i,\\
+  &\hat{\Theta}_2=\frac{1}{n} \sum_{i=1}^{n} (X_i-\hat{\Theta}_1)^2.
+\end{align}
+Note that $\hat{\Theta}_1$ is the sample mean, $\overline{X}$, and therefore it is an unbiased estimator of the mean. Here, $\hat{\Theta}_2$ is very close to the sample variance which we defined as
+\begin{align}%\label{}
+  {S}^2=\frac{1}{n-1} \sum_{i=1}^n (X_i-\overline{X})^2.
+\end{align}
+In fact,
+\begin{align}%\label{}
+  \hat{\Theta}_2=\frac{n-1}{n} {S}^2.
+\end{align}
+Since we already know that the sample variance is an unbiased estimator of the variance, we conclude that $\hat{\Theta}_2$ is a biased estimator of the variance:
+\begin{align}%\label{}
+  E\hat{\Theta}_2=\frac{n-1}{n} \theta_2.
+\end{align}
+Nevertheless, the bias is very small here and it goes to zero as $n$ gets large.
+
+</li></ul></li></ul>
+</div><hr /><br>
+
+
+<p>Note: Here, we caution that we cannot always find the maximum likelihood estimator by setting the derivative to zero. 
+For example, if $\theta$ is an integer-valued parameter (such as the number of blue balls in <a href="chapter8/8_2_3_max_likelihood_estimation.php#example8_7">Example 8.7</a>), then we cannot use differentiation and we need to find the maximizing value in another way. 
+Even if $\theta$ is a real-valued parameter, we cannot always find the MLE by setting the derivative to zero. For example, the maximum might be obtained at the endpoints of the acceptable ranges. We will see an example of such scenarios in the Solved Problems section (<a href="chapter8/8_2_5_solved_probs.php">Section 8.2.5</a>).</p>
+
+<hr />
+
+
+
+
+			<div class="thinblock">
+				<div class="left"><a>&larr; </a><a id="previous" href="chapter8/8_2_2_point_estimators_for_mean_and_var.php">previous</a></div>
+    			<div class="right"><a id="next" href="chapter8/8_2_4_asymptotic_probs_of_MLE.php">next</a><a> &rarr;</a></div>
+    			<div class="clear"></div>
+    			<div><br/>
+    			<hr/>
+    		<table>
+    		  <tr>
+    		    <td><p>The print version of the book is available on <a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank">Amazon</a>.</p>
+			    <div align="center"><a href='//www.amazon.com/Introduction-Probability-Statistics-Random-Processes/dp/0990637204/ref=sr_1_1?ie=UTF8&qid=1408880878&sr=8-1&keywords=pishro-nik#'target="_blank"><img  src="/images/home/book_cover.jpg" alt="Book Cover" width="123"></a></div>  </td>
+    		  </tr>	    
+              <tr>
+                 <td><p><br/><b>Practical uncertainty:</b> <i>Useful Ideas in Decision-Making, Risk, Randomness, & AI</i></p>
+                 <div align="center"><a href='https://www.amazon.com/dp/B0CH2BHRVH/ref=tmm_pap_swatch_0?_encoding=UTF8&qid=1693837152&sr=8-1' target="_blank"><img  src="/images/home/practical_uncertaintly.PNG" alt="ractical Uncertaintly Cover" width="123"></a></div></td>
+              </tr>
+            </table>
+    			    
+    			</div>
+    		</div>		
+		</div>
+		<span class="hide_print">
+		<div id="menu">
+			 <script type="text/javascript" src="//www.probabilitycourse.com/javascript/menu_html_code.js"></script>
+		</div>
+
+		<div id="footer">
+			<script type="text/javascript" src="//www.probabilitycourse.com/javascript/footer_html_code.js"></script>
+		</span>
+		</div>
+	</div>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4c17733bd471d31',t:'MTc5MjI2Mjc4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
